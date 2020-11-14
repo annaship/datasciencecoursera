@@ -9,6 +9,12 @@ corr <- function(directory, threshold = 0) {
   # com_res <- as.data.frame(table(com))
   # names(com_res) <- c("id", "nobs")
   com_res0 <- com_res$id[as.numeric(as.character(com_res$nobs)) > threshold]
-  as.numeric(as.character(com_res0))
+  ok_ids <- as.numeric(as.character(com_res0))
+  selected_sulfate_list <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x]}) 
+  selected_sulfate <- do.call(rbind, selected_sulfate_list)
   
+  selected_nitrate_list <- lapply(ok_ids, function(x){dat$nitrate[dat$ID == x]}) 
+  selected_nitrate <- do.call(rbind, selected_nitrate_list)
+  
+   
 }
