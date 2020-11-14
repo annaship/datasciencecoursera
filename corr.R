@@ -1,11 +1,14 @@
-# Write a function that reads a directory full of files and reports the number of completely observed cases in each data file. The function should return a data frame where the first column is the name of the file and the second column is the number of complete cases.
 
-complete <- function(directory, id = 1:332) {
-  files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
-  tmp <- lapply(files_full[id], read.csv)
-  dat <- do.call(rbind, tmp)
-  com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
-  com_res <- as.data.frame(table(com))
-  names(com_res) <- c("id", "nobs")
-  com_res
+# Write a function that takes a directory of data files and a threshold for complete cases and calculates the correlation between sulfate and nitrate for monitor locations where the number of completely observed cases (on all variables) is greater than the threshold. The function should return a vector of correlations for the monitors that meet the threshold requirement. If no monitors meet the threshold requirement, then the function should return a numeric vector of length 0. A prototype of this function follows
+
+corr <- function(directory, threshold = 0) {
+  # files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+  # tmp <- lapply(files_full, read.csv)
+  # dat <- do.call(rbind, tmp)
+  # com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+  # com_res <- as.data.frame(table(com))
+  # names(com_res) <- c("id", "nobs")
+  com_res0 <- com_res$id[as.numeric(as.character(com_res$nobs)) > threshold]
+  as.numeric(as.character(com_res0))
+  
 }
