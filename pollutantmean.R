@@ -19,10 +19,11 @@
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
   files <- list.files(path = directory, pattern = "*.csv", full.names = T)
-  print(head(files))
-  
-    for (i in id) {
-      df<-read.csv(files[i])
+  all_means <- vector("list", length = length(id))
+  for (i in id) {
+      df <- read.csv(files[i])
       mean.df <- mean(df[, pollutant], na.rm = TRUE)
-    }
+      all_means[[i]] <- mean.df
+  }
+  print(all_means)
 }
