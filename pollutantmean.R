@@ -12,12 +12,9 @@ pollutantmean0 <- function(directory, pollutant, id = 1:332) {
 }
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
-  files_list <- list.files(path = directory, pattern = "*.csv", full.names = T)
-  dat <- data.frame()
-  
-  for (i in id) {
-    dat <- rbind(dat, read.csv(files_list[i]))
-  }
+  files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+  tmp <- lapply(files_full[id], read.csv)
+  dat <- do.call(rbind, tmp)
   mean(dat[, pollutant], na.rm = TRUE)
 }
 
