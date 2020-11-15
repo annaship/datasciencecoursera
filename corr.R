@@ -7,27 +7,12 @@ corr <- function(directory, threshold = 0) {
   tmp <- lapply(files_full, read.csv)
   dat <- do.call(rbind, tmp)
   
-  print("unique(dat$ID) 1")
-  print(unique(dat$ID))
   com_res0 <- com_result$id[as.numeric(as.character(com_result$nobs)) > threshold]
-  print("unique(dat$ID) 2")
-  print(unique(dat$ID))
   
   ok_ids <- as.numeric(as.character(com_res0))
-  print("ok_ids")
-  print(ok_ids)
-
-  print("unique(dat$ID) 3")
-  print(unique(dat$ID))
-  
   selected_sulfate_list <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x]}) 
-  print("unique(dat$ID) 4")
-  print(unique(dat$ID))
-  
   selected_nitrate_list <- lapply(ok_ids, function(x){dat$nitrate[dat$ID == x]})
-  print("unique(dat$ID) 5")
-  print(unique(dat$ID))
-  
+
   len <- length(selected_sulfate_list)
   all_cors <- vector("numeric", length = length(len))
   for (i in 1:len) {
