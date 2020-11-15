@@ -13,11 +13,13 @@ corr <- function(directory, threshold = 0) {
   selected_nitrate_list <- lapply(ok_ids, function(x){dat$nitrate[dat$ID == x & !is.na(dat$sulfate) & !is.na(dat$nitrate)]})
 
   len <- length(selected_sulfate_list)
+  all_cors <- vector("numeric", length = length(len))
+  
   for (i in 1:len) {
     mt_sulf <- selected_sulfate_list[[i]]
     mt_nitr <- selected_nitrate_list[[i]]
-    print(summary(mt_sulf))
-    print(cor(mt_sulf, mt_nitr))
+    
+    all_cors[[i]] <- cor(mt_sulf, mt_nitr)
   }
-  
-  }
+  all_cors
+}
