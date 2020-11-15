@@ -4,14 +4,20 @@
 corr <- function(directory, threshold = 0) {
   com_res0 <- com_res$id[as.numeric(as.character(com_res$nobs)) > threshold]
   ok_ids <- as.numeric(as.character(com_res0))
-  selected_sulfate_list <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x]}) 
+  selected_sulfate_list <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x & !is.na(dat$sulfate) & !is.na(dat$nitrate)]}) 
   # head(str(selected_sulfate_list))
   # List of 31
   # $ : num [1:3652] NA NA NA NA NA NA NA NA NA NA ...
   # $ : num [1:4018] NA NA NA NA NA NA NA NA NA NA ...
   
-  selected_nitrate_list <- lapply(ok_ids, function(x){dat$nitrate[dat$ID == x]})
- 
-  selected_sulfate <- do.call(rbind, selected_sulfate_list)
-  selected_nitrate <- do.call(rbind, selected_nitrate_list)  
-}
+  selected_nitrate_list <- lapply(ok_ids, function(x){dat$nitrate[dat$ID == x & !is.na(dat$sulfate) & !is.na(dat$nitrate)]})
+
+  len <- length(selected_sulfate_list)
+  for (i in 1:len) {
+    mt_sulf <- selected_sulfate_list[[i]]
+    mt_nitr <- selected_nitrate_list[[i]]
+    print(summary(mt_sulf))
+    print(cor(mt_sulf, mt_nitr))
+  }
+  
+  }
