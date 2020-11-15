@@ -1,9 +1,9 @@
 
 # Write a function that takes a directory of data files and a threshold for complete cases and calculates the correlation between sulfate and nitrate for monitor locations where the number of completely observed cases (on all variables) is greater than the threshold. The function should return a vector of correlations for the monitors that meet the threshold requirement. If no monitors meet the threshold requirement, then the function should return a numeric vector of length 0. A prototype of this function follows
-com_result <- complete("specdata")
 is.error <- function(x) inherits(x, "try-error")
 
 corr <- function(directory, threshold = 0) {
+  com_result <- complete(directory)
   files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
   tmp <- lapply(files_full, read.csv)
   dat <- do.call(rbind, tmp)
