@@ -16,10 +16,28 @@ corr <- function(directory, threshold = 0) {
   len <- length(selected_sulfate_list)
   all_cors <- vector("numeric", length = length(len))
   for (i in 1:len) {
-    mt_sulf <- selected_sulfate_list[[i]]
-    mt_nitr <- selected_nitrate_list[[i]]
+    tryCatch(
+      mt_sulf <- selected_sulfate_list[[i]],
+      error = function(e){
+        message("An error occurred in selected_sulfate_list[[i]]:\n", e)
+      },
+      #finally = mt_sulf <- numeric()
+      return(numeric())
+    )
+    tryCatch(
+      mt_nitr <- selected_nitrate_list[[i]],
+      error = function(e){
+        message("An error occurred in selected_nitrate_list[[i]]:\n", e)
+      },
+      return(numeric())
+      #finally = mt_nitr <- numeric()
+        #all_cors[[i]] < numeric()
+    )
+    
+    
     
     all_cors[[i]] <- cor(mt_sulf, mt_nitr, use = "pairwise.complete.obs")
   }
   all_cors
 }
+# numeric()
