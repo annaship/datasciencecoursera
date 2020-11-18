@@ -4,9 +4,9 @@
 best <- function(state, outcome) {
   ## Read outcome data
   all_outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
-  all_outcome[, 11] <- as.numeric(all_outcome[, 11])
-  all_outcome[, 17] <- as.numeric(all_outcome[, 17])
-  all_outcome[, 23] <- as.numeric(all_outcome[, 23])
+  all_outcome[, 11] <- as.numeric(all_outcome[, 11]) # "heart attack"
+  all_outcome[, 17] <- as.numeric(all_outcome[, 17]) # "heart failure"
+  all_outcome[, 23] <- as.numeric(all_outcome[, 23]) # "pneumonia
   
   ## Check that state and outcome are valid
   states <- unique(all_outcome[, 7])
@@ -16,12 +16,16 @@ best <- function(state, outcome) {
   outcome.valid <- outcome %in% correct_outcomes
   
   ## Return hospital name in that state with lowest 30-day death rate
-  mha <- min(all_outcome[, 11], na.rm = TRUE)
-  this_state_data <- subset(all_outcome, all_outcome$State == state)
-
-  with(all_outcome, Hospital.Name[State = "TX"])
   colnames_idx <- data.frame(colnames(all_outcome))
-  all_outcome[, colnames_idx[2,]] == outcome & all_outcome$State == "TX"
-  seach_vector <- all_outcome$State == "TX" & all_outcome[, colnames_idx[11, ]] == mha
-         
+  short_names <- c(colnames_idx[11, ], colnames_idx[17, ], colnames_idx[23, ])
+  names(short_names) <- c("heart attack", "heart failure", "pneumonia")
+  full_outcome_name <- short_names[outcome]
+  
+  this_state_data <- subset(all_outcome, all_outcome$State == state)
+  curr_outcome <- this_state_data[, full_outcome_name]
+  curr_min <- min(curr_outcome, na.rm = TRUE)
+  
+  this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)]
+  
+
 }
