@@ -5,22 +5,26 @@
 
 best <- function(state, outcome) {
   ## Read outcome data
-  all_outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
-  all_outcome[, 11] <- as.numeric(all_outcome[, 11]) # "heart attack"
-  all_outcome[, 17] <- as.numeric(all_outcome[, 17]) # "heart failure"
-  all_outcome[, 23] <- as.numeric(all_outcome[, 23]) # "pneumonia
-  
-  ## Check that state and outcome are valid
-  states <- unique(all_outcome[, 7])
-  state.valid <- state %in% states
-  if (!state.valid) {
-    stop("invalid state")
+  read_outcome_data <- function() {
+    all_outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+    all_outcome[, 11] <- as.numeric(all_outcome[, 11]) # "heart attack"
+    all_outcome[, 17] <- as.numeric(all_outcome[, 17]) # "heart failure"
+    all_outcome[, 23] <- as.numeric(all_outcome[, 23]) # "pneumonia
   }
-  
-  correct_outcomes <- c("heart attack", "heart failure", "pneumonia")
-  outcome.valid <- outcome %in% correct_outcomes
-  if (!outcome.valid) {
-    stop("invalid outcome")
+
+  check_vars <- function() {
+    ## Check that state and outcome are valid
+    states <- unique(all_outcome[, 7])
+    state.valid <- state %in% states
+    if (!state.valid) {
+      stop("invalid state")
+    }
+    
+    correct_outcomes <- c("heart attack", "heart failure", "pneumonia")
+    outcome.valid <- outcome %in% correct_outcomes
+    if (!outcome.valid) {
+      stop("invalid outcome")
+    }
   }
   
   ## Return hospital name in that state with lowest 30-day death rate
@@ -31,16 +35,16 @@ best <- function(state, outcome) {
   
   this_state_data <- subset(all_outcome, all_outcome$State == state)
   curr_outcome <- this_state_data[, full_outcome_name]
-  # hosp_w_outcome <- this_state_data$Hospital.Name[!is.na(curr_outcome)]
   curr_min <- min(curr_outcome, na.rm = TRUE)
   
-  # all_res_names 
   res_no_na <- this_state_data$Hospital.Name[(curr_outcome == curr_min) & (!is.na(curr_outcome))]
-  #res_no_na <- all_res_names[!is.na(all_res_names)]
-  
-  ## Handling ties
-  if(length(res_no_na) > 1) {
-    return(sort(res_no_na)[1])
+
+  handling_ties <- function(res_no_na) {
+    ## Handling ties
+    if(length(res_no_na) > 1) {
+      return(sort(res_no_na)[1])
+    }
   }
+
   res_no_na
 }
