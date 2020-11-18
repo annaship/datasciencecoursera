@@ -7,7 +7,7 @@ complete <- function(directory, id = 1:332) {
   tmp <- lapply(files_full[id], read.csv)
   dat <- do.call(rbind, tmp)
   com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
-  com_res <- as.data.frame(table(com))
+  com_res <- as.data.frame(table(factor(com, levels=unique(com))))
   names(com_res) <- c("id", "nobs")
-  com_res[order(com_res$id, decreasing = is.decr(id)),]
+  com_res
 }
