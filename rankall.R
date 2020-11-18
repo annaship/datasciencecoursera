@@ -40,6 +40,8 @@ rankall <- function(outcome, num = "best") {
   }
   
   return_hospital_name_for_rank <- function() {
+    this_state_data <- not_na_outcome[not_na_outcome$State == state, ]
+    
     ranked_hsp <- this_state_data[order(this_state_data[, full_outcome_name], this_state_data$Hospital.Name), "Hospital.Name"]
     
     cnt_hospitals <- length(ranked_hsp)
@@ -57,6 +59,8 @@ rankall <- function(outcome, num = "best") {
   }
   
   ## RUN ##
+  setwd("/Users/ashipunova/work/data_science_coursera/intro_r/assign3/")
+  
   all_outcome <- read_outcome_data()
   check_vars()
   full_outcome_name <- simplify_names()
@@ -70,7 +74,6 @@ rankall <- function(outcome, num = "best") {
   output <- matrix(ncol=2, nrow=iterations)
   
   for (state in all_outcome$State) {
-    this_state_data <- not_na_outcome[not_na_outcome$State == state, ]
     output$hospital <- return_hospital_name_for_rank()
     output$State <- state
   }
