@@ -36,18 +36,6 @@ best <- function(state, outcome) {
     full_outcome_name
   }
   
-  ## RUN ##
-  all_outcome <- read_outcome_data()
-  check_vars()
-  full_outcome_name <- simplify_names()
-  
-  ## Return hospital name in that state with lowest 30-day death rate
-  this_state_data <- subset(all_outcome, all_outcome$State == state)
-  curr_outcome <- this_state_data[, full_outcome_name]
-  curr_min <- min(curr_outcome, na.rm = TRUE)
-  
-  res_no_na <- this_state_data$Hospital.Name[(curr_outcome == curr_min) & (!is.na(curr_outcome))]
-
   handle_ties <- function() {
     ## Handling ties
     if(length(res_no_na) > 1) {
@@ -55,5 +43,18 @@ best <- function(state, outcome) {
     }
     else res_no_na
   }
+  
+  ## RUN ##
+  all_outcome <- read_outcome_data()
+  check_vars()
+  full_outcome_name <- simplify_names()
+  
+  this_state_data <- subset(all_outcome, all_outcome$State == state)
+  curr_outcome <- this_state_data[, full_outcome_name]
+  
+  ## Return hospital name in that state with lowest 30-day death rate
+  curr_min <- min(curr_outcome, na.rm = TRUE)
+  res_no_na <- this_state_data$Hospital.Name[(curr_outcome == curr_min) & (!is.na(curr_outcome))]
+
   handle_ties()
 }
