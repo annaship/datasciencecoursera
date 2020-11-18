@@ -10,6 +10,7 @@ best <- function(state, outcome) {
     all_outcome[, 11] <- as.numeric(all_outcome[, 11]) # "heart attack"
     all_outcome[, 17] <- as.numeric(all_outcome[, 17]) # "heart failure"
     all_outcome[, 23] <- as.numeric(all_outcome[, 23]) # "pneumonia
+    all_outcome
   }
 
   check_vars <- function() {
@@ -27,6 +28,9 @@ best <- function(state, outcome) {
     }
   }
   
+  all_outcome <- read_outcome_data()
+  check_vars()
+  
   ## Return hospital name in that state with lowest 30-day death rate
   colnames_idx <- data.frame(colnames(all_outcome))
   short_names <- c(colnames_idx[11, ], colnames_idx[17, ], colnames_idx[23, ])
@@ -39,12 +43,12 @@ best <- function(state, outcome) {
   
   res_no_na <- this_state_data$Hospital.Name[(curr_outcome == curr_min) & (!is.na(curr_outcome))]
 
-  handling_ties <- function(res_no_na) {
+  handle_ties <- function() {
     ## Handling ties
     if(length(res_no_na) > 1) {
       return(sort(res_no_na)[1])
     }
+    else res_no_na
   }
-
-  res_no_na
+  handle_ties()
 }
