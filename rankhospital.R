@@ -31,12 +31,12 @@ rankhospital <- function(state, outcome, num = "best") {
     full_outcome_name
   }
   
-  handle_ties <- function() {
+  handle_ties <- function(res) {
     ## Handling ties
-    if(length(res_no_na) > 1) {
-      return(sort(res_no_na)[1])
+    if(length(res) > 1) {
+      return(sort(res)[1])
     }
-    else res_no_na
+    else res
   }
   
   ## RUN ##
@@ -44,12 +44,29 @@ rankhospital <- function(state, outcome, num = "best") {
   check_vars()
   full_outcome_name <- simplify_names()
   
+  # subset(airquality, Temp > 80, select = c(Ozone, Temp))
+  
   this_state_data <- subset(all_outcome, all_outcome$State == state)
   curr_outcome <- this_state_data[, full_outcome_name]
+  this_state_data1 <- this_state_data[, !is.na(curr_outcome)]
   
   ## Return hospital name in that state with the given rank 30-day death rate
-  # res_no_na <- this_state_data$Hospital.Name[(curr_outcome == curr_min) & (!is.na(curr_outcome))]
-  ranked_hsp <- this_state_data[order(curr_outcome), "Hospital.Name"]
   
-  handle_ties()
+  
+  ranked_hsp <- this_state_data[order(curr_outcome, this_state_data$Hospital.Name), "Hospital.Name"]
+  ranked_hsp_no_na <- ranked_hsp[!is.na(curr_outcome)]
+  
+
+  cnt_hospitals <- length(ranked_hsp)
+  if (num == "best") {
+    num = 1
+  }
+  else if (num == "worst") {
+    num = cnt_hospitals
+  }
+  else if (num > cnt_hospitals) {
+    return(NA)
+  }
+  
+  handle_ties(ranked_hsp[num])
 }
