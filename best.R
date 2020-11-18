@@ -36,12 +36,12 @@ best <- function(state, outcome) {
     full_outcome_name
   }
   
-  handle_ties <- function() {
+  handle_ties <- function(res) {
     ## Handling ties
-    if(length(res_no_na) > 1) {
-      return(sort(res_no_na)[1])
+    if(length(res) > 1) {
+      return(sort(res)[1])
     }
-    else res_no_na
+    else res
   }
   
   ## RUN ##
@@ -56,5 +56,5 @@ best <- function(state, outcome) {
   curr_min <- min(curr_outcome, na.rm = TRUE)
   res_no_na <- this_state_data$Hospital.Name[(curr_outcome == curr_min) & (!is.na(curr_outcome))]
 
-  handle_ties()
+  handle_ties(res_no_na)
 }
