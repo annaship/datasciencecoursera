@@ -46,16 +46,11 @@ rankhospital <- function(state, outcome, num = "best") {
   
   # subset(airquality, Temp > 80, select = c(Ozone, Temp))
   
-  this_state_data <- subset(all_outcome, all_outcome$State == state)
-  curr_outcome <- this_state_data[, full_outcome_name]
-  this_state_data1 <- this_state_data[, !is.na(curr_outcome)]
-  
+  not_na_outcome <- subset(all_outcome, (!is.na(all_outcome[, full_outcome_name])))
+  this_state_data <- subset(not_na_outcome, State == state)
+
   ## Return hospital name in that state with the given rank 30-day death rate
-  
-  
-  ranked_hsp <- this_state_data[order(curr_outcome, this_state_data$Hospital.Name), "Hospital.Name"]
-  ranked_hsp_no_na <- ranked_hsp[!is.na(curr_outcome)]
-  
+  ranked_hsp <- this_state_data[order(this_state_data[, full_outcome_name], this_state_data$Hospital.Name), "Hospital.Name"]
 
   cnt_hospitals <- length(ranked_hsp)
   if (num == "best") {
