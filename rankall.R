@@ -39,7 +39,7 @@ rankall <- function(outcome, num = "best") {
     else res
   }
   
-  return_hospital_name_for_rank <- function() {
+  return_hospital_name_for_rank <- function(state) {
     this_state_data <- not_na_outcome[not_na_outcome$State == state, ]
     
     ranked_hsp <- this_state_data[order(this_state_data[, full_outcome_name], this_state_data$Hospital.Name), "Hospital.Name"]
@@ -71,15 +71,15 @@ rankall <- function(outcome, num = "best") {
 
   ## For each state, find the hospital of the given rank
   iterations <- length(all_outcome$Hospital.Name)
-  output <- matrix(ncol=2, nrow=iterations)
+  output <- NULL
   
-  for (state in all_outcome$State) {
-    output$hospital <- return_hospital_name_for_rank()
-    output$State <- state
+  for (state in unique(all_outcome$State)) {
+    curr_hospital <- return_hospital_name_for_rank(state)
+    curr_state <- state
+    output = rbind(output, data.frame(curr_hospital, curr_state))
   }
   
-  output <- data.frame(output)
-  
+  output
   ## Return a data frame with the hospital names and the
   ## (abbreviated) state name
   
