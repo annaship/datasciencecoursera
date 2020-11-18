@@ -73,10 +73,9 @@ rankall <- function(outcome, num = "best") {
   iterations <- length(all_outcome$Hospital.Name)
   output <- NULL
   
-  for (state in unique(all_outcome$State)) {
-    curr_hospital <- return_hospital_name_for_rank(state)
-    curr_state <- state
-    output = rbind(output, data.frame(curr_hospital, curr_state))
+  for (state in sort(unique(all_outcome$State))) {
+    hospital <- return_hospital_name_for_rank(state)
+    output = rbind(output, data.frame(hospital, state))
   }
   
   output
