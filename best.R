@@ -4,8 +4,8 @@
 # Handling ties. If there is a tie for the best hospital for a given outcome, then the hospital names should be sorted in alphabetical order and the first hospital in that set should be chosen (i.e. if hospitals “b”, “c”, and “f” are tied for best, then hospital “b” should be returned).
 
 best <- function(state, outcome) {
-  ## Read outcome data
   read_outcome_data <- function() {
+    ## Read outcome data
     all_outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
     all_outcome[, 11] <- as.numeric(all_outcome[, 11]) # "heart attack"
     all_outcome[, 17] <- as.numeric(all_outcome[, 17]) # "heart failure"
@@ -28,15 +28,20 @@ best <- function(state, outcome) {
     }
   }
   
+  simplify_names <- function() {
+    colnames_idx <- data.frame(colnames(all_outcome))
+    short_names <- c(colnames_idx[11, ], colnames_idx[17, ], colnames_idx[23, ])
+    names(short_names) <- c("heart attack", "heart failure", "pneumonia")
+    full_outcome_name <- short_names[outcome]
+    full_outcome_name
+  }
+  
+  ## RUN ##
   all_outcome <- read_outcome_data()
   check_vars()
+  full_outcome_name <- simplify_names()
   
   ## Return hospital name in that state with lowest 30-day death rate
-  colnames_idx <- data.frame(colnames(all_outcome))
-  short_names <- c(colnames_idx[11, ], colnames_idx[17, ], colnames_idx[23, ])
-  names(short_names) <- c("heart attack", "heart failure", "pneumonia")
-  full_outcome_name <- short_names[outcome]
-  
   this_state_data <- subset(all_outcome, all_outcome$State == state)
   curr_outcome <- this_state_data[, full_outcome_name]
   curr_min <- min(curr_outcome, na.rm = TRUE)
