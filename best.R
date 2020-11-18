@@ -1,3 +1,5 @@
+# TODO: Hospitals that do not have data on a particular outcome should be excluded from the set of hospitals when deciding the rankings.
+
 # Write a function called best that take two arguments: the 2-character abbreviated name of a state [7] and an outcome name. The function reads the outcome-of-care-measures.csv file and returns a character vector with the name of the hospital [2] that has the best (i.e. lowest) 30-day mortality for the specified outcome in that state. The hospital name is the name provided in the Hospital.Name variable. The outcomes can be one of “heart attack” [11], “heart failure” [17], or “pneumonia” [23]. Hospitals that do not have data on a particular outcome should be excluded from the set of hospitals when deciding the rankings.
 # Handling ties. If there is a tie for the best hospital for a given outcome, then the hospital names should be sorted in alphabetical order and the first hospital in that set should be chosen (i.e. if hospitals “b”, “c”, and “f” are tied for best, then hospital “b” should be returned).
 
@@ -29,10 +31,12 @@ best <- function(state, outcome) {
   
   this_state_data <- subset(all_outcome, all_outcome$State == state)
   curr_outcome <- this_state_data[, full_outcome_name]
+  # hosp_w_outcome <- this_state_data$Hospital.Name[!is.na(curr_outcome)]
   curr_min <- min(curr_outcome, na.rm = TRUE)
   
-  all_res_names <- this_state_data$Hospital.Name[curr_outcome == curr_min]
-  res_no_na <- all_res_names[!is.na(all_res_names)]
+  # all_res_names 
+  res_no_na <- this_state_data$Hospital.Name[(curr_outcome == curr_min) & (!is.na(curr_outcome))]
+  #res_no_na <- all_res_names[!is.na(all_res_names)]
   
   ## Handling ties
   if(length(res_no_na) > 1) {
