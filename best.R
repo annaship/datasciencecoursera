@@ -25,7 +25,6 @@ best <- function(state, outcome) {
   curr_outcome <- this_state_data[, full_outcome_name]
   curr_min <- min(curr_outcome, na.rm = TRUE)
   
-  this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)]
-  
-
+  res <- this_state_data$Hospital.Name[curr_outcome == curr_min]
+  res[!is.na(res)]
 }
