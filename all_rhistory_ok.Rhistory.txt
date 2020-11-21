@@ -1,0 +1,2968 @@
+print("test for git")
+install.packages("rmarkdown")
+knitr::opts_chunk$set(echo = TRUE)
+summary(cars)
+print("HEllo")
+getwd()
+install.packages("swirl")
+packageVersion("swirl")
+library(swirl)
+install_from_swirl("R Programming")
+swirl()
+5+7
+x <- 5 + 7
+x
+y <- x-3
+y
+c(1.1, 9, 3.14)
+Z <- c(1.1, 9, 3.14)
+z <- c(1.1, 9, 3.14)
+"?c"
+?c
+z
+c(z, 555, z)
+z * 2 + 100
+my_sqrt <- sqrt(z - 1)
+my_sqrt
+my_div <- z / my_sqrt
+my_div
+c(1, 2, 3, 4) + c(0, 10)
+c(1, 2, 3, 4) + c(0, 10, 100)
+z * 2 + 100
+z * 2 + 1000
+my_div
+getwd()
+ls()
+x <- 9
+ls()
+dir()
+?list.files
+list.files().args()
+list.files.args()
+args(list.files)
+old.dir <- getwd()
+dir.create()
+dir.create( "testdir")
+setwd("testdir")
+file.create("mytest.R")
+dir()
+file.exists("mytest.R")
+file.info("mytest.R")
+file.rename("mytest.R")
+file.rename("mytest.R", "mytest2.R")
+file.copy("mytest2.R", "mytest3.R")
+file.path("mytest3.R")
+file.path('folder1', 'folder2' )
+?dir.create
+dir.create(file.path("testdir2", "testdir3"))
+dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)
+setwd(old.dir)
+1:20
+pi:10
+15:1
+?`:`
+seq(1, 20)
+seq(0, 10, by=0.5)
+my_seq <- seq(5, 10, length=30)
+length(my_seq)
+1:length(my_seq)
+seq(along.with = my_seq)
+seq_along(my_seq)
+rep(0, times = 40)
+rep(c(0, 1, 2), times = 10)
+rep(c(0, 1, 2), each = 10)
+num_vect <- c(0.5, 55, -10, 6)
+tf <- num_vect < 1
+tf
+num_vect >= 6
+my_char <- c("My", "name", "is")
+my_char
+paste(my_char, collapse = " ")
+my_name <- c(my_char, "Anna")
+my_name
+paste(my_char, collapse = " ")
+paste(my_name, collapse = " ")
+paste("Hello", "world!", sep = " ")
+paste(1:3, c("X", "Y", "Z"),  sep = "")
+paste(LETTERS, 1:4, sep = "-")
+x <- c(44, NA, 5, NA)
+x*3
+y <- rnorm(1000)
+z <- rep(NA, 1000)
+my_data <- sample(c(y, z), 100)
+my_na <- is.na(my_data)
+my_na
+my_data == NA
+sum(my_na)
+my_data
+0/0
+Inf -Inf
+x
+x[1:10]
+x[is.na(x)]
+y <- x[!is.na(x)]
+y
+y[y > 0]
+x[x > 0]
+x[!is.na(x) & x > 0]
+x[c(3,5,7)]
+x[0]
+X[300]
+x[300]
+x[3000]
+x[c(-2, -10)]
+x[-c(2, 10)]
+vect <- c(foo = 11, bar = 2, norf = NA)
+vect
+names(vect)
+vect2 <- c(11, 2, NA)
+names(vect2) <- c("foo", "bar", "norf")
+identical(vect, vect2)
+vect["bar"]
+vect[c("foo", "bar")]
+my_vector <- 1:20
+my_vector
+dim(my_vector)
+length(my_vector)
+dim(my_vector) <- c(4, 5)
+dim(my_vector)
+attributes(my_vector)
+my_vector
+class(my_vector)
+my_matrix <- my_vector
+?matrix
+my_matrix2 <- (1:20, 4, 5)
+my_matrix2 <- (seq(1, 20), 4, 5)
+my_matrix2 <- (1:20, nrow=4, ncol=5)
+my_matrix2 <- matrix(1:20, nrow=4, ncol=5)
+identical(my_matrix, my_matrix2)
+patients <- c("Bill", "Gina", "Kelly", "Sean")
+cbind(patients, my_matrix)
+my_data <- data.frame(patients, my_matrix)
+my_data
+class(my_data)
+cnames <- c("patient", "age", "weight", "bp", "rating", "test")
+?colnames
+colnames(my_data, cnames)
+colnames(my_data) <- cnames
+my_data
+add2 <- function(x, y) {
+x + y
+}
+add2(1,2)
+above10 <- function(x) {
+use <- x > 10
+x[use]
+}
+above10(1:20)
+above <- function(x, n) {
+use <- x > n
+x[use]
+}
+x <- 1:20
+above(x, 5)
+above <- function(x, n = 10) {
+use <- x > n
+x[use]
+}
+above(x)
+columnmean <- function(y) {
+nc <- ncol(y)
+means <- numeric(nc)
+for (i in 1:nc) {
+means[i] <- mean(y[, i])
+}
+means
+}
+source('~/work/data_science_coursera/coursera_course/functions.R')
+columnmean(airquality)
+source('~/work/data_science_coursera/coursera_course/functions.R')
+columnmean(airquality)
+lm
+search()
+formals(above)
+y <- 10
+f <- function(x) {}
+}
+y <- 10
+f <- function(x) {}
+y <- 10
+f <- function(x) {
+y <- 2
+}
+y <- 10
+f <- function(x) {
+y <- 2
+y^2 + g(x)
+}
+g <- function(x) {}
+g <- function(x) { x*y}
+f(3)
+unclass(as.Date("1968-04-29"))
+as.Date("1968-04-29")
+unclass(as.Date("2020-11-12"))
+x <- Sys.time()
+x
+p <- as.POSIXlt(x)
+p
+names(unclass(p))
+p$sec
+p
+unclass(p)
+?strptime
+savehistory("~/work/data_science_coursera/intro_r/intro_r.Rhistory")
+print("test for git")
+install.packages("rmarkdown")
+knitr::opts_chunk$set(echo = TRUE)
+summary(cars)
+print("HEllo")
+getwd()
+directory <- "/Users/ashipunova/work/data_science_coursera/intro_r/specdata"
+files <- list.files(path = directory, pattern = "*.csv", full.names = T)
+tbl <- sapply(files[1:10], read_csv, simplify=FALSE) %>% bind_rows(.id = "ID")
+library(magrittr)
+tbl <- sapply(files[1:10], read_csv, simplify=FALSE) %>% bind_rows(.id = "ID")
+library(readr)
+version
+directory <- "/Users/ashipunova/work/data_science_coursera/intro_r/specdata"
+filenames <- list.files(directory, pattern="*.csv", full.names=TRUE)
+ldf <- lapply(filenames, read.csv)
+View(ldf)
+res <- lapply(ldf, summary)
+View(res)
+res[1]
+res[1]["sulfate"]
+res[1]["sulfate"]["Mean"]
+res[1]$"sulfate"
+res[1][1]
+names(res) <- substr(filenames, 6, 30)
+names()
+names
+substr(filenames, 6, 30)
+subset(ldf, ldf$ID == 2)
+head (ldf)
+ldf[1]
+ldf[1][1]
+ldf[[1]][1]
+ldf[[1]][[1]]
+head(ldf[[1]][[1]])
+head(ldf[[1]]["sulfate"])
+head(ldf[[1]]["ID"])
+res[[1]]
+res[[122]]
+res[[122]]$sulfate
+res[[122]]["sulfate"]
+class(res[[122]])
+res[[122]][1]
+res[[122]][1,1]
+res[[122]][1,2]
+f122 <-  res[[122]]
+f122[1,3]
+f122[1]
+f122
+summary(f122)
+class(f122)
+sum(f122)
+?summary.table(f122)
+?summary
+summary.table(f122)
+f122[,1]
+f122[,2]
+View(ldf)
+read.csv(paste(directory, "/001.csv"))
+read.csv(paste(directory, "/001.csv", ""))
+?paste
+f1 <- read.csv(paste(directory, "/001.csv", sep = ""))
+View(f1)
+?summary
+head(f1)
+f1$sulfate
+!is.na(f1$sulfate)
+mean(f1$sulfate[!is.na(f1$sulfate)])
+mean(f1$sulfate)
+summary(f1)
+summary(f1)["sulfate"]
+summary(f1)[["sulfate"]]
+str(summary(f1))
+dim(summary(f1))
+dimnames(summary(f1))
+summary(f1)[[2]]["sulfate"]
+summary(f1)[[2]]
+summary(f1)[[3]]
+summary(f1)[[4]]
+summary(f1)[[5]]
+summary(f1)$sulfate
+colnames(summary(f1))
+colnames(summary(f1))[2]
+summary(f1)$colnames(summary(f1))[2]
+sulf_name <- colnames(summary(f1))[2]
+summary(f1)[sulf_name]
+sulf_name
+str(summary(summary(f1)))
+str(summary(f1))
+unclass(summary(f1))
+unclass(summary(f1))$sulfate
+unclass(summary(f1))["sulfate"]
+colnames(unclass(summary(f1)))
+unclass(summary(f1))["   sulfate"]
+unclass(summary(f1))[2]
+unclass(summary(f1))[3]
+unclass(summary(f1))[4]
+as.data.frame(t(unclass(summary(f1))))
+res1 <- as.data.frame(t(unclass(summary(f1))))
+res1
+dim(re1)
+dim(res1)
+res1[2,]
+?summary
+?mean
+na.rm = TRUE
+View(res)
+View(ldf)
+fl1 < ldf[1:2]
+fl1 <- ldf[1:2]
+summary(fl1)
+fl1
+names(fl1)
+names(fl1[1])
+names(fl1[[1]])
+fl1[[1]]$sulfate
+mean(fl1[[1]]$sulfate, na.rm = TRUE)
+getwd
+getwd()
+setwd("/Users/ashipunova/Documents/GitHub/datasciencecoursera/")
+getwd()
+s <- "sulfate"
+mean(fl1[[1]][s], na.rm = TRUE)
+mean(fl1[[1]]["s"sulfate], na.rm = TRUE)
+mean(fl1[[1]]["sulfate"], na.rm = TRUE)
+ff <- fl1[[1]]
+ff["sulfate"]
+mean(ff["sulfate"], na.rm = TRUE)
+head(ff)
+head(ff$sulfate)
+head(ff[sulfate])
+head(ff["sulfate"])
+mean(ff["sulfate"])
+mean(ff$sulfate)
+mean(ff$sulfate, rm.na = TRUE)
+mean(ff$sulfate, na.rm = TRUE)
+mean(ff["sulfate"], na.rm = TRUE)
+s
+ff$s
+pp <- "sulfate"
+ff[pp]
+mean(ff[pp], , na.rm = TRUE)
+mean(ff[pp], na.rm = TRUE)
+fp <- ff[pp]
+fp
+head(ff[pp])
+head(fp)
+mean(fp, na.rm = TRUE)
+fp <- as.table(ff[pp])
+fp <- as.data.frame(ff[pp])
+fp
+summary(fp)
+summary(fp$mean)
+unclass(summary(fp))
+str(summary(fp))
+mean(fp)
+df1 <- subset(fl, !is.na(sulfate))
+df1 <- subset(fl1, !is.na(sulfate))
+fl1
+head(fl1)
+ff["sulfate"]
+mean(ff$sulfate, rm.na = TRUE)
+fl1 < ldf[1:2]
+fl1 <- ldf[1:2]
+savehistory("~/Documents/GitHub/datasciencecoursera/pollut.Rhistory")
+data_f1 <- ""
+head(fl1[[1]])
+fl1[[1]]$sulfate
+!is.na(fl1[[1]])
+data_f1 <- subset(fl1[[1]], !is.na(fl1[[1]]))
+head(data_f1)
+head(!is.na(fl1[[1]]$sulfate))
+data_f1 <- subset(fl1[[1]], !is.na(fl1[[1]]$sulfate))
+head(data_f1)
+mean(data_f1$sulfate)
+mean(data_f1["sulfate"])
+?read.csv
+class(data_f1)
+str(data_f1)
+mat <- as.matrix(data_f1)
+class(mat)
+nrow(mat)
+ncol(mat)
+names(mat)
+mat[1:4, 1:2]
+mat[sulf_name]
+mat[,2]
+files <- list.files(path = directory, pattern = "*.csv", full.names = T)
+files[4]
+mean(data_f1[,"sulfate"])
+sul_n
+sulf_name
+sulf_name < "sulfate"
+sulf_name <- "sulfate"
+mean(data_f1[, sulf_name])
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+?for
+?for()
+?for
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(pollutant = "sulfate", id = 1:3)
+directory
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(pollutant = "sulfate", id = 1:3)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, pollutant = "sulfate", id = 1:3)
+print(pollutantmean(directory, pollutant = "sulfate", id = 1:3))
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, pollutant = "sulfate", id = 1:3)
+head(res)
+str(res)
+head(ldf[[1]]["ID"])
+head(ldf[[1]]["sulfate"])
+head(ldf[[1]][sulf_name])
+files <- list.files(path = directory, pattern = "*.csv", full.names = T)
+id <- 2:4
+for (i in id) {
+df<-read.csv(files[i])
+mean.df <- mean(df[, sulf_name], na.rm = TRUE)
+print(mean.df)
+}
+all_means <- list()
+all_means <- vector("list", length = length(id))
+summary(all_means)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, pollutant = "sulfate", id = 1:3)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, pollutant = "sulfate", id = 1:3)
+x <- c(2,3,4)
+all_means <- vector("list", length = length(id))
+id
+class(all_means)
+mean(all_means)
+all_means <- vector(length = length(id))
+class(all_means)
+aall_all_means
+all_means
+all_means <- vector("vector", length = length(id))
+?vector
+all_means <- vector("numeric", length = length(id))
+all_means
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, pollutant = "sulfate", id = 1:3)
+x <- c(3.880701, 4.327613, 4.460811)
+class(x)
+mean(x)
+files[1]
+res$`files[1]`
+View(res)
+res <- lapply(ldf, summary)
+res[1]
+res$`files[1]`
+res[[1]]
+res[[1]][,sulfate]
+res[[1]][, "sulfate"]
+names(res[[1]])
+class(res[[1]])
+?table
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, pollutant = "sulfate", id = 2:5)
+pollutantmean(directory, pollutant = "sulfate", id = 1:3)
+pollutantmean(directory, pollutant = "sulfate")
+print(R.version.string)
+savehistory("~/Documents/GitHub/datasciencecoursera/pollutantmean.Rhistory")
+
+getwd()
+pollutantmean("specdata", "sulfate", 1:10)
+pollutantmean(directory, "sulfate", 1:10)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, "sulfate", 1:10)
+pollutantmean(directory, "nitrate", 70:72)
+pollutantmean(directory, "nitrate", 23)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, "nitrate", 23)
+pollutantmean(directory, "nitrate", 1:23)
+pollutantmean(directory, "nitrate")
+pollutantmean(directory, "nitrate", 70:72)
+x <- c(0.0000000, 0.0000000, 0.0000000, 0.2551667, 1.4316005, 2.3632054)
+mean(x)
+x <- c(0.0000000, 0.0000000, 0.0000000, 0.2551667, 1.4316005, 2.3632054, NA, NA)
+mean(x)
+mean(x, na.rm = TRUE)
+x <- c(0.0000000, 0.0000000, 0.0000000, NA, NA, 0.2551667, 1.4316005, 2.3632054, NA, NA)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, "nitrate", 70:72)
+pollutantmean(directory, "nitrate", 23)
+pollutantmean("specdata", "sulfate", 1:10)
+getwd
+getwd()
+setwd("/Users/ashipunova/work/data_science_coursera/intro_r")
+getwd()
+pollutantmean("specdata", "sulfate", 1:10)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean("specdata", "sulfate", 1:10)
+View(ldf)
+files <- list.files(path = directory, pattern = "*.csv", full.names = T)
+files <- list.files(path = "specdata", pattern = "*.csv", full.names = T)
+files[1]
+files[10]
+id <- 1:10
+all_means <- vector("numeric", length = length(id))
+for (i in id) {
+df <- read.csv(files[i])
+mean.df <- mean(df[, pollutant], na.rm = TRUE)
+print(summary(df))
+all_means[i] <- mean.df
+}
+pollutant <- "sulfate"
+for (i in id) {
+df <- read.csv(files[i])
+mean.df <- mean(df[, pollutant], na.rm = TRUE)
+print(summary(df))
+all_means[i] <- mean.df
+}
+res[[1]]
+str(res[[1]])
+res[[1]]$`sulfate`
+summary(f1)
+s_f <- summary(f1)
+str(s_f)
+class(s_f)
+sulfate1_10_means <- c(3.881, 4.461, 4.328, 4.215, 4.210, 4.102, 3.820, 4.781, 3.646, 0.6244)
+mean(sulfate1_10_means)
+pollutantmean("specdata", "sulfate", 1:10)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+directory
+files <- list.files(path = directory, pattern = "*.csv", full.names = T)
+dat <- data.frame()
+for (i in id) {
+dat <- rbind(dat, read.csv(files_list[i]))
+}
+files_list <- list.files(path = directory, pattern = "*.csv", full.names = T)
+for (i in id) {
+dat <- rbind(dat, read.csv(files_list[i]))
+}
+head(dat)
+summary(dat)
+dat_subset <- dat[which(dat[, "ID"] == id)]
+id
+dat_subset <- dat[which(dat[, "ID"] in id)]
+dat[which(dat$ID == 25), ]
+dat[which(dat$ID == 5), ]
+median(dat_30$Weight)
+mean(dat$sulfate)
+mean(dat$sulfate, na.rm=TRUE)
+summary(dat)
+View(dat)
+mean(dat[, sulf_name], na.rm=TRUE)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean("specdata", "sulfate", 1:10)
+pollutantmean(directory, "nitrate", 23)
+pollutantmean("specdata", "nitrate", 70:72)
+?bind
+?rbind
+directory
+files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+summary(files_full)
+head(files_full)
+length(files_full)
+tmp <- vector(mode = "list", length = length(files_full))
+summary(tmp)
+seq_along(files_full)
+?seq_along
+for (i in seq_along(files_full)) {
+tmp[[i]] <- read.csv(files_full[[i]])
+}
+str(tmp)
+str(lapply(files_full, read.csv))
+head(tmp[[1]][,"sulfate"])
+head(tmp[[10]][,"ID"])
+output <- do.call(rbind, tmp)
+str(output)
+dat <- lapply(files_full, read.csv)
+head(dat)
+str(dat)
+tmp1 <- lapply(files_full, read.csv)
+identical(tmp, tmp1)
+?lapply
+?rapply
+dat <- do.call(rbind, tmp)
+pollutant
+mean(dat[, pollutant], na.rm = TRUE)
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean("specdata", "nitrate", 70:72)
+pollutantmean("specdata", "sulfate", 1:10)
+pollutantmean(directory, "nitrate", 23)
+files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+id
+files_full[id]
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean(directory, "nitrate", 23)
+pollutantmean("specdata", "sulfate", 1:10)
+pollutantmean("specdata", "nitrate", 70:72)
+length(dat)
+summary(dat)
+id
+tmp <- lapply(files_full[id], read.csv)
+dat <- do.call(rbind, tmp)
+names(dat)
+str(names)
+str(dat)
+dat[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+!is.na(dat$sulfate) & !is.na(dat$nitrate)
+length(!is.na(dat$sulfate) & !is.na(dat$nitrate))
+d <- subset(dat, dat[!is.na(dat$sulfate)])
+dat[!is.na(dat$sulfate)
+]
+head(dat$sulfate)
+dat$ID[!is.na(dat$sulfate)]
+length(dat$ID[!is.na(dat$sulfate) $ !is.na(dat$nitrate)])
+length(dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)])
+head(tmp)
+summary(tmp)
+savehistory("~/work/data_science_coursera/intro_r/complete.Rhistory")
+
+View(tmp)
+summary(tmp)
+files_full[id]
+for(f in tmp) {}
+for(f in tmp) {
+print(tmp$ID[!is.na(tmp$sulfate) & !is.na(tmp$nitrate)])
+}
+for(f in tmp) {
+print(length(tmp$ID[!is.na(tmp$sulfate) & !is.na(tmp$nitrate)])
+}
+length(tmp$ID[!is.na(tmp$sulfate) & !is.na(tmp$nitrate)]
+length(tmp$ID[!is.na(tmp$sulfate) & !is.na(tmp$nitrate)])
+tmp$ID[!is.na(tmp$sulfate) & !is.na(tmp$nitrate)]
+tmp$ID[!is.na(tmp$sulfate)]
+tmp[[1]]$ID[!is.na(tmp[[1]]$sulfate)]
+for(f in tmp) {
+print(length(f$ID[!is.na(f$sulfate) & !is.na(f$nitrate)])
+}
+for(f in tmp[1:2]) {
+print(head(f))
+f$ID[!is.na(f$sulfate) & !is.na(f$nitrate)]
+}
+for(f in tmp[1:2]) {
+f$ID[!is.na(f$nitrate)]
+}
+for(f in tmp[1:2]) {
+print(f$ID[!is.na(f$nitrate)])
+}
+dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+summary(com)
+str(com)
+as.data.frame(table(com))
+t(as.data.frame(table(com))[,2])
+com_res <- as.data.frame(table(com))
+names(com_res)
+names(com_res) <- c("id", "nobs")
+names(com_res)
+as.data.frame(table(com), row.names = c("id", "nobs"))
+as.data.frame(table(com), col.names = c("id", "nobs"))
+as.data.frame(table(com), col.names = names(c("id", "nobs")))
+as.data.frame(table(com), col.names = c("id", "nobs"))
+source('~/work/data_science_coursera/intro_r/complete.R')
+savehistory("~/work/data_science_coursera/intro_r/complete1.Rhistory")
+
+source('~/work/data_science_coursera/intro_r/complete.R')
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+complete("specdata", 1)
+source('~/work/data_science_coursera/intro_r/complete.R')
+complete("specdata", 1)
+complete("specdata", c(2, 4, 8, 10, 12))
+complete("specdata", 3)
+table(com)
+as.data.frame(table(com))
+names(com_res) <- c("id", "nobs")
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 1)
+complete("specdata", c(2, 4, 8, 10, 12))
+complete("specdata", 3)
+as.data.frame(com)
+files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+tmp <- lapply(files_full, read.csv)
+dat <- do.call(rbind, tmp)
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+com_res <- as.data.frame(table(com))
+names(com_res) <- c("id", "nobs")
+com_res
+com_res[com_res$id >800]
+com_res$id
+com_res$id > 800
+as.numeric(as.character(com_res$id)) > 800
+as.numeric(as.character(com_res$id))
+names(com_res)
+as.numeric(as.character(com_res$nobs)) > 800
+com_res$id[as.numeric(as.character(com_res$nobs)) > 800]
+class(!$)
+com_res800 <- com_res$id[as.numeric(as.character(com_res$nobs)) > 800]
+class(com_res800)
+table(com_res$id[as.numeric(as.character(com_res$nobs)) > 800])
+as.numeric(as.character(com_res800))
+com_res_l <- as.numeric(as.character(com_res800))
+com_res_l
+class(com_res_l)
+length(com_res_l)
+?cor
+dat$sulfate[dat$ID == 2]
+sul2 <- dat$sulfate[dat$ID == 2]
+nit2 <- dat$nitrate[dat$ID == 2]
+cor(sul2, nit2)
+class(sul2)
+nit20 <- subset(dat$nitrate, dat$ID == 2)
+identical(nit2, nit20)
+identical(nit2, sul2)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+cr <- corr("specdata", 150)
+head(cr)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr1 <- corr("specdata", 150)
+identical(cr, cr1)
+head(cr)
+class(1:10)
+nit2 <- dat$nitrate[dat$ID == 2]
+class(nit2)
+com_res$id[as.integer(as.character(com_res$nobs)) > threshold]
+threshold <- 800
+com_res$id[as.integer(as.character(com_res$nobs)) > threshold]
+cor(sul2, nit2, na.rm = TRUE)
+cor(x = sul2, y = nit2, na.rm = TRUE)
+cor(x = sul2, y = nit2)
+class(ok_ids)
+com_res0 <- com_res$id[as.numeric(as.character(com_res$nobs)) > threshold]
+ok_ids <- as.numeric(as.character(com_res0))
+dat.sulfate <- subset(dat$sulfate, dat$ID in ok_ids)
+dat.sulfate <- subset(dat$sulfate, dat$ID ok_ids)
+?subset
+dat[dat$ID == 2]
+dat[dat$ID = 2]
+dat$sulfate[dat$ID == 2]
+ld <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x]} )
+selected_sulfate <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x]})
+selected_sulfate_list <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x]})
+selected_sulfate <- do.call(rbind, selected_sulfate_list)
+View(selected_sulfate)
+which(dat$ID %in% ok_ids)
+ok_ids
+dat$sulfate[(dat$ID %in% ok_ids)]
+tmp_ds <- dat$sulfate[(dat$ID %in% ok_ids)]
+tmp_ds1 <- dat$sulfate[dat$ID %in% ok_ids]
+identical(tmp_ds, tmp_ds1)
+table(dat$ID %in% ok_ids)
+View(selected_sulfate)
+View(selected_sulfate_list)
+1 %in% 1:3
+1 %in% 2:3
+1 %in% ok_ids
+2 %in% ok_ids
+4018*31
+View(selected_sulfate)
+View(selected_sulfate_list)
+selected_sulfate_list[[1]]
+selected_sulfate_list[[1]][1:10]
+selected_sulfate_list <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x]})
+selected_sulfate <- do.call(rbind, selected_sulfate_list)
+selected_nitrate_list <- lapply(ok_ids, function(x){dat$nitrate[dat$ID == x]})
+selected_nitrate <- do.call(rbind, selected_nitrate_list)
+View(selected_sulfate)
+View(selected_sulfate_list)
+View(selected_nitrate)
+View(selected_sulfate)
+str(selected_nitrate_list)
+head(str(selected_nitrate_list))
+str(selected_sulfate_list)
+cummary(selected_sulfate_list)
+summary(selected_sulfate_list)
+summary(selected_sulfate_list)[1:3]
+summary(selected_nitrate_list)[1:3]
+identical(summary(selected_sulfate_list), summary(selected_nitrate_list))
+cor(selected_sulfate_list, selected_nitrate_list)
+typeof(selected_sulfate_list)
+selected_sulfate_0 <- selected_sulfate_list[is.na(selected_sulfate_list)] <- 0
+View(selected_sulfate_list)
+View(selected_sulfate)
+selected_sulfate_list[is.na(selected_sulfate_list)] <- 0
+View(selected_sulfate_list)
+typeof(selected_nitrate_list)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+id <- 1:10
+directory <- "/Users/ashipunova/work/data_science_coursera/intro_r/specdata"
+complete("specdata", 3)
+complete("specdata", 30:25)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+id
+tmp <- lapply(files_full[id], read.csv)
+dat <- do.call(rbind, tmp)
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+com_res <- as.data.frame(table(com))
+names(com_res) <- c("id", "nobs")
+com_res
+complete("specdata", 1)
+files_full[id]
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 1)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 1)
+class(files_full[id])
+?list.files
+savehistory("~/work/data_science_coursera/intro_r/complete2.Rhistory")
+
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 1)
+class(files_list)
+str(lapply(files_full[id], read.csv))
+weightmedian <- function(directory, day)  {
+files_list <- list.files(directory, full.names=TRUE)   #creates a list of files
+dat <- data.frame()                             #creates an empty data frame
+for (i in 1:5) {
+#loops through the files, rbinding them together
+dat <- rbind(dat, read.csv(files_list[i]))
+}
+dat_subset <- dat[which(dat[, "Day"] == day),]  #subsets the rows that match the 'day' argument
+median(dat_subset[, "Weight"], na.rm=TRUE)      #identifies the median weight
+#while stripping out the NAs
+}
+dataset_url <- "http://s3.amazonaws.com/practice_assignment/diet_data.zip"
+download.file(dataset_url, "diet_data.zip")
+unzip("diet_data.zip", exdir = "diet_data")
+list.files("diet_data")
+andy <- read.csv("diet_data/Andy.csv")
+head(andy)
+length(andy$Day)
+dim(andy)
+str(andy)
+summary(andy)
+names(andy)
+andy[1, "Weight"]
+andy[30, "Weight"]
+andy[which(andy$Day == 30), "Weight"]
+andy[which(andy[,"Day"] == 30), "Weight"]
+subset(andy$Weight, andy$Day==30)
+andy_start <- andy[1, "Weight"]
+andy_end <- andy[30, "Weight"]
+andy_loss <- andy_start - andy_end
+andy_loss
+files <- list.files("diet_data")
+files
+files[1]
+files[2]
+files[3:5]
+head(read.csv(files[3]))
+weightmedian <- function(directory, day)  {
+files_list <- list.files(directory, full.names=TRUE)   #creates a list of files
+dat <- data.frame()                             #creates an empty data frame
+for (i in 1:5) {
+#loops through the files, rbinding them together
+dat <- rbind(dat, read.csv(files_list[i]))
+}
+dat_subset <- dat[which(dat[, "Day"] == day),]  #subsets the rows that match the 'day' argument
+median(dat_subset[, "Weight"], na.rm=TRUE)      #identifies the median weight
+#while stripping out the NAs
+}
+files_list[1]
+files_list[1:3]
+lapply(files_full[1:3], read.csv)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 1)
+version
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 1)
+setwd("/Users/ashipunova/work/data_science_coursera/intro_r")
+complete("specdata", 1)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 1)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 1)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+typeof(selected_nitrate_list)
+class(selected_nitrate_list)
+selected_nitrate_list[1:2]
+selected_nitrate_list[1]
+selected_nitrate_list[1][1]
+t(simplify2array(selected_nitrate_list))
+selected_nitrate_b <- do.call(rbind, selected_nitrate_list)
+selected_nitrate <- do.call(rbind, selected_nitrate_list)
+head(selected_nitrate)
+typeof(selected_nitrate)
+selected_nitrate[1]
+selected_nitrate[-1]
+summary(selected_nitrate)
+class(selected_nitrate)
+selected_sulfate <- do.call(rbind, selected_sulfate_list)
+cor(selected_nitrate, selected_sulfate)
+head(str(selected_sulfate_list))
+len <- length(selected_sulfate_list)
+len
+len1 <- length(selected_nitrate_list)
+identical(len, len1)
+for (i in 1:len) {
+cor(selected_sulfate_list[i], selected_nitrate_list[i])
+}
+head(str(selected_sulfate_list[1])
+)
+typeof(selected_sulfate_list[1]))
+typeof(selected_sulfate_list[1])
+class(selected_sulfate_list[1])
+dim(selected_sulfate_list[1])
+dim(selected_sulfate_list)
+class(selected_sulfate_list)
+mt1 <- matrix(unlist(selected_sulfate_list))
+summary(mt1)
+typeof(mt1)
+mt1
+mt1 <- matrix(unlist(selected_sulfate_list[1]))
+mt1
+summary(mt1)
+dim(mt1)
+mt1[1:10]
+mt1[3650:3652]
+mt2 <- matrix(unlist(selected_nitrate_list[1]))
+cor(mt1, mt2)
+dim(mt2)
+mt2 <- matrix(unlist(selected_nitrate_list[2]))
+mt1 <- matrix(unlist(selected_sulfate_list[2]))
+cor(mt1, mt2)
+selected_nitrate_list <- lapply(ok_ids, function(x){dat$nitrate[dat$ID == x & !is.na(dat$sulfate) & !is.na(dat$nitrate)]})
+selected_sulfate_list <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x & !is.na(dat$sulfate) & !is.na(dat$nitrate)]})
+length(selected_sulfate_list)
+i <- 2
+mt_sulf <- matrix(unlist(selected_sulfate_list[i]))
+mt_nitr <- matrix(unlist(selected_nitrate_list[i]))
+dim(mt_nitr)
+mt_nitr
+mt_sulf
+selected_sulfate_list
+cor(selected_sulfate_list, selected_nitrate_list)
+class(selected_nitrate_list)
+typeof(selected_nitrate_list)
+dim(selected_nitrate_list)
+selected_nitrate_list[1]
+length(selected_nitrate_list)
+length(selected_nitrate_list[2])
+length(selected_nitrate_list[1])
+class(selected_nitrate_list[1])
+unlist(selected_nitrate_list[1])
+mt_sulf <- matrix(unlist(selected_sulfate_list[i]))
+mt_nitr <- matrix(unlist(selected_nitrate_list[i]))
+cor(mt_sulf, mt_nitr)
+cor(unlist(selected_sulfate_list[i]), unlist(selected_nitrate_list[i]))
+selected_sulfate_list[i][1:10]
+selected_sulfate_list[[1]
+]
+selected_sulfate_list[[1]][1:10]
+selected_nitrate_list[[1]][1:10]
+sl <- selected_sulfate_list[[1]][1:10]
+nl <- selected_nitrate_list[[1]][1:10]
+class(sl)
+cor(sl, nl)
+i
+mt_sulf <- matrix(unlist(selected_sulfate_list[[i]]))
+mt_nitr <- matrix(unlist(selected_nitrate_list[[i]]))
+class(mt_nitr)
+cor(mt_sulf, mt_nitr)
+mt_sulf <- selected_sulfate_list[[i]]
+mt_nitr <- selected_nitrate_list[[i]]
+cor(mt_sulf, mt_nitr)
+class(mt_sulf)
+mt_sulf
+class(selected_sulfate_list[[1]])
+selected_sulfate_list[[1]]
+mt_sulf <- selected_sulfate_list[[2]]
+mt_nitr <- selected_nitrate_list[[2]]
+cor(mt_sulf, mt_nitr)
+length(mt_sulf)
+mt_sulf
+summary(mt_sulf)
+summary(selected_sulfate_list)
+mt_nitr <- selected_nitrate_list[[1]]
+mt_sulf <- selected_sulfate_list[[1]]
+summary(mt_sulf)
+cor(mt_sulf, mt_nitr)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 150)
+head(cr)
+seq_len(31)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 150)
+len(cr)
+length(cr)
+head(cr)
+cc <- c(-0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814)
+identical(cc, cr)
+class(c)
+class(cr)
+class(cc)
+cc
+cc <- c(-0.01895754, -0.14051254, -0.04389737, -0.06815956, -0.12350667, -0.07588814)
+cc
+identical(cc, cr)
+cc -cr
+cr
+summary(cr)
+cr <- corr("specdata", 400)
+head(cr)
+summary(cr)
+cr <- corr("specdata", 5000)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 400)
+head(cr)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 400)
+head(cr)
+summary(cr)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 400)
+summary(cr)
+head(cr)
+cr <- corr("specdata")
+summary(cr)
+length(cr)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata")
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata")
+complete("specdata")
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata")
+length(cr)
+complete("specdata")
+threshold = 0
+directory
+com_res0 <- com_res$id[as.numeric(as.character(com_res$nobs)) > threshold]
+length(com_res)
+summary(com_res)
+dim(com_res)
+complete("specdata", c(2, 4, 8, 10, 12))
+complete("specdata", 30:25)
+##   id nobs
+## 1 30  932
+## 2 29  711
+## 3 28  475
+## 4 27  338
+## 5 26  586
+## 6 25  463
+complete("specdata", 30:25)
+com_res0 <- com_res$id[as.numeric(as.character(com_res$nobs > threshold)) ]
+as.numeric(as.character(com_res$nobs))
+com_res$nobs
+complete("specdata")
+com_res$nobs
+com_result <- complete("specdata")
+length(com_res)
+length(com_res$nobs)
+length(com_result)
+length(com_result$nobs)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+length(com_result$nobs)
+cr <- corr("specdata", 150)
+com_result <- complete("specdata")
+head(com_result)
+threshold
+threshold <- 500
+com_result$id[as.numeric(as.character(com_result$nobs)) > threshold]
+v
+com_res0 <- com_result$id[as.numeric(as.character(com_result$nobs)) > threshold]
+head (com_res0)
+length(com_res0)
+dim(com_res0)
+com_result$nobs[as.numeric(as.character(com_result$nobs)) > threshold]
+ok_ids <- as.numeric(as.character(com_res0))
+selected_sulfate_list <- lapply(ok_ids, function(x){dat$sulfate[dat$ID == x]})
+View(selected_sulfate_list)
+selected_nitrate_list <- lapply(ok_ids, function(x){dat$nitrate[dat$ID == x]})
+len <- length(selected_sulfate_list)
+all_cors <- vector("numeric", length = length(len))
+for (i in 1:len) {
+print(i)
+mt_sulf <- selected_sulfate_list[[i]]
+mt_nitr <- selected_nitrate_list[[i]]
+print(length(mt_sulf))
+print(length(mt_nitr))
+all_cors[[i]] <- cor(mt_sulf, mt_nitr, use = "pairwise.complete.obs")
+}
+mt_sulf <- selected_sulfate_list[[2]]
+dat$sulfate[dat$ID == 17]
+dat$sulfate[dat$ID == 24]
+head(dat)
+dat$ID
+dat$ID == 24
+dat$Date[dat$ID == 24]
+unique(dat$ID)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+source("corr.R")
+source("complete.R")
+cr <- corr("specdata", 150)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 150)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+print("unique(dat$ID) 5")
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+print("unique(dat$ID)")
+unique(dat$ID)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 150)
+directory
+files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 150)
+head(cr)
+summary(cr)
+cr <- corr("specdata", 400)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 400)
+head(cr)
+summary(cr)
+cr <- corr("specdata", 5000)
+cr <- corr("specdata")
+summary(cr)
+length(cr)
+savehistory("~/work/data_science_coursera/intro_r/corr.Rhistory")
+
+?tryCatch
+demo(error.catching)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 15000)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 15000)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 15000)
+cr <- corr("specdata", 5000)
+summary(cr)
+length(cr)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 15000)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 15000)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 15000)
+cr <- corr("specdata", 150)
+head(cr)
+## [1] -0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.21057 -0.04999  0.09463  0.12525  0.26844  0.76313
+cr <- corr("specdata", 400)
+head(cr)
+## [1] -0.01895754 -0.04389737 -0.06815956 -0.07588814  0.76312884 -0.15782860
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.17623 -0.03109  0.10021  0.13969  0.26849  0.76313
+cr <- corr("specdata", 5000)
+summary(cr)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+##
+length(cr)
+## [1] 0
+cr <- corr("specdata")
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -1.00000 -0.05282  0.10718  0.13684  0.27831  1.00000
+length(cr)
+## [1] 323
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata")
+summary(cr)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata")
+selected_sulfate_list[[1000]]
+try(selected_sulfate_list[[1000]])
+try(selected_sulfate_list[[1000]], silent = TR)
+try(selected_sulfate_list[[1000]], silent = TRue)
+try(selected_sulfate_list[[1000]], silent = TRUE)
+x <- try(selected_sulfate_list[[1000]], silent = TRUE)
+x
+is.error <- function(x) inherits(x, "try-error")
+succeeded <- !vapply(results, is.error, logical(1))
+is.error(try(selected_sulfate_list[[1000]], silent = TRUE))
+is.error(try(selected_sulfate_list[[1]], silent = TRUE))
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata")
+summary(cr)
+cr <- corr("specdata", 150)
+head(cr)
+## [1] -0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.21057 -0.04999  0.09463  0.12525  0.26844  0.76313
+cr <- corr("specdata", 400)
+head(cr)
+## [1] -0.01895754 -0.04389737 -0.06815956 -0.07588814  0.76312884 -0.15782860
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.17623 -0.03109  0.10021  0.13969  0.26849  0.76313
+cr <- corr("specdata", 5000)
+summary(cr)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+##
+length(cr)
+## [1] 0
+cr <- corr("specdata")
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -1.00000 -0.05282  0.10718  0.13684  0.27831  1.00000
+length(cr)
+## [1] 323
+savehistory("~/work/data_science_coursera/intro_r/corr2.Rhistory")
+
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete(directory, 2:5)
+cr <- corr("specdata", 150)
+head(cr)
+## [1] -0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.21057 -0.04999  0.09463  0.12525  0.26844  0.76313
+cr <- corr("specdata", 400)
+head(cr)
+## [1] -0.01895754 -0.04389737 -0.06815956 -0.07588814  0.76312884 -0.15782860
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.17623 -0.03109  0.10021  0.13969  0.26849  0.76313
+cr <- corr("specdata", 5000)
+summary(cr)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+##
+length(cr)
+## [1] 0
+cr <- corr("specdata")
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -1.00000 -0.05282  0.10718  0.13684  0.27831  1.00000
+length(cr)
+## [1] 323
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 150)
+head(cr)
+## [1] -0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.21057 -0.04999  0.09463  0.12525  0.26844  0.76313
+cr <- corr("specdata", 400)
+head(cr)
+## [1] -0.01895754 -0.04389737 -0.06815956 -0.07588814  0.76312884 -0.15782860
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.17623 -0.03109  0.10021  0.13969  0.26849  0.76313
+cr <- corr("specdata", 5000)
+summary(cr)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+##
+length(cr)
+## [1] 0
+cr <- corr("specdata")
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -1.00000 -0.05282  0.10718  0.13684  0.27831  1.00000
+length(cr)
+## [1] 323
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 150)
+head(cr)
+## [1] -0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.21057 -0.04999  0.09463  0.12525  0.26844  0.76313
+cr <- corr("specdata", 400)
+head(cr)
+## [1] -0.01895754 -0.04389737 -0.06815956 -0.07588814  0.76312884 -0.15782860
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.17623 -0.03109  0.10021  0.13969  0.26849  0.76313
+cr <- corr("specdata", 5000)
+summary(cr)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+##
+length(cr)
+## [1] 0
+cr <- corr("specdata")
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -1.00000 -0.05282  0.10718  0.13684  0.27831  1.00000
+length(cr)
+## [1] 323
+complete("specdata", 2:5)
+cr <- corr("specdata", 400)
+cr
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+complete(directory, 2:5)
+complete(directory, 2:7)
+complete(directory, 7:3)
+cr <- corr("specdata", 400)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+cr <- corr("specdata", 400)
+source('~/Documents/GitHub/datasciencecoursera/corr.R')
+complete(directory, 18)
+cr <- corr("specdata", 150)
+head(cr)
+## [1] -0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.21057 -0.04999  0.09463  0.12525  0.26844  0.76313
+cr <- corr("specdata", 400)
+head(cr)
+## [1] -0.01895754 -0.04389737 -0.06815956 -0.07588814  0.76312884 -0.15782860
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -0.17623 -0.03109  0.10021  0.13969  0.26849  0.76313
+cr <- corr("specdata", 5000)
+summary(cr)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+##
+length(cr)
+## [1] 0
+cr <- corr("specdata")
+summary(cr)
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.
+## -1.00000 -0.05282  0.10718  0.13684  0.27831  1.00000
+length(cr)
+## [1] 323
+?order
+a <- c(4, 3, 2, NA, 1)
+b <- c(4, NA, 2, 7, 1)
+a
+b
+z <- cbind(a, b)
+z
+o <- order(a, b)); z[o, ]
+(o <- order(a, b)); z[o, ]
+(o <- order(a, b, na.last = FALSE)); z[o, ]
+all(diff(a) >= 0)
+all(diff(a) <= 0)
+diff(a)
+?diff
+id
+diff(id)
+all(diff(a) >= 0)
+diff(a) >= 0
+diff(1:10, 2)
+diff(1:10, 2, 2)
+diff(a, 1) >= 0
+diff(1:10)
+diff(1:10) >= 0
+all(diff(1:10) >= 0)
+all(diff(10:1) >= 0)
+files_full[1:3]
+files_full[3:1]
+complete(directory, 3:1)
+complete(directory, 33:30)
+id
+id <- 32:30
+id
+tmp <- lapply(files_full[id], read.csv)
+files_full[id]
+View(tmp)
+unique(tmp[[1]]$ID)
+dat <- do.call(rbind, tmp)
+unique(dat$ID)
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+unique(com)
+table(com)
+id
+class(id)
+all(diff(id1) >= 0)
+all(diff(id) >= 0)
+all(diff(id) <= 0)
+all(diff(10:1) >= 0)
+all(diff(30:35) >= 0)
+all(diff(35:30) >= 0)
+is.asc <- function(v){all(diff(v) >= 0)}
+is.asc(1:4)
+is.asc(14:4)
+?table
+table(com)
+as.data.frame(table(com))
+# > population[order(population$age),]
+com_res[order(com_res$com, decreasing = is.asc),]
+is.asc
+is.asc(id)
+# > population[order(population$age),]
+com_res[order(com_res$com, decreasing = is.asc(id)),]
+com_res$com
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+com_res <- as.data.frame(table(com))
+com_res$com
+com_res[order(com_res$com, decreasing = is.asc(id)),]
+id
+is.decr <- function(v){all(diff(v) <= 0)}
+com_res[order(com_res$com, decreasing = is.decr(id)),]
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete(1:3)
+complete(directory, 1:3)
+complete(directory, 3:1)
+complete("specdata", 1)
+##   id nobs
+## 1  1  117
+complete("specdata", c(2, 4, 8, 10, 12))
+##   id nobs
+## 1  2 1041
+## 2  4  474
+## 3  8  192
+## 4 10  148
+## 5 12   96
+complete("specdata", 30:25)
+##   id nobs
+## 1 30  932
+## 2 29  711
+## 3 28  475
+## 4 27  338
+## 5 26  586
+## 6 25  463
+complete("specdata", 3)
+##   id nobs
+## 1  3  243
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 30:25)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete("specdata", 30:25)
+table(com)
+attach(mtcars)
+head(mtcars)
+newdata <- mtcars[order(mpg),]
+head(newdata)
+newdata <- mtcars[order(mpg, cyl),]
+head(newdata)
+newdata <- mtcars[order(mpg, -cyl),]
+head(newdata)
+hp
+newdata <- mtcars[order(mpg, -hp),]
+head(newdata)
+detach(mtcars)
+com
+table(com)
+order(table(com))
+table(com)[1,]
+dim(table(com))
+com_res <- as.data.frame(table(com))
+com_res
+com_res$com
+dim(  com_res <- as.data.frame(table(com))
+)
+dim(com_res)
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+##   id nobs
+## 1  1  117
+complete("specdata", c(2, 4, 8, 10, 12))
+##   id nobs
+## 1  2 1041
+## 2  4  474
+## 3  8  192
+## 4 10  148
+## 5 12   96
+complete("specdata", 30:25)
+##   id nobs
+## 1 30  932
+## 2 29  711
+## 3 28  475
+## 4 27  338
+## 5 26  586
+## 6 25  463
+complete("specdata", 3)
+##   id nobs
+## 1  3  243
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+pollutantmean("specdata", "sulfate", 1:10)
+pollutantmean("specdata", "nitrate", 70:72)
+pollutantmean("specdata", "sulfate", 34)
+pollutantmean("specdata", "nitrate")
+cc <- complete("specdata", c(6, 10, 20, 34, 100, 200, 310))
+print(cc$nobs)
+cc <- complete("specdata", 54)
+print(cc$nobs)
+RNGversion("3.5.1")
+set.seed(42)
+cc <- complete("specdata", 332:1)
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+head (cc)
+head(use)
+length(cc)
+dim(cc)
+dim(use)
+length(use)
+use
+cc[304]
+cc[304, "nobs"]
+head(com_res)
+id <- 332:1
+tmp <- lapply(files_full[id], read.csv)
+dat <- do.call(rbind, tmp)
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+com_res <- as.data.frame(table(com))
+names(com_res) <- c("id", "nobs")
+head(com_res)
+us
+use
+print(com_res[use, "nobs"])
+cr <- corr("specdata")
+cr <- sort(cr)
+hear(cr)
+head(cr)
+RNGversion("3.5.1")
+set.seed(868)
+out <- round(cr[sample(length(cr), 5)], 4)
+print(out)
+cr <- corr("specdata", 129)
+cr <- sort(cr)
+n <- length(cr)
+RNGversion("3.5.1")
+set.seed(197)
+out <- c(n, round(cr[sample(n, 5)], 4))
+print(out)
+cr <- corr("specdata", 2000)
+n <- length(cr)
+cr <- corr("specdata", 1000)
+cr <- sort(cr)
+print(c(n, round(cr, 4)))
+class(com)
+table(com)
+id <- 3:1
+files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+tmp <- lapply(files_full[id], read.csv)
+dat <- do.call(rbind, tmp)
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+com
+table(com)
+?table
+table(com, dnn <- id)
+id
+a <- letters[1:3]
+table(a, sample(a))                    # dnn is c("a", "")
+table(a, sample(a), deparse.level = 0) # dnn is c("", "")
+table(a, sample(a), deparse.level = 2) # dnn is c("a", "sample(a)")
+id <- 33:30
+> files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+> tmp <- lapply(files_full[id], read.csv)
+> dat <- do.call(rbind, tmp)
+> com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+files_full <- list.files(path = directory, pattern = "*.csv", full.names = T)
+tmp <- lapply(files_full[id], read.csv)
+dat <- do.call(rbind, tmp)
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+head(com)
+unique(com)
+table(com)
+distinct(com)
+table(factor(com, levels=unique(com)))
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+complete(32:31)
+complete(directory, 32:31)
+complete("specdata", 30:25)
+cc <- complete("specdata", 332:1)
+head(cc)
+cc <- complete("specdata", 33:1)
+cc
+source('~/Documents/GitHub/datasciencecoursera/complete.R')
+cc <- complete("specdata", 33:1)
+cc
+pollutantmean("specdata", "sulfate", 1:10)
+pollutantmean("specdata", "nitrate", 70:72)
+pollutantmean("specdata", "sulfate", 34)
+pollutantmean("specdata", "nitrate")
+cc <- complete("specdata", c(6, 10, 20, 34, 100, 200, 310))
+print(cc$nobs)
+cc <- complete("specdata", 54)
+print(cc$nobs)
+RNGversion("3.5.1")
+set.seed(42)
+cc <- complete("specdata", 332:1)
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+cr <- corr("specdata")
+cr <- sort(cr)
+RNGversion("3.5.1")
+set.seed(868)
+out <- round(cr[sample(length(cr), 5)], 4)
+print(out)
+cr <- corr("specdata", 129)
+cr <- sort(cr)
+n <- length(cr)
+RNGversion("3.5.1")
+set.seed(197)
+out <- c(n, round(cr[sample(n, 5)], 4))
+print(out)
+cr <- corr("specdata", 2000)
+n <- length(cr)
+cr <- corr("specdata", 1000)
+cr <- sort(cr)
+print(c(n, round(cr, 4)))
+RNGversion("3.5.1")
+set.seed(42)
+cc <- complete("specdata", 332:1)
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+head(cc)
+use
+use <- sample(332, 10)
+use
+set.seed(42)
+use <- sample(332, 10)
+use
+print(cc[use, "nobs"])
+use <- sample(332, 10)
+use
+print(cc[use, "nobs"])
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+?factor
+factor(letters[1:20], labels = "letter")
+x <- c("Man", "Male", "Man", "Lady", "Female")
+x
+(xf <- factor(x, levels = c("Male", "Man" , "Lady",   "Female"),
+labels = c("Male", "Male", "Female", "Female")))
+savehistory("~/work/data_science_coursera/intro_r/order.Rhistory")
+
+x <- matrix(rnorm(200), 20, 10)
+x
+apply(x, 2, mean)
+apply(x, 1, sum)
+dim(x)
+apply(x, 1, quantile, probs = c(0.25, 0.75))
+a <- array(rnorm(2*2*10), c(2,2,10))
+apply(a, c(1,2), mean)
+rowMeans(a, dim = 2)
+mapply(rep, 1:4, 4:1)
+q <- mapply(rep, 1:4, 4:1)
+q
+class(q)
+x <- c(rnom(10), runif(10), rnorm(10, 1))
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+x
+f <- gl(3, 10)
+f
+?gl
+tapply(x, f, mean)
+tapply(x, f, mean, simplify = FALSE)
+tapply(x, f, range)
+x1 <- c(rep("f", 3), rep("m", 2))
+x1
+split(x1, [1:2])
+split(x1, c(1,2))
+split(x1, c(1,3))
+split(x1, c(3,1))
+head(airquality)
+s <- split(airquality, airquality$Month)
+lapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")]))
+sapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")]))
+sapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")], na.rm = TRUE))
+str(split(x, list(f1, f2), drop =TRUE))
+gl(2, 8, labels = c("Control", "Treat"))
+gl(2, 1, 20)
+gl(2, 2, 20)
+str(split(x, list(f1, f2), drop =TRUE))
+traceback()
+debug(str(split(x, list(f1, f2), drop =TRUE)))
+debug(lm(x ~ o))
+debug(lm(x ~ y))
+options(error = recover)
+read.csv("no")
+swirl()
+library(swirl)
+install.packages("swirl")
+library(swirl)
+install_from_swirl("R Programming")
+swirl()
+head(flags)
+dim(flags)
+class(flags)
+as.list(flags)
+cls_list <- lapply(flags, class)
+cls_list
+class(cls_list)
+as.character(cls_list)
+cls_vect <- sapply(flags, class)
+class(cls_vect)
+sum(flags$orange)
+flag_colors <- flags[, 11:17]
+head(flag_colors)
+lapply(flag_colors, sum)
+sapply(flag_colors, sum)
+sapply(flag_colors, mean)
+flag_shapes <- flags[, 19:23]
+lapply(flag_shapes, range)
+sapply(flag_shapes, range)
+shape_mat <- sapply(flag_shapes, range)
+shape_mat
+class(shape_mat)
+unique(c(3, 4, 5, 5, 5, 6, 6)
+)
+unique_vals <- lapply(flags, unique)
+unique_vals
+sapply(unique_vals, length)
+unique_vals <- sapply(flags, unique)
+sapply(flags, unique)
+lapply(unique_vals, function(elem) elem[2])
+sapply(flags, unique)
+vapply(flags, unique, numeric(1))
+ok()
+sapply(flags, class)
+vapply(flags, class, character(1))
+?tapply
+table(flags$landmass)
+table(flags$animate)
+tapply(flags$animate, flags$landmass, mean)
+tapply(flags$population, flags$red, summary)
+tapply(flags$population, flags$landmass, summary)
+savehistory("~/work/data_science_coursera/intro_r/assig2.Rhistory")
+
+source('~/work/data_science_coursera/intro_r/cash.R')
+debug(makeVector([1:3]))
+debug(makeVector(1:3))
+makeVector(1:5)
+source('~/work/data_science_coursera/intro_r/cash.R')
+cachemean(1:9)
+pop_land <- tapply(flags$population, flags$landmass, summary)
+class(pop_land)
+pop_land
+cachemean(pop_land)
+makeVector()
+makeVector(1:10)
+pop_vec <- makeVector(1:10)
+View(pop_vec)
+cachemean(pop_vec)
+is.null(m)
+data <- x$get()
+data
+m
+x
+data(iris)
+library(datasets)
+data(iris)
+?iris
+head(iris)
+Sepal.Length
+tapply(iris$Sepal.Length, iris$Species, summary)
+apply(iris[, 1:4], 1, mean)
+head(iris[, 1:4])
+dim(iris)
+names(iris)
+apply(iris[, 1:4], 2, mean)
+rowMeans(iris[,1:4])
+class(apply(iris[, 1:4], 2, mean))
+summary(iris)
+library(datasets)
+data(mtcars)
+?mtcars
+tapply(flags$population, flags$landmass, summary)
+head(mtcars)
+class(mtcars)
+names(mtcars)
+list(mtcars.index)
+row.names(mtcars)
+mean(mtcars$mpg, mtcars$cyl)
+tapply(mtcars$mpg, mtcars$cyl, mean)
+split(mtcars, mtcars$cyl)
+sappy(split(mtcars, mtcars$cyl), summary)
+sapply(split(mtcars, mtcars$cyl), summary)
+sapply(mtcars, cyl, mean)
+lapply(mtcars, mean)
+tapply(mtcars$cyl, mtcars$mpg, mean)
+apply(mtcars, 2, mean)
+head(mtcars[,2])
+with(mtcars, tapply(mpg, cyl, mean))
+tapply(mtcars$mpg, mtcars$cyl, mean)
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+names(mtcars)
+tapply(mtcars$hp, mtcars$cyl, mean)
+82.63636 - 209.21429
+209.21429 - 82.63636
+mt <- tapply(mtcars$hp, mtcars$cyl, mean)
+mt$8 - mt$4
+mt$8
+name(mt)
+names(mt)
+mt$"8"
+mt["8"]
+mt["8"] - mt["4"]
+debug(ls)
+ls
+ls(pattern = "O")
+v
+0
+.Ob <- 1
+ls(pattern = "O")
+ls()
+debug(ls)
+ls()
+Q
+xx
+data(iris)
+summary(iris)
+iris[iris$Species == virginica]
+iris[iris$Species == "virginica"]
+is <- iris$Sepal.Length[iris$Species == "virginica"]
+is
+mean(is)
+apply(iris[, 1:4], 2, mean)
+tapply(mtcars$mpg, mtcars$cyl, mean)
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+as.matrix(1:10)
+as.matrix(1:10, nrow = 2)
+as.matrix(1:10, nrow = 2, ncol = 3)
+mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
+dimnames = list(c("row1", "row2"),
+c("C.1", "C.2", "C.3")))
+mdat
+matrix(1:10, nrow = 2, ncol = 3)
+matrix(1:10, nrow = 5, ncol = 2)
+solve(mdat)
+matrix(1:16, nrow = 4, ncol = 4)
+solve(mdat)
+a %*% x = b
+2 %*% x
+2 %*% 3
+A <- matrix( c(5, 1, 0,
+3,-1, 2,
+4, 0,-1), nrow=3, byrow=TRUE)
+A
+det(A)
+sum(c(5, 1, 0,
++                3,-1, 2,
++                4, 0,-1))
+(x <- matrix(1:4, ncol = 2))
+unlist(determinant(x))
+det(x)
+det(print(cbind(1, 1:3, c(2,0,1))))
+det(A) != 0
+(AI  <- inv(A))
+(AI  <- solve(A))
+A
+AI %*% A
+solve(4, 8)
+xm <- matrix(1:4, ncol = 2)
+xm
+solve(xm)
+nrow(xm)
+diag(nrow(xm))
+xm %*% solve(xm)
+source('~/work/data_science_coursera/intro_r/ProgrammingAssignment2/cachematrix.R')
+nm <- makeCacheMatrix(xm)
+source('~/work/data_science_coursera/intro_r/ProgrammingAssignment2/cachematrix.R')
+nm <- makeCacheMatrix(xm)
+nm
+source('~/work/data_science_coursera/intro_r/ProgrammingAssignment2/cachematrix.R')
+sxm <- solve(xm)
+sxm
+cacheSolve(xm)
+class(xm)
+cacheSolve(nm)
+source('~/work/data_science_coursera/intro_r/ProgrammingAssignment2/cachematrix.R')
+cacheSolve(nm)
+nm1 <- makeCacheMatrix(xm)
+cacheSolve(nm1)
+str(Iris)
+str(iris)
+str(airquality)
+m <- matrix(rnorm(100), 10, 10)
+str(m)
+s <- split(airquality, airquality$Month)
+str(s)
+x < rnorm(10)
+x <- rnorm(10)
+x
+x <- rnorm(10, 20, 2)
+x
+set.seed(1)
+rnorm(5)
+set.seed(20)
+x <- rnorm(100)
+e <- rnorm(100, 0, 2)
+y <- 0.5 + 2 * x + e
+summary(y)
+plot(x, y)
+x <- rbinom(100, 1, 0.5)
+summary(y)
+e <- rnorm(100, 0, 2)
+summary(y)
+y <- 0.5 + 2 * x + e
+summary(y)
+plot(x, y)
+set.seed(1)
+x <- rnorm(100)
+log.mu <- 0.5 + 0.3 * x
+y <- rpois(100, exp(log.mu))
+summary(y)
+plot(x, y)
+set.seed(1)
+sample(1:10, 4)
+sample(letters, 4)
+sample(1:10)
+sample(1:10, replace = TRUE)
+x <- rnorm(100)
+plot(x)
+x <- rbinom(100, 1, 0.5)
+plot(x)
+x <- rpois(100)
+x <- rpois(100, 2)
+plot(x)
+m <- matrix(rnorm(100), 10, 10)
+plot(m)
+system.tyme()
+system.time()
+system.time(matrix(rnorm(100), 10, 10))
+system.time(readLines("http://www.jhsph.edu"))
+hilbert <- function(n) {}
+1 <- 1:n
+1/ outer(i -1, i, "+")
+hilbert <- function(n) {1 <- 1:n
+1/ outer(i -1, i, "+")}
+x <- hilbert(1000)
+hilbert <- function(n) {
+1 <- 1:n
+1 / outer(i - 1, i, "+")}
+x <- hilbert(1000)
+hilbert <- function(n) {i <- 1:n
+1/ outer(i -1, i, "+")}
+x <- hilbert(1000)
+system.time(svd(x))
+Rprof()
+summaryRprof()
+tapply(mtcars$cyl, mtcars$mpg, mean)
+tapply(mtcars$mpg, mtcars$cyl, mean)
+with(mtcars, tapply(mpg, cyl, mean))
+sapply(split(mtcars$mpg, mtcars$cyl), mean)
+Rprof(tapply(mtcars$mpg, mtcars$cyl, mean))
+str(Rprof)
+?rprof
+system.time( tapply(mtcars$mpg, mtcars$cyl, mean))
+system.time(with(mtcars, tapply(mpg, cyl, mean)))
+system.time(sapply(split(mtcars$mpg, mtcars$cyl), mean))
+sample.interval=1000
+$by.self
+summaryRprof()
+pollutantmean("specdata", "nitrate", 70:72)
+directory
+pollutantmean(directory, "nitrate", 70:72)
+summaryRprof$by.self()
+summaryRprof()
+set.seed(1)
+rpois(5, 2)
+?qpois
+?dpois()
+?ppois
+?rpois
+set.seed(10)
+x <- rep(0:1, each = 5)
+e <- rnorm(10, 0, 20)
+y <- 0.5 + 2 * x + e
+plot(x,y)
+library(datasets)
+Rprof()
+fit <- lm(y ~ x1 + x2)
+Rprof(NULL)
+swirl()
+library(swirl)
+swirl()
+ls()
+class(plants)
+dim(plants)
+nrow(plants)
+ncol(plants)
+object.size(plants)
+object.size(plants) ? 1024
+object.size(plants) / 1024
+object.size(plants) / 1024 ? 1024
+object.size(plants) / 1024 / 1024
+names(plants)
+head(plants)
+head(plants, 10)
+tail(plants, 15)
+summary(plants)
+table(plants$Active_Growth_Period)
+str(plants)
+?sample
+sample(1:6, 4, replace = TRUE)
+sample(1:20, 10)
+LETTERS
+sample(LETTERS)
+flips <- sample(c(0, 1), 100, replace = TRUE, prob = c(0.3, 0.7))
+flips
+sum(flips$1)
+names(flips)
+str(flips)
+sum(flips)
+?rbinom
+rbinom(1, size = 100, prob = 0.7)
+flips2 <- rbinom(1, size = 100, prob = 0.7)
+flips2 <- rbinom(100, size = 1, prob = 0.7)
+flips2
+sum(fflips)
+sum(flips)
+sum(flips2)
+?rnorm
+rnorm(10)
+rnorm(10, 100, 25)
+rpois(5, 10)
+my_pois <- replicate(100, rpois(5, 10))
+my_pois
+cm <- colMeans(my_pois)
+hist(cm)
+data(cars)
+?cars
+head(cars)
+plot(cars)
+?plot()
+?plot
+plot(x = cars$speed, y = cars$dist)
+plot(y = cars$speed, x = cars$dist)
+plot(y = cars$speed, x = cars$dist, xlab = "Speed")
+plot(x = cars$speed, y = cars$dist, xlab = "Speed")
+plot(x = cars$speed, y = cars$dist, xlab = "Speed", ylab = "Stopping Distance")
+plot(x = cars$speed, y = cars$dist, ylab = "Stopping Distance")
+plot(x = cars$speed, y = cars$dist, xlab = "Speed", ylab = "Stopping Distance")
+plots(cars, main = "My Plot")
+plot(cars, main = "My Plot")
+plot(cars, sub = "My Plot Subtitle")
+?par
+plot(cars, col = 2)
+plot(cars, xlim = c(10, 15))
+plot(cars, pch = 2)
+data(mtcars)
+play()
+dim(mtcars)
+str(mtcars)
+nxt()
+?boxplot
+boxplot(mpg ~ cyl, data = mtcars)
+hist(mtcars$mpg)
+setwd("/Users/ashipunova/work/data_science_coursera/intro_r/assign3/")
+ls
+ls()
+outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+head(outcome)
+ncol(outcome)
+names(outcome)
+outcome[, 11] <- as.numeric(outcome[, 11])
+hist(outcome[, 11])
+source('~/.active-rstudio-document')
+savehistory("~/work/data_science_coursera/intro_r/assign3/assign3_0.Rhistory")
+
+outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+setwd("/Users/ashipunova/work/data_science_coursera/intro_r/assign3/")
+outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+states
+all_outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+outcome[, 11] <- as.numeric(outcome[, 11])
+states <- as.numeric(all_outcome[, 7])
+states
+states <- all_outcome[, 7]
+str(states)
+states <- unique(all_outcome[, 7])
+str(states)
+state <- "MA"
+is.state <- any(states, state)
+state %in% states
+state1 <- "BB"
+state1 %in% states
+o <- "heart attack"
+all_outcome[, 11] <- as.numeric(all_outcome[, 11])
+all_outcome[, 17] <- as.numeric(all_outcome[, 17])
+all_outcome[, 23] <- as.numeric(all_outcome[, 23])
+min(all_outcome[, 11])
+?min
+min(all_outcome[, 11], na.rm = TRUE)
+mha <- min(all_outcome[, 11], na.rm = TRUE)
+mha
+with(all_outcome, Hospital.name[State = "TX"]
+)
+str(all_outcome)
+all_outcome[,2][all_outcome[]]
+colnames_idx <- data.frame(colnames(all_outcome))
+head(colnames_idx)
+all_outcome[, colnames_idx[2]]
+colnames_idx[2]
+colnames_idx[2,]
+,
+all_outcome[, colnames_idx[2,]]
+all_outcome[, colnames_idx[2,]] == outcome & all_outcome$State = "TX"
+all_outcome[, colnames_idx[2,]] == outcome & all_outcome$State == "TX"
+all_outcome[, colnames_idx[2,]][all_outcome$State == "TX"]
+all_outcome[, colnames_idx[2,]][all_outcome$State == "TX" & all_outcome[, colnames_idx[11 ,] == mha]]
+all_outcome[, colnames_idx[2,]][all_outcome[, colnames_idx[11 ,] == mha]]
+all_outcome[, colnames_idx[11 ,]
+]
+str(all_outcome[, colnames_idx[11 ,]])
+all_outcome[, colnames_idx[2,]][all_outcome[, colnames_idx[11,] == 10.1]]
+all_outcome[, colnames_idx[2,]][all_outcome[, colnames_idx[11,]] == 10.1]
+all_outcome[, colnames_idx[11,]]
+all_outcome[, colnames_idx[11,]] = mha
+all_outcome[, colnames_idx[11,]]
+all_outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+all_outcome[, colnames_idx[2,]][all_outcome[, colnames_idx[11]] == mha]
+all_outcome[, colnames_idx[2,]]
+all_outcome[, colnames_idx[11]]
+all_outcome[, colnames_idx[11,]]
+all_outcome[, colnames_idx[2,]][all_outcome[, colnames_idx[11,]] == mha]
+seach_vector <- all_outcome$State == "TX" & all_outcome[, colnames_idx[11, ]] == mha
+all_outcome[, colnames_idx[2,]][seach_vector]
+all_outcome[, colnames_idx[2,]][ll_outcome[, colnames_idx[11, ]] == mha]
+all_outcome[, colnames_idx[2,]][all_outcome[, colnames_idx[11, ]] == mha]
+all_outcome[, colnames_idx[2,]][all_outcome[, colnames_idx[11, ]] == min(all_outcome[, 11], na.rm = TRUE) & ]
+state
+state <- "TX"
+this_state_data <- subset(all_outcome, all_outcome$State == state)
+head(this_state_data[,7])
+min(this_state_data[, colnames_idx[11, ]])
+this_state_data$Hospital.Name[min(this_state_data[, colnames_idx[11, ]], na.rm = TRUE)]
+this_state_data$Hospital.Name[this_state_data[, colnames_idx[11, ]] == min(this_state_data[, colnames_idx[11, ]], na.rm = TRUE)]
+short_names <- table(c("heart attack", "heart failure", "pneumonia"), c(colnames_idx[11, ], colnames_idx[17, ], colnames_idx[23, ]))
+short_names
+hash()
+new.env(hash=TRUE)
+myhash <- hash()
+short_names <- c(colnames_idx[11, ], colnames_idx[17, ], colnames_idx[23, ])
+names(short_names) <- c("heart attack", "heart failure", "pneumonia")
+short_names$"heart attack"
+short_names$heart attack
+str(short_names)
+short_names["heart attack"]
+str(outcome)
+outcome <- "heart attack"
+short_names[outcome]
+this_state_data[, full_outcome_name]
+full_outcome_name <- short_names[outcome]
+this_state_data[, full_outcome_name]
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+this_state_data[, full_outcome_name]
+best("TX", "heart attack")
+subset(this_state_data, this_state_data[, full_outcome_name] == min(this_state_data[, full_outcome_name], na.rm = TRUE))
+a <- subset(this_state_data, this_state_data[, full_outcome_name] == min(this_state_data[, full_outcome_name], na.rm = TRUE))
+a$Hospital.Name
+min_data <- this_state_data[, full_outcome_name]
+str(min_data)
+this_state_data <- subset(all_outcome, all_outcome$State == state)
+curr_outcome <- this_state_data[, full_outcome_name]
+curr_min <- min(curr_outcome, na.rm = TRUE)
+this_state_data$Hospital.Name[curr_outcome == curr_min]
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("TX", "heart attack")
+res <- this_state_data$Hospital.Name[curr_outcome == curr_min]
+res
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("TX", "heart attack")
+r <- best("TX", "heart attack")
+str(r)
+class(r)
+com <- dat$ID[!is.na(dat$sulfate) & !is.na(dat$nitrate)]
+this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)]
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("TX", "heart attack")
+this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)]
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("TX", "heart attack")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("TX", "heart attack")
+!is.na(this_state_data$Hospital.Name)
+curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)
+this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)]
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("TX", "heart failure")
+full_outcome_name
+str(curr_outcome)
+str(this_state_data)
+str(curr_min)
+this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)]
+str(this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)])
+class(v)
+class(this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)])
+unique(this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)])
+uv <- unique(this_state_data$Hospital.Name[curr_outcome == curr_min & !is.na(this_state_data$Hospital.Name)])
+length(uv)
+uv[!is.na(uv)]
+res <- this_state_data$Hospital.Name[curr_outcome == curr_min]
+res[!is.na(res)]
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("TX", "heart failure")
+res
+best("MD", "heart attack")
+best("MD", "pneumonia")
+best("MA", "pneumonia")
+res1 <- subset(this_state_data, curr_outcome == curr_min)
+str(rres)
+str(res1)
+res1$Hospital.Name
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MD", "pneumonia")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MD", "pneumonia")
+is.na(curr_outcome)
+sum(is.na(curr_outcome))
+best("MA", "pneumonia")
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+length(curr_min)
+length(res)
+length(res[!is.na(res)])
+res[!is.na(res)]
+res
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+sort(res_no_na)
+res_no_na
+sort(res_no_na)[1]
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("BB", "pneumonia")
+best("MA", "pneumoniaaa")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+this_state_data$Hospital.Name[is.na(curr_outcome)]
+this_state_data$Hospital.Name[!is.na(curr_outcome)]
+this_state_data[!is.na(curr_outcome)]
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+best("TX", "heart failure")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+all_outcome
+str(all_outcome)
+this_state_data$Hospital.Name[(curr_outcome == curr_min)]
+this_state_data$Hospital.Name[(curr_outcome == curr_min) & (!is.na(curr_outcome))]
+debugSource('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+length(res_no_na)
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+best("MA", "pneumoniaa")
+best("DD", "pneumoniaa")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumoniaa")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+best("MA", "pneumoniaa")
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart failure", 5)
+this_state_data[order(curr_outcome)]
+str(this_state_data[order(curr_outcome)])
+ord_r <- this_state_data[order(curr_outcome),]
+View(ord_r)
+ord_r1 <- this_state_data[order(curr_outcome), full_outcome_name]
+ord_r1 <- this_state_data[order(curr_outcome), "Hospital.Name"]
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("MA", "pneumonia")
+best("MA", "pneumoniaaa")
+best("BB", "pneumonia")
+best("MD", "heart attack")
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart failure", 5)
+!is.na(ranked_hsp)
+this_state_data[order(curr_outcome), "Hospital.Name" & !is.na(curr_outcome)]
+ranked_hsp[1]
+ranked_hsp[1:5]
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart failure", "best")
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("TX", "heart failure", "7")
+this_state_data[order(curr_outcome, this_state_data$Hospital.Name)
+]
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("TX", "heart failure", "7")
+this_state_data[order(curr_outcome, this_state_data$Hospital.Name),]
+temp <- this_state_data[order(curr_outcome, this_state_data$Hospital.Name),]
+View(temp)
+temp <- this_state_data[order(curr_outcome, this_state_data$Hospital.Name), c(2, 17)]
+View(temp)
+length(this_state_data$Hospital.Name)
+source('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("TX", "heart failure", 4)
+rankhospital("MD", "heart attack", "worst")
+rankhospital("MN", "heart attack", 5000)
+source('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MN", "heart attack", 5000)
+rankhospital("MD", "heart attack", "worst")
+rankhospital("TX", "heart failure", 4)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+num
+cnt_hospitals
+temp <- this_state_data[order(curr_outcome, this_state_data$Hospital.Name), c(2, 17)]
+View(temp)
+temp <- this_state_data[order(curr_outcome, this_state_data$Hospital.Name), c(2, 17)]
+head(curr_outcome)
+View(this_state_data)
+temp <- this_state_data[order(curr_outcome, this_state_data$Hospital.Name), c(2, 17)]
+View(temp)
+temp <- this_state_data[order(curr_outcome, this_state_data$Hospital.Name), c("Hospital.Name", full_outcome_name)]
+View(temp)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+this_state_data[order(!is.na(curr_outcome), this_state_data$Hospital.Name), "Hospital.Name"]
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+this_state_data[order(curr_outcome_no_na, this_state_data$Hospital.Name), "Hospital.Name"]
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+this_state_data[order(curr_outcome_no_na, this_state_data$Hospital.Name), "Hospital.Name"]
+q <- this_state_data[, !is.na(curr_outcome)]
+View(q)
+?subset
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+setwd("/Users/ashipunova/work/data_science_coursera/intro_r/assign3/")
+rankhospital("MD", "heart attack", "worst")
+View(this_state_data1)
+this_state_data1[2,17]
+this_state_data1[,c(2,17)]
+n <- names(all_outcome)
+n[11]
+n[17]
+n[23]
+savehistory("~/work/data_science_coursera/intro_r/assign3/assign3_1.Rhistory")
+
+all_outcome[, full_outcome_name]
+this_state_data <- subset(all_outcome, (all_outcome$State == state) & !is.na(all_outcome[, full_outcome_name]))
+this_state_data <- subset(all_outcome, !is.na(all_outcome[, full_outcome_name]))
+str(this_state_data)
+view(this_state_data)
+View(this_state_data)
+this_state_data1 <- subset(this_state_data, all_outcome$State == state)
+str(all_outcome[, full_outcome_name])
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+class(all_outcome[, 11])
+str(all_outcome[, 11])
+class(all_outcome[, full_outcome_name])
+all_outcome[!is.na(all_outcome[, 11])]
+all_outcome[, !is.na(all_outcome[, 11])]
+all_outcome[, c(2, 11)][!is.na(all_outcome[, 11])]
+all_outcome[c(2, 11)][!is.na(all_outcome[, 11])]
+all_outcome[c(2, 11)]
+o2_11 <- all_outcome[c(2, 11)]
+View(o2_11)
+re <- all_outcome[match(outcome), names(all_outcome)]
+re <- all_outcome[, match(outcome), names(all_outcome)]
+re <- all_outcome[, match(outcome, names(all_outcome))]
+names(all_outcome))
+names(all_outcome)
+match(outcome, names(all_outcome))
+temp <- all_outcome[c(2,11)]
+View(temp)
+temp[][temp[,2] >10]
+temp$Hosptial.name[temp[,2] >10]
+str(temp[,2] >10)
+str(!is.na(temp[,2]))
+temp$Hospital.Name[!is.na(temp[,2])]
+temp[c(1,2)][!is.na(temp[,2])]
+(!is.na(all_outcome[, full_outcome_name]))
+subset(all_outcome, (!is.na(all_outcome[, full_outcome_name])))
+not_na_outcome <- subset(all_outcome, (!is.na(all_outcome[, full_outcome_name])))
+View(not_na_outcome)
+not_na_outcome[,c(2,11)]
+str(not_na_outcome[,c(2,11)])
+dim(not_na_outcome[,c(2,11)])
+not_na_outcome <- subset(all_outcome, (!is.na(all_outcome[, full_outcome_name])))
+this_state_data <- subset(this_state_data, not_na_outcome$State == state)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+View(this_state_data)
+subset(this_state_data, not_na_outcome$State == state, this_state_data[, full_outcome_name])
+subset(this_state_data, not_na_outcome$State == state, select = this_state_data[, full_outcome_name])
+subset(this_state_data, State == state, select = this_state_data[, full_outcome_name])
+c
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+subset(not_na_outcome, State == state)
+View(ranked_hsp)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+str(this_state_data[, full_outcome_name])
+names(this_state_data[, full_outcome_name])
+v
+full_outcome_name
+str(this_state_data$`full_outcome_name`)
+str(this_state_data$full_outcome_name)
+str(this_state_data[full_outcome_name])
+a1 <- this_state_data[full_outcome_name]
+a2 <- this_state_data[,full_outcome_name]
+identical(a1, a2)
+diff(a1, a2)
+str(a1)
+a1 <- this_state_data[full_outcome_name]
+a2 <- this_state_data[,full_outcome_name]
+str(a1)
+str(a2)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+a1 <- this_state_data[full_outcome_name]
+a2 <- this_state_data[,full_outcome_name]
+str(a1)
+str(a2)
+str(this_state_data$Hospital.Name)
+full_outcome_name
+str(this_state_data$`Hospital.Name`)
+str(this_state_data$`Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack`)
+num
+ranked_hsp[num]
+source('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("TX", "heart failure", 4)
+rankhospital("MD", "heart attack", "worst")
+rankhospital("MN", "heart attack", 5000)
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+all_outcome <- read_outcome_data()
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+nn <- all_outcome[!is.na(all_outcome[full_outcome_name]),]
+identical(nn, not_na_outcome)
+newdata <- mydata[ which(mydata$gender=='F'
+& mydata$age > 65), ]
+nnn <- all_outcome[ which(!is.na(all_outcome[full_outcome_name]) & all_outcome.State == state), ]
+nnn <- all_outcome[ which(!is.na(all_outcome[full_outcome_name]) & all_outcome$State == state), ]
+str(nnn)
+nnn <- all_outcome[ which((!is.na(all_outcome[, full_outcome_name])) & (all_outcome$State == state), ]
+nnn <- all_outcome[ which(!is.na(all_outcome[full_outcome_name])), ]
+identical(nnn, nn)
+n4 <- all_outcome[ which(!is.na(all_outcome[full_outcome_name]) & all_outcome.State == state), ]
+n4 <- all_outcome[ which(!is.na(all_outcome[full_outcome_name]) & all_outcome$State == state), ]
+str(n4)
+identical(this_state_data, n4)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("MD", "heart attack", "worst")
+aa1 <- all_outcome[all_outcome$State == state]
+aa1 <- all_outcome[all_outcome$State == state, ]
+identical(aa1, this_state_data)
+aa1 <- all_outcome[all_outcome$State == state, ]
+identical(aa1, this_state_data)
+str(aa1)
+aa1 <- not_na_outcome[not_na_outcome$State == state, ]
+identical(aa1, this_state_data)
+source('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+rankhospital("TX", "heart failure", 4)
+rankhospital("MD", "heart attack", "worst")
+rankhospital("MN", "heart attack", 5000)
+dim(all_outcome)
+for (s in all_outcome$Hospital.Name) {print(s[1:2])}
+for (s in all_outcome$Hospital.Name) {print(s)}
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+savehistory("~/work/data_science_coursera/intro_r/assign3/assign3_2.Rhistory")
+
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+setwd("/Users/ashipunova/work/data_science_coursera/intro_r/assign3/")
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+View(this_state_data)
+unique(this_state_data$State)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+View(output)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+num
+res
+View(output)
+output$hospital
+output$State
+state
+output[2] <- state
+output[2]
+output[1,]
+head(output)
+dim(output)
+df = NULL
+for (k in 1:10)
+{
+x = 1
+y = 2
+z = 3
+df = rbind(df, data.frame(x,y,z))
+}
+df
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+source('~/Documents/GitHub/datasciencecoursera/pollutantmean.R')
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+state
+all_outcome$State[1]
+all_outcome$State[2]
+all_outcome$State[3]
+unique(all_outcome$State)
+debugSource('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+View(output)
+sorted(unique(all_outcome$State)
+)
+sort(unique(all_outcome$State)
+)
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+head(rankall("heart attack", 20), 10)
+tail(rankall("pneumonia", "worst"), 3)
+tail(rankall("heart failure"), 10)
+tail(rankall("heart failure"), "best")
+head(rankall("heart failure"), "best", 2)
+head(rankall("heart failure"), "best")
+head((rankall("heart failure"), "best"), 2)
+head(rankall("heart failure"), "best")
+head(rankall("heart failure"), 2)
+head(rankall("pneumonia"), 2)
+head(rankall("pneumonia"), 1)
+head(rankall("heart attack"), 1)
+source('~/Documents/GitHub/datasciencecoursera/best.R')
+best("SC", "heart attack")
+best("NY", "pneumonia")
+best("AK", "pneumonia")
+source('~/Documents/GitHub/datasciencecoursera/rankhospital.R')
+best("AK", "pneumonia")
+rankhospital("NC", "heart attack", "worst")
+rankhospital("WA", "heart attack", 7)
+rankhospital("TX", "pneumonia", 10)
+rankhospital("NY", "heart attack", 7)
+source('~/Documents/GitHub/datasciencecoursera/rankall.R')
+r <- rankall("heart attack", 4)
+as.character(subset(r, state == "HI")$hospital)
+r <- rankall("pneumonia", "worst")
+as.character(subset(r, state == "NJ")$hospital)
+r <- rankall("heart failure", 10)
+as.character(subset(r, state == "NV")$hospital)
+packageVersion("swirl")
+library(swirl)
+savehistory("~/work/data_science_coursera/intro_r/assign3/assign3_3.Rhistory")
+
+rm(list=ls())
+install_from_swirl("Getting and Cleaning Data")
+swirl()
+path2csv <- "/Users/ashipunova/work/data_science_coursera/cleaning_data/2014-07-08.csv"
+path2csv
+mydf <- read.csv(path2csv, stringsAsFactors = FALSE)
+dim(mydf)
+head(mydf)
+library(dplyr)
+packageVersion("dplyr")
+cran <- tbl_df(mydf)
+rm("mydf")
+cran
+?select
+select(cran, ip_id, package, country)
+5:20
+select(cran,
+r_arch:country)
+select(cran, country:r_arch)
+cran
+select(cran, -time)
+-5:20
+-(5:20)
+select(-(X:size))
+select(-(date:2))
+select(date:2)
+select(date:size)
+select(ccran, -(date:2))
+select(cran, -(date:2))
+select(cran, -(X:size))
+cran
+unfo()
+info()
+select(cran, -(date:size))
+skip()
+swirl()
+View(cran)
+select(cran, -(X:size))
+filter(cran, package == "swirl")
+filter(cran, r_version == "3.1.1", country == "US")
+?Comparison
+filter(cran, r_version == "3.0.2", country == "IN")
+filter(cran, r_version ,= "3.0.2", country == "IN")
+filter(cran, r_version <= "3.0.2", country == "IN")
+filter(cran, country == "US" | country == "IN")
+filter(cran, size > 100500, r_os == "linux-gnu)
+)
+""
+")
+filter(cran, size > 100500, r_os == "linux-gnu")
+is.na(c(3, 5, NA, 10)
+)
+!is.na(c(3, 5, NA, 10))
+filter(cran, !is.na(r_version))
+View(cran2)
+cran2 <- select(cran, size:ip_id)
+arrange(cran2, ip_id)
+arrange(cran2, desc(ip_id))
+arrange(cran2, package, ip_id)
+arrange(cran2, country, ip_id)
+arrange(cran2, country, desc(r_version), ip_id)
+View(cran3)
+cran3 <- select(cran, ip_id, package, size)
+cran3
+mutate(cran3, size_mb = size / 2^20)
+mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10)
+cran3
+mutate(cran3, correct_size = size + 1000)
+summarize(cran,  avg_bytes = mean(size))
+mydf <- read.csv(path2csv, stringsAsFactors = FALSE)
+dim(mydf)
+head(mydf)
+library(dplyr)
+packageVersion("dplyr")
+cran <- tbl_df(mydf)
+rm("mydf")
+cran
+?select
+select(cran, ip_id, package, country)
+5:20
+r_arch:country)
+select(cran,
+r_arch:country)
+select(cran, country:r_arch)
+cran
+select(cran, -time)
+-5:20
+-(5:20)
+select(-(X:size))
+select(cran, -(X:size))
+filter(cran, package == "swirl")
+filter(cran, r_version == "3.1.1", country == "US")
+?Comparison
+filter(cran, r_version <= "3.0.2", country == "IN")
+filter(cran, country == "US" | country == "IN")
+filter(cran, size > 100500, r_os == "linux-gnu)
+filter(cran, size > 100500, r_os == "linux-gnu")
+is.na(c(3, 5, NA, 10)
+)
+!is.na(c(3, 5, NA, 10))
+filter(cran, !is.na(r_version))
+cran2 <- select(cran, size:ip_id)
+arrange(cran2, ip_id)
+arrange(cran2, desc(ip_id))
+arrange(cran2, package, ip_id)
+arrange(cran2, country, desc(r_version), ip_id)
+cran3 <- select(cran, ip_id, package, size)
+cran3
+mutate(cran3, size_mb = size / 2^20)
+mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10)
+mutate(cran3, correct_size = size + 1000)
+summarize(cran,  avg_bytes = mean(size))
+library(dplyr)
+old_cran11 <- cran
+cran <- tbl_df(mydf)
+rm("mydf")
+cran
+?group_by
+old_by_package <- by_package
+by_package <- group_by(cran, package)
+by_package
+summarize(by_package, mean(size))
+?n
+submit()
+pack_sum
+quantile(pack_sum$count, probs = 0.99)
+filter(pack_sum, count > 679)
+top_counts <- filter(pack_sum, count > 679)
+top_counts
+View(top_counts)
+top_counts <- arrange(top_counts, count)
+arrange(top_counts, desc(count))
+top_counts <- arrange(top_counts, desc(count))
+top_counts <- filter(pack_sum, count > 679)
+top_counts_sorted <- arrange(top_counts, desc(count))
+View(top_counts_sorted)
+quantile(pack_sum$unique, probs = 0.99)
+top_unique <- filter(pack_sum, unique > 465)
+View(top_unique)
+top_unique_sorted <- arrange(top_unique, desc(unique))
+View(top_unique_sorted)
+submit()
+View(result3)
+cran %>%
+select(ip_id, country, package, size) %>%
+print
+submit()
+library(tidyr)
+students
+?gather
+gather(students, sex, count, -grade)
+c
+students2
+res <- gather(students2, sex_class, count)
+res <- gather(students2, sex_class, count, -grade)
+res
+?separate
+separate(data = res, col = sex_class, into = c("sex", "class"))
+submit()
+students3
+submit()
+?gather
+submit()
+?spread
+View(students3)
+submit()
+res1 <- students3 %>%
+gather(class, grade, class1:class5, na.rm = TRUE)
+res1
+spread(res1, name, test)
+spread(res1, key = c(midterm, final), test)
+spread(res1, key = c("midterm", "final"), test)
+spread(res1, test, grade)
+submit()
+library(readr)
+parse_number("class5")
+submit()
+View(students4)
+students4
+submit()
+passed
+failed
+passed <- mutate(passed, status = "passed")
+failed <- mutate(failed, status = "failed")
+bind_rows(passed, failed)
+savehistory("~/work/data_science_coursera/cleaning_data/cleaning_data0.Rhistory")
+
+sat
+View(sat)
+?select
+submit()
+sat %>%
+select(-contains("total"))
+sat %>%
+select(-contains("total")) %>%
+gather(part_sex, count, -score_range) %>%
+print()
+View(sat %>%
+select(-contains("total")) %>%
+gather(part_sex, count, -score_range))
+a1 <- sat %>%
+select(-contains("total")) %>%
+gather(part_sex, count, -score_range)
+a2 <- sat %>%
+select(-contains("total")) %>%
+gather(key = part_sex, value = count, -score_range)
+identical(a1, a2)
+sat %>%
+select(-contains("total")) %>%
+gather(key = part_sex, value = count, -score_range) %>%
+separate(col = part_sex, into = c("part", "sex"))
+submit()
+sat %>%
+select(-contains("total")) %>%
+gather(part_sex, count, -score_range) %>%
+separate(part_sex, c("part", "sex")) %>%
+group_by(part, sex)
+submit()
+Sys.getlocale("LC_TIME")
+library(lubridate)
+help(package = lubridate)
+this_day < today()
+this_day <- today()
+this_day
+year(this_day)
+wday(this_day)
+wday(this_day, label = TRUE)
+now()
+this_moment <- now()
+this_moment
+hour(this_moment)
+ymd("1989-05-17")
+my_date <- ymd("1989-05-17")
+my_date
+class(my_date)
+ymd("1989 May 17")
+mdy("March 12, 1975")
+dmy(25081985)
+ymd("192012")
+ymd("1920/1/2")
+d1
+dt1
+ymd_hms(dt1)
+hms("03:22:14")
+dt2
+ymd(dt2)
+update(this_moment, hours = 8, minutes = 34, seconds = 55)
+this_moment
+this_moment <- update(this_moment, hours = 19, minutes = 30)
+this_moment
+nyc <- now("America/New_York")
+nyc
+depart <- nyc + days(2)
+depart
+depart <- update(depart, hours = 17, minutes = 34)
+depart
+arrive <- depart + hours(15) + minutes(50)
+?with_tz
+arrive <- with_tz(arrive, tzone = "Asia/Hong_Kong")
+arrive
+last_time <- mdy("June 17, 2008", tz = "Singapore")
+last_time
+?interval
+how_long <- interval(arrive - last_time)
+how_long <- interval(last_time, arrive)
+as.period(how_long)
+stopwatch()
+ida <- download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv", method = "curl")
+ida <- download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv", method = "curl", destfile = "/Users/ashipunova/work/data_science_coursera/cleaning_data/2014-07-08.csv")
+read.csv("/Users/ashipunova/work/data_science_coursera/cleaning_data/2014-07-08.csv")
+ida_data <- read.csv("/Users/ashipunova/work/data_science_coursera/cleaning_data/2014-07-08.csv")
+head(ida_data)
+library(data.table)
+install.packages("data.table")
+library(data.table)
+filter(ida_data, val > 24)
+filter(ida_data, ida_data$val > 24)
+class(ida_data)
+names(ida_data)
+select(ida_data, VAL)
+filter(ida_data, ida_data$VAL > 24)
+ida
+rm(ida)
+ida_data[ida_data$VAL > 24]
+ida_data[ida_data$VAL > 24, ]
+class(cran)
+filter(ida_data, VAL > 24)
+select(ida_data, VAL)
+head(select(ida_data, VAL))
+new_ida <- select(ida_data, VAL)
+filter(new_ida, VAL = 17)
+filter(new_ida, VAL == 17)
+filter(new_ida, VAL > 24)
+filter(new_ida, VAL > 20)
+filter(new_ida, VAL >= 24)
+sum(filter(new_ida, VAL >= 24))
+length(filter(new_ida, VAL >= 24))
+1272/24
+xl.url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx"
+laibrary(xlsx)
+library(xlsx)
+install.packages(xlsx)
+install.packages("xlsx")
+savehistory("~/work/data_science_coursera/cleaning_data/cleaning_data1.Rhistory")
+
+download.file(xl.url, )
+ddir <- "/Users/ashipunova/work/data_science_coursera/cleaning_data"
+download.file(xl.url, destfile = ddir, method = curl)
+download.file(xl.url, destfile = ddir, method = "curl")
+xl.url
+download.file(xl.url, destfile = ddir)
+download.file(xl.url, destfile = paste(ddir, "/ngap.xlsx")
+)
+download.file(xl.url, destfile = paste(ddir, "/ngap.xlsx", sep = "")
+)
+xl.data <- read.table(paste(ddir, "/ngap.xlsx", sep = ""))
+head(xl.data)
+xl.data <- read.xlsx(paste(ddir, "/ngap.xlsx", sep = ""))
+library(xlsx)
+xl.data <- read.xlsx(paste(ddir, "/ngap.xlsx", sep = ""))
+xl.data <- read.xlsx(paste(ddir, "/ngap.xlsx", sep = ""), sheetIndex = 1)
+head(xl.data)
+xl.data <- read.xlsx(paste(ddir, "/ngap.xlsx", sep = ""), sheetIndex = 1, startRow = 18, endRow = 23, colIndex = 7:15)
+names(xl.data)
+all_xl <- read.xlsx(paste(ddir, "/ngap.xlsx", sep = ""), sheetIndex = 1)
+names(all_xl)
+dat <- read.xlsx(paste(ddir, "/ngap.xlsx", sep = ""), sheetIndex = 1, rowIndex = 18:23, colIndex = 7:15)
+sum(dat$Zip*dat$Ext,na.rm=T)
+dat1 <- read.xml("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml")
+library(XML)
+install.packages(XML)
+install.packages("XML")
+dat1 <- read.xml("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml")
+fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml"
+doc <- xmlTreeParse(fileUrl, useInternal=TRUE)
+library("XML")
+library(XML)
+doc <- xmlTreeParse(fileUrl, useInternal=TRUE)
+fileURL
+doc <- xmlTreeParse(fileURL, useInternal=TRUE)
+doc <- xmlParse(fileURL)
+library (RCurl)
+library (XML)
+curlVersion()$features
+curlVersion()$protocol
+temp <- getURL(fileURL, ssl.verifyPeer=FALSE)
+View(temp)
+DFX <- xmlTreeParse(temp,useInternal = TRUE)
+View(DFX)
+temp <- getURL(fileURL, ssl.verifyPeer=FALSE)
+fileURL
+fileURLs < fileURL
+fileURLs <- fileURL
+fileURL <- "http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml"
+doc <- xmlTreeParse(fileURL, useInternal=TRUE)
+class(doc)
+head(doc)
+View(doc)
+rootNode <- xmlRoot(doc)
+xmlName(rootNode)
+names(rootNode)
+scores <- xpathSApply(doc, "//li[@class='score]", xmlValue)
+xpathSApply(rootNode, xmlValue)
+xmlValue
+xmlName(rootNode)
+scores <- xpathSApply(doc, "//li[@class='score]", xmlValue)
+scores <- xpathSApply(doc, "//zipcode", xmlValue)
+scores
+scores[scores == 21231]
+length()
+length(scores[scores == 21231])
+url5 <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv"
+url5_fname <- paste(ddir, "url5.csv", sep = "")
+download.file(url5, destfile = url5_fname)
+fread(url5_fname)
+DT <- fread(url5_fname)
+mean(DT$pwgtp15, by=DT$SEX)
+sapply(split(DT$pwgtp15, DT$SEX), mean)
+tapply(DT$pwgtp15, DT$SEX, mean)
+DT[,mean(DT$pwgtp15), by=SEX]
+data.table::mean(DT$pwgtp15, by=DT$SEX)
+mean(DT[DT$SEX==1,]$pwgtp15); mean(DT[DT$SEX==2,]$pwgtp15)
+rowMeans(DT)[DT$SEX==1]; rowMeans(DT)[DT$SEX==2]
+system.time(mean(DT$pwgtp15, by=DT$SEX))
+system.time(sapply(split(DT$pwgtp15, DT$SEX), mean))
+system.time(tapply(DT$pwgtp15, DT$SEX, mean))
+system.time(DT[,mean(DT$pwgtp15), by=SEX])
+system.time(mean(DT[DT$SEX==1,]$pwgtp15); mean(DT[DT$SEX==2,]$pwgtp15))
+system.time(mean(DT[DT$SEX==1,]$pwgtp15)); system.time(mean(DT[DT$SEX==2,]$pwgtp15))
+savehistory("~/work/data_science_coursera/cleaning_data/cleaning_data2.Rhistory")
+
