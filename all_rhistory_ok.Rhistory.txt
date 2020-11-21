@@ -3630,3 +3630,62 @@ submit()
 reset()
 savehistory("~/work/data_science_coursera/coursera_course/h7.Rhistory")
 
+library(swirl)
+swirl()
+students3 %>%
+gather(class, grade, class1:class5, na.rm = TRUE) %>%
+spread(test, grade) %>% mutate(class1 = parse_number("class1"))
+students3 %>%
+gather(class, grade, class1:class5, na.rm = TRUE) %>%
+spread(test, grade) %>% mutate(class = parse_number("class"))
+students3 %>%
+gather(class, grade, class1:class5, na.rm = TRUE) %>%
+spread(test, grade) %>% mutate(class = parse_number(class))
+submit()
+students4
+submi
+submit()
+passed
+failed
+passed <- mutate(passed, status = "passed")
+passed
+failed <- failed %>% mutate(status = "failed")
+bind_rows(passed, failed)
+sat
+View(sat)
+sat %>%
+select(-contains("total"))
+sat %>%
+select(-contains("total")) %>%
+gather(part_sex, count, -score_range)
+sat %>%
+select(-contains("total")) %>%
+gather(part_sex, count, -score_range) %>%
+### <Your call to separate()>
+separate(part_sex, into = c("part", "sex"))
+submit()
+sat %>%
+select(-contains("total")) %>%
+gather(part_sex, count, -score_range) %>%
+separate(part_sex, c("part", "sex")) %>%
+### <Your call to group_by()>
+group_by(part, sex) %>%
+print()
+submit()
+ida <- read_csv("/Users/ashipunova/work/data_science_coursera/cleaning_data/2014-07-08.csv")
+ida <- download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv", method = "curl", destfile = "/Users/ashipunova/work/data_science_coursera/cleaning_data/2014-07-08.csv")
+idaD <- read_csv("/Users/ashipunova/work/data_science_coursera/cleaning_data/2014-07-08.csv")
+ida_df <- tbl_df(idaD)
+str(idaD)
+str(ida_df)
+identical(idaD, ida_df)
+head(filter(ida_df, ACR == 3))
+head(filter(ida_df, ACR == 3 & AGS == 6))
+head(ida_df[ida_df$ACR == 3 & ida_df$AGS == 6])
+ida_df[ida_df$ACR == 3]
+ida_df[ida_df$ACR == 3, ]
+head(ida_df[ida_df$ACR == 3 & ida_df$AGS == 6,])
+str(ida_df[ida_df$ACR == 3 & ida_df$AGS == 6,])
+str(ida_df$SERIALNO[ida_df$ACR == 3 & ida_df$AGS == 6,])
+str(ida_df$SERIALNO[ida_df$ACR == 3 & ida_df$AGS == 6])
+savehistory("~/work/data_science_coursera/coursera_course/h8.Rhistory")
