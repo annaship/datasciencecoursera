@@ -334,7 +334,6 @@ setwd("/Users/ashipunova/Documents/GitHub/datasciencecoursera/")
 getwd()
 s <- "sulfate"
 mean(fl1[[1]][s], na.rm = TRUE)
-mean(fl1[[1]]["s"sulfate], na.rm = TRUE)
 mean(fl1[[1]]["sulfate"], na.rm = TRUE)
 ff <- fl1[[1]]
 ff["sulfate"]
@@ -352,7 +351,6 @@ s
 ff$s
 pp <- "sulfate"
 ff[pp]
-mean(ff[pp], , na.rm = TRUE)
 mean(ff[pp], na.rm = TRUE)
 fp <- ff[pp]
 fp
@@ -2670,10 +2668,8 @@ filter(cran, r_version == "3.1.1", country == "US")
 ?Comparison
 filter(cran, r_version <= "3.0.2", country == "IN")
 filter(cran, country == "US" | country == "IN")
-filter(cran, size > 100500, r_os == "linux-gnu)
 filter(cran, size > 100500, r_os == "linux-gnu")
-is.na(c(3, 5, NA, 10)
-)
+is.na(c(3, 5, NA, 10))
 !is.na(c(3, 5, NA, 10))
 filter(cran, !is.na(r_version))
 cran2 <- select(cran, size:ip_id)
@@ -2967,11 +2963,7 @@ system.time(mean(DT[DT$SEX==1,]$pwgtp15)); system.time(mean(DT[DT$SEX==2,]$pwgtp
 savehistory("~/work/data_science_coursera/cleaning_data/cleaning_data2.Rhistory")
 
 install.package(RMySQL)
-install.packages(RMySQL)
 install.packages("RMySQL")
-uscsDb <- dbConnect(MySQL(), user= "genome", host=genome-mysql.soe.ucsc.edu")
-)
-uscsDb <- dbConnect(MySQL(), user="genome", host="genome-mysql.soe.ucsc.edu")
 library(RMySQL)
 uscsDb <- dbConnect(MySQL(), user="genome", host="genome-mysql.soe.ucsc.edu")
 result <- dbGetQuery(uscsDb, "show databases;"); dbDisconnect(uscsDb)
@@ -3239,8 +3231,6 @@ Z
 if(!file.exists("./data")){dir.create("./data")}
 fileUrl <- "https://data.baltimorecity.gov/api/views/k5ry-ef3g/rows.csv?accessType=DOWNLOAD"
 download.file(fileUrl, destfile = "./data/restaurants.csv", method = "curl")
-restData < read.csv(./data/restaurants.csv")
-restData < read.csv("./data/restaurants.csv")
 restData <- read.csv("./data/restaurants.csv")
 View(restData)
 head(restData, n=3)
@@ -3363,7 +3353,6 @@ ddply(dfx, .(group, sex), summarize,
 mean = round(mean(age), 2),
 sd = round(sd(age), 2))
 detach(plyr)
-detach("plyr)
 detach("plyr")
 detach("dplyr")
 detach(dplyr)
