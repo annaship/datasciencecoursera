@@ -3041,3 +3041,283 @@ htmlCode
 savehistory("~/work/data_science_coursera/h1.Rhistory")
 savehistory("~/work/data_science_coursera/coursera_course/h1.Rhistory")
 
+str(htmlCode)
+library(XML)
+html <- htmlTreeParse(jl, useInternalNodes = T)
+xpathSApply(html, "//title", xmlValue)
+jl
+xpathSApply(html, "//td[@id='col-citeby']", xmlValue)
+jl_url <- sub("s", "", jl)
+jb_url
+sub("s", "", jl)
+jl_url
+html <- htmlTreeParse(jl_url, useInternalNodes = T)
+html <- htmlTreeParse(jl, useInternalNodes = T)
+?htmlTreeParse
+html <- htmlTreeParse(jl, useInternalNodes = T, isURL = T)
+html <- htmlTreeParse(jl, useInternalNodes = T)
+library(httr)
+html2 = get(jl)
+html2 = GET(jl)
+content2 = content(html2, as = "text")
+parsedHtml = htmlParse(content2, asText = T)
+xpathSApply(parsedHtml, "//title", xmlValue)
+xpathSApply(parsedhtml, "//td[@id='col-citeby']", xmlValue)
+xpathSApply(parsedHtml, "//td[@id='col-citeby']", xmlValue)
+str(parsedHtml)
+str(content2)
+pg1 = GET("https://httpbin.org/basic-auth/user/passwd")
+pg1
+pg2 = GET("https://httpbin.org/basic-auth/user/passwd", authenticate("user", "passwd"))
+pg2
+names(pg2)
+google = handle("http://google.com")
+pg1 = GET(handle = google, path= "/")
+pg1 = GET(handle = google, path = "search")
+pg2 = GET(handle = google, path = "search")
+pg1 = GET(handle = google, path= "/")
+pg1
+pg2
+names(pg2)
+names(pg1)
+identical(pg1, pg2)
+myapp = oath_app("twitter", key= "", secret= "")
+myapp = oauth_app("twitter", key= "", secret= "")
+sig = sign_oauth1.0(myapp, token = "", token_secret = "")
+homeTL = GET("https://api.twitter.com/1.1/statuses/home_timeline.json", sig)
+str(homeTL)
+json1 = content(homeTL)
+json2 = jsonlite::fromJSON(toJSON(json1))
+toJSON
+jsonlite::toJSON()
+json2 = jsonlite::fromJSON(jsonlite::toJSON(json1))
+json2
+json2[1,1:4]
+savehistory("~/work/data_science_coursera/coursera_course/h2.Rhistory")
+
+html2 = get(jl)
+html_url = "http://biostat.jhsph.edu/~jleek/contact.html"
+html2 = GET(html_url)
+str(html2)
+content2 = content(html2, as = "text")
+str(content2)
+parsedHtml = htmlParse(content2, asText = T)
+str(parsedHtml)
+parsedHtml
+parsedHtml[10]
+parsedHtml[10,]
+xlass(parsedHtml)
+class(parsedHtml)
+?xpathApply
+?xpathsApply
+xpathsApply(parsedHtml, "//", nchar)
+xpathApply(parsedHtml, "//", nchar)
+xpathApply(parsedHtml, "/", nchar)
+xpathApply(parsedHtml, "/", print)
+xpathApply(parsedHtml, "/", "nchar")
+xpathApply(parsedHtml, "/", xmlGetAttr)
+html_flat <- readLines(html_url)
+length(html_flat)
+dim(html_flat)
+html_flat[1]
+html_flat[10]
+nchar(html_flat[10])
+nchar(html_flat[20])
+nchar(html_flat[30])
+nchar(html_flat[100])
+install.packages("read.fwf")
+read.fwf
+x <- read.fwf(
+file=url("http://www.cpc.ncep.noaa.gov/data/indices/wksst8110.for"),
+skip=4,
+widths=c(12, 7, 4, 9, 4, 9, 4, 9, 4))
+View(x)
+sum(x$V4)
+x1 <- read.fwf(
++     file=url("http://www.cpc.ncep.noaa.gov/data/indices/wksst8110.for"))
+x1 <- read.fwf(file=url("http://www.cpc.ncep.noaa.gov/data/indices/wksst8110.for"))
+head(x)
+sum(25.1, 25.2)
+summary(x)
+dim(x)
+25*1611
+summary(x$V4)
+sum(x$V4)
+library(readr)
+x <- read_fwf(
+file="http://www.cpc.ncep.noaa.gov/data/indices/wksst8110.for",
+skip=4,
+fwf_widths(c(12, 7, 4, 9, 4, 9, 4, 9, 4)))
+str(x)
+sum(x$X4)
+s <- sapply(x, sum)
+s <- sapply(x[,2:9], sum)
+s
+savehistory("~/work/data_science_coursera/coursera_course/h3.Rhistory")
+
+mydata <- data.frame(var4 = substr(x,29,32))
+dd<-read.fwf("http://www.cpc.ncep.noaa.gov/data/indices/wksst8110.for",
+widths=c(10, rep(c(9,4),4)), skip=4)
+mydata <- data.frame(var4 = substr(dd,29,32))
+str(dd$V4)
+cumsum(dd$V4)
+tail(cumsum(dd$V4))
+source('~/work/data_science_coursera/r_github_api.R')
+#install.packages("jsonlite")
+library(jsonlite)
+#install.packages("httpuv")
+library(httpuv)
+#install.packages("httr")
+library(httr)
+# Can be github, linkedin etc depending on application
+oauth_endpoints("github")
+# Change based on what you
+myapp <- oauth_app(appname = "Coursera_John_Hopkins",
+key = "8758a6bf9a146e1da0c1",
+secret = "b9504edde46b794414495bd9c33ea28cbfd87824")
+# Get OAuth credentials
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
+myapp <- oauth_app("github",
+key = "0361e8877782c1238975",
+secret = "f3aa7ef2ac0d21bfb6fe0d4acf9207740b50d118"
+)
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
+# Use API
+gtoken <- config(token = github_token)
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)
+View(req)
+# Take action on http error
+stop_for_status(req)
+# Extract content from a request
+json1 = content(req)
+View(json1)
+# Convert to a data.frame
+gitDF = jsonlite::fromJSON(jsonlite::toJSON(json1))
+View(gitDF)
+# Subset data.frame
+gitDF[gitDF$full_name == "jtleek/datasharing", "created_at"]
+names(gitDF)
+order(gitDF)
+str(gitDF)
+names(gitDF)["created_at"]
+names(gitDF)
+order(names(gitDF))
+sort(names(gitDF))
+gitDF$full_name
+gitDF[gitDF$full_name == "jtleek/datasharing"]
+str(gitDF[gitDF$full_name == "jtleek/datasharing"])
+set.seed
+set.seed(13435)
+X <-data.frame("var1"=sample(1:5), "var2" = sample(6:10, "var3" = sample(11:15)))
+X <-data.frame("var1"=sample(1:5), "var2" = sample(6:10), "var3" = sample(11:15))
+X
+X <-X[sample(1:5),]; X$var2[c(1,3)] = NA
+X
+X[,1]
+X[,"var1"]
+X[1:2, "var2"]
+X[(X$var1 <= 3 & X$var3 >11),]
+X[(X$var1 <= 3 | X$var3 >15),]
+X[which(X$var2 >8),]
+sort(X$var1)
+sort(X$var1, decreasing = T)
+sort(X$var2, na.last = T)
+X[order(X$var1),]
+X[sort(X$var1),]
+X[order(X$var1, X$var3),]
+library(plyr)
+install.packages("plyr")
+library(plyr)
+arrange(X, var1)
+arrange(X, desc(var1))
+X$var4 <- rnorm(5)
+X
+Y <- cbind(X, rnorm(5))
+Y
+Z <- rbind(X, rnorm(4))
+Z
+if(!file.exists("./data")){dir.create("./data")}
+fileUrl <- "https://data.baltimorecity.gov/api/views/k5ry-ef3g/rows.csv?accessType=DOWNLOAD"
+download.file(fileUrl, destfile = "./data/restaurants.csv", method = "curl")
+restData < read.csv(./data/restaurants.csv")
+restData < read.csv("./data/restaurants.csv")
+restData <- read.csv("./data/restaurants.csv")
+View(restData)
+head(restData, n=3)
+tail(restData, n=3)
+summary(restData)
+str(restData)
+quantile(restData$councilDistrict, na.rm = T)
+quantile(restData$councilDistrict, probs = c(0.5, 0.75, 0.9))
+table(restData$zipCode, useNA = "ifany")
+table(restData$councilDistrict, restData$zipCode)
+sum(is.na(restData$councilDistrict))
+any(is.na(restData$councilDistrict))
+all(restData$zipCode > 0)
+any(restData$zipCode > 0)
+colSums(is.na(restData))
+all(colSums(is.na(restData)) == 0)
+all(colSums(is.na(restData[1:6])) == 0)
+table(restData$zipCode %in% c("21212"))
+table(restData$zipCode %in% 21212)
+table(restData$zipCode %in% c("21212", "21213"))
+table(restData$zipCode %in% c(21212, 21213))
+restData[restData$zipCode %in% c(21212, 21213), ]
+str(restData[restData$zipCode %in% c(21212, 21213), ])
+Data(UCBAdmissions)
+data(UCBAdmissions)
+DF = as.data.frame(UCBAdmissions)
+summary(DF)
+xt <- xtabs(Freq ~ Gender + Admit, data = DF)
+xt
+str(DF)
+warpbreaks$replcate <- rep(1:9, len = 54)
+xt1 = xtabs(breaks ~.,data = warpbreaks)
+xt1
+str(warpbreaks$replcate)
+str(warpbreaks)
+ftable(xt1)
+fakeData <- rnorm(1e5)
+object.size(fakeData)
+print(object.size(fakeData), units = "Mb")
+savehistory("~/work/data_science_coursera/coursera_course/h4.Rhistory")
+
+str(restData)
+s1 <- seq(1, 10, by = 2)
+s1
+s1 <- seq(1, 10, length=3)
+s1
+x < c(1,3,8,25,100)
+x <- c(1,3,8,25,100)
+seq(along = x)
+restData$nearMe = restData$neighborhood %in% c("Roland Park", "Homeland")
+table(restData$nearMe)
+restData$zipWrong = ifelse(restData$zipCode < 0, TRUE, FALSE)
+table(restData$zipWrong, restData$zipCode < 0)
+restData$zipGroups = cut(restData$zipCode, breaks = quantile(restData$zipCode))
+table(restData$zipGroups)
+table(restData$zipGroups, restData$zipCode)
+library(Hmisc)
+install.packages("Hmisc")
+library(Hmisc)
+restData$zipGroups2 = cut2(restData$zipCode, g = 4)
+identical(restData$zipGroups, restData$zipGroups2)
+table(restData$zipGroups2)
+restData$zcf <- factor(restData$zipCode)
+restData$zcf[1:10]
+str(restData$zcf)
+class(restData$zcf)
+class(restData$zipCode)
+yesno <- sample(c("yes", "no"), size = 10, replace = T)
+yesnofac <- factor(yesno, levels = c("yes", "no"))
+relevel(yesnofac, ref = "yes")
+as.numeric(yesnofac)
+yesno
+yesnofac
+library(plyr)
+restData2 = mutate(restData, zipGr)
+restData2 = mutate(restData, zipGroups = cut2(zipCode, g=4))
+table(restData2$zipGroups)
+str(restData2)
+savehistory("~/work/data_science_coursera/coursera_course/h5.Rhistory")
+
