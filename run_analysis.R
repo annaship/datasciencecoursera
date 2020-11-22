@@ -4,12 +4,20 @@ temp <- tempfile()
 download.file(file_url, temp)
 
 # str(temp)
-#  chr "/var/folders/j4/90zh63717l98153d_0cyw9140000gn/T//RtmpjTkDQv/file739d5cf0f9e1"s
+#  chr "/var/folders/j4/90zh63717l98153d_0cyw9140000gn/T//RtmpjTkDQv/file739d5cf0f9e1"
 
-destination <- "./data/Dataset.zip"
-arch_info <- unzip(temp, list = FALSE)
+file_destination <- "./data/cleaning_project_data/"
 
-d_data <- read.table(unz(temp, "in_data.dat"))
+# arch_info <- unzip(temp, list = FALSE)
+unzip(temp, exdir = file_destination)
 unlink(temp)
 
-download.file(file_url)
+# awk '{print NF}' X_train.txt | sort -u
+# 561
+# 'data.frame':	7352 obs. of  561 variables:
+
+X_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt", sep = ""))
+
+X_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "X_test.txt", sep = ""))
+
+features <- read.table(paste(file_destination, "UCI HAR Dataset/", "features.txt", sep = ""))
