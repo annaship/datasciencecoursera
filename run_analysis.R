@@ -33,8 +33,10 @@ features <- read.table(paste(file_destination, "UCI HAR Dataset/", "features.txt
 
 activity_labels <- read.table(paste(file_destination, "UCI HAR Dataset/", "activity_labels.txt", sep = ""))
 
-# rename columns in x sets
-## simplify feature names
+# Appropriately label the data set with descriptive variable names.
+
+## rename columns in x sets
+### simplify feature names
 features$V2 %>% 
   tolower() %>%
   str_replace_all("[^a-z ]+", "_") %>%
@@ -43,7 +45,7 @@ features$V2 %>%
 names(x_test) <- feature_names_ok
 names(x_train) <- feature_names_ok
 
-# rename subjects and activities
+## rename subjects and activities
 names(subject_train) <- "subject"
 names(subject_test) <- "subject"
 names(y_test) <- "activity"
@@ -51,33 +53,32 @@ names(y_train) <- "activity"
 
 # TODO: DRY
 
-# combine train set
+## combine train set
 subject_activity_x_train <- cbind(subject_train, y_train, x_train)
 
-# combine test set
+## combine test set
 subject_activity_x_test <- cbind(subject_test, y_test, x_test)
 
-## Merge the training and the test sets to create one data set.
+# Merge the training and the test sets to create one data set.
 
 full_set <- rbind(subject_activity_x_train, subject_activity_x_test)
 
 # Extract only the measurements on the mean and standard deviation for each measurement.
 
-full_set %>%
-  select(matches("_mean_|_std_")) -> mean_std_set
-
-
-
-
-cbind(y_test, subj_activ_x_test) %>%
-  setnames(old = "V1", new = "activity") %>%
-  {.} -> subj_activ_x_test
-
-
-
+# full_set %>%
+#  select(matches("_mean_|_std_")) -> mean_std_set
 
 # Use descriptive activity names to name the activities in the data set
-# Appropriately label the data set with descriptive variable names.
+
+full_set %>%
+     select(subject, activity) %>%
+     cbind(select(full_set, matches("_mean_|_std_"))) %>%
+ {.} -> mean_std_set
+
 # From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+mean_std_set %>% 
+  group_by(subject, activity) %>%
+  summarise(across(everything(), list(mean))) -> all_means
 
 
