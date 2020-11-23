@@ -1,5 +1,5 @@
 ---
-title: "CodeBook"
+title: "CodeBook for Getting and Cleaning Data Course Project"
 author: "Anna Shipunova"
 date: "11/22/2020"
 output:
@@ -8,53 +8,80 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-  knitr::opts_chunk$set(tidy = FALSE, echo = TRUE)
+  knitr::opts_chunk$set(tidy = FALSE, eval=FALSE, echo = TRUE)
 ```
 
-## R Markdown
+## Data origin
 
 As it is said in the instructions, input data are collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at [the site where the data was obtained](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
-
-
 
 ## Work description
 
 1. Download input dataset
 
-```{r download, eval=FALSE, tidy=FALSE}
+```{r download}
   file_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
   if(!file.exists("./data")){ dir.create("./data") }
   temp <- tempfile()
   download.file(file_url, temp)
 ```
   
-+ To better understand what is in the zip archive we can look inside:
+2. To better understand what is in the zip archive we can look inside:
   
-  ```{r dir, eval=FALSE}
-      list.files(temp)
-  ```
-
-# str(temp)
-#  chr "/var/folders/j4/90zh63717l98153d_0cyw9140000gn/T//RtmpjTkDQv/file739d5cf0f9e1"
-
-file_destination <- "./data/cleaning_project_data/"
-
-# arch_info <- unzip(temp, list = FALSE)
-unzip(temp, exdir = file_destination)
-unlink(temp)
-
-
-
-
-```{r cars}
-summary(cars)
+```{r dir1}
+    list.files(temp)
 ```
 
+3. Unzip files
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r unzip}
+  file_destination <- "./data/cleaning_project_data/"
+  unzip(temp, exdir = file_destination)
+  unlink(temp)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+4. To look at the files again:
+
+```{r dir2}
+  list.files(paste(file_destination, "UCI HAR Dataset", sep = ""), recursive = T)
+```
+
+5. Run run_analysis.R script. It will:
+
+    1. Load each file into separate variables.
+        Only the following files were used in this project:
+    
+    ```{r files}
+#├── ./activity_labels.txt
+#├── ./features.txt
+#├── ./test
+#│   ├── ./test/X_test.txt
+#│   ├── ./test/subject_test.txt
+#│   └── ./test/y_test.txt
+#└── ./train
+#    ├── ./train/X_train.txt
+#    ├── ./train/subject_train.txt
+#    └── ./train/y_train.txts
+    ```
+
+    2. Appropriately label the data set with descriptive variable names.
+        1. rename columns in x sets
+            1. simplify feature names
+        2. rename subjects and activities
+      
+    3. Merge the training and the test sets to create one data set.
+        1. merge the train set
+        2. merge the test set
+        3. merge both train + test
+
+    4. Extract only the measurements on the mean and standard deviation for each measurement.
+    
+    5. Use descriptive activity names to name the activities in the data set.
+    
+    6. From the data set in the previous step, create a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+    
+
+
+
+
