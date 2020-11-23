@@ -83,4 +83,5 @@ activity_mean_std_set %>%
   group_by(subject, activity) %>%
   summarise(across(everything(), list(mean))) -> all_means
 
-
+out_file_name <- paste(file_destination, "/tidy_all_means.csv.gz", sep = "")
+write.csv(all_means, file=gzfile(out_file_name))
