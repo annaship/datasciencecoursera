@@ -17,41 +17,28 @@ As it is said in the instructions, input data are collected from the acceleromet
 
 ## Work description
 
-1. Download input dataset
+Run run_analysis.R script. It will:
 
-```{r download}
-  file_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-  if(!file.exists("./data")){ dir.create("./data") }
-  temp <- tempfile()
-  download.file(file_url, temp)
-```
-  
-2. To better understand what is in the zip archive we can look inside:
+    1. Download input dataset
+
+        * To better understand what is in the zip archive we can look inside (this is not in the script):
   
 ```{r dir1}
     list.files(temp)
 ```
 
-3. Unzip files
+    2. Unzip files
 
-```{r unzip}
-  file_destination <- "./data/cleaning_project_data/"
-  unzip(temp, exdir = file_destination)
-  unlink(temp)
-```
-
-4. To look at the files again:
+        * To look at the files run (this is not in the script):
 
 ```{r dir2}
   list.files(paste(file_destination, "UCI HAR Dataset", sep = ""), recursive = T)
 ```
 
-5. Run run_analysis.R script. It will:
-
-    1. Load each file into separate variables.
+    3. Load each file into separate variables.
         Only the following files were used in this project:
     
-    ```{r files}
+```{r files}
 #├── ./activity_labels.txt
 #├── ./features.txt
 #├── ./test
@@ -62,23 +49,23 @@ As it is said in the instructions, input data are collected from the acceleromet
 #    ├── ./train/X_train.txt
 #    ├── ./train/subject_train.txt
 #    └── ./train/y_train.txts
-    ```
+```
 
-    2. Appropriately label the data set with descriptive variable names.
+    4. Appropriately label the data set with descriptive variable names.
         1. rename columns in x sets
             1. simplify feature names
         2. rename subjects and activities
       
-    3. Merge the training and the test sets to create one data set.
+    5. Merge the training and the test sets to create one data set.
         1. merge the train set
         2. merge the test set
         3. merge both train + test
 
-    4. Extract only the measurements on the mean and standard deviation for each measurement.
+    6. Extract only the measurements on the mean and standard deviation for each measurement.
     
-    5. Use descriptive activity names to name the activities in the data set.
+    7. Use descriptive activity names to name the activities in the data set.
     
-    6. From the data set in the previous step, create a second, independent tidy data set with the average of each variable for each activity and each subject.
+    8. From the data set in the previous step, create a second, independent tidy data set with the average of each variable for each activity and each subject.
 
     
 
