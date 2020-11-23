@@ -1,21 +1,16 @@
+# download data
+
 file_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 if(!file.exists("./data")){ dir.create("./data") }
 temp <- tempfile()
 download.file(file_url, temp)
 
-# str(temp)
-#  chr "/var/folders/j4/90zh63717l98153d_0cyw9140000gn/T//RtmpjTkDQv/file739d5cf0f9e1"
-
 file_destination <- "./data/cleaning_project_data/"
 
-# arch_info <- unzip(temp, list = FALSE)
 unzip(temp, exdir = file_destination)
 unlink(temp)
 
-# awk '{print NF}' X_train.txt | sort -u
-# 561
-# 'data.frame':	7352 obs. of  561 variables:
-# list.files(paste(file_destination, "UCI HAR Dataset", sep = ""), recursive = T)
+# load data into R
 
 x_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt", sep = ""))
 
@@ -51,15 +46,13 @@ names(subject_test) <- "subject"
 names(y_test) <- "activity"
 names(y_train) <- "activity"
 
-# TODO: DRY
+# Merge the training and the test sets to create one data set.
 
-## combine train set
+## Merge train set
 subject_activity_x_train <- cbind(subject_train, y_train, x_train)
 
-## combine test set
+## Merge test set
 subject_activity_x_test <- cbind(subject_test, y_test, x_test)
-
-# Merge the training and the test sets to create one data set.
 
 full_set <- rbind(subject_activity_x_train, subject_activity_x_test)
 
