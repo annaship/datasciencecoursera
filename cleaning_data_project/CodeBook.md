@@ -68,9 +68,9 @@ Run run_analysis.R script. It will:
     8. From the data set in the previous step, create a second, independent tidy data set with the average of each variable for each activity and each subject.
     
     9. Write the result into a text file
-
     
+## Variables in the resulting data set
 
-
-
-
+    * subject: subject id
+    * activity: activity names
+    * The rest of the variables are means for the original mean or standart deviation data for each activity/subject.
