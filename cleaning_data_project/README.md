@@ -1,5 +1,5 @@
 ---
-title: "README"
+title: "Getting and Cleaning Data Course Project"
 author: "Anna Shipunova"
 date: "11/22/2020"
 output: html_document
@@ -9,22 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Folder description
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+* README.md: this file
+* CodeBook.md: describes the variables, the data, and transformations etc. performed to clean up the data
+* run_analysis.R: a script for performing the analysis
+* tidy_all_means.csv.zip: a tidy data set as described in the instructions. Has average of each variable for each activity and each subject from the given data.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+[Link to the original data](http://archive.ics.uci.edu/ml/machine-learning-databases/00240/)
 
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+After all the preliminary work is done as described in the CodeBook one can run run_analysis.R to get the resulting file.
