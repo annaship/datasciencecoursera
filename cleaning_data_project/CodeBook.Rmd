@@ -1,0 +1,60 @@
+---
+title: "CodeBook"
+author: "Anna Shipunova"
+date: "11/22/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+  knitr::opts_chunk$set(tidy = FALSE, echo = TRUE)
+```
+
+## R Markdown
+
+As it is said in the instructions, input data are collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at [the site where the data was obtained](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
+
+
+
+## Work description
+
+1. Download input dataset
+
+```{r download, eval=FALSE, tidy=FALSE}
+  file_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+  if(!file.exists("./data")){ dir.create("./data") }
+  temp <- tempfile()
+  download.file(file_url, temp)
+```
+  
++ To better understand what is in the zip archive we can look inside:
+  
+  ```{r dir, eval=FALSE}
+      list.files(temp)
+  ```
+
+# str(temp)
+#  chr "/var/folders/j4/90zh63717l98153d_0cyw9140000gn/T//RtmpjTkDQv/file739d5cf0f9e1"
+
+file_destination <- "./data/cleaning_project_data/"
+
+# arch_info <- unzip(temp, list = FALSE)
+unzip(temp, exdir = file_destination)
+unlink(temp)
+
+
+
+
+```{r cars}
+summary(cars)
+```
+
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
