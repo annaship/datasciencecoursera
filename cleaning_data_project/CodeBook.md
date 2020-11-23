@@ -66,6 +66,8 @@ Run run_analysis.R script. It will:
     7. Use descriptive activity names to name the activities in the data set.
     
     8. From the data set in the previous step, create a second, independent tidy data set with the average of each variable for each activity and each subject.
+    
+    9. Write the result into a text file
 
     
 
