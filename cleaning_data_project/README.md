@@ -16,6 +16,4 @@ knitr::opts_chunk$set(echo = TRUE)
 * run_analysis.R: a script for performing the analysis
 * tidy_all_means.csv.zip: a tidy data set as described in the instructions. Has average of each variable for each activity and each subject from the given data.
 
-[Link to the original data](http://archive.ics.uci.edu/ml/machine-learning-databases/00240/)
-
 After all the preliminary work is done as described in the CodeBook one can run run_analysis.R to get the resulting file.
