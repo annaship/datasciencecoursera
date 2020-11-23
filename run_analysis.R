@@ -65,19 +65,21 @@ full_set <- rbind(subject_activity_x_train, subject_activity_x_test)
 
 # Extract only the measurements on the mean and standard deviation for each measurement.
 
-# full_set %>%
-#  select(matches("_mean_|_std_")) -> mean_std_set
-
-# Use descriptive activity names to name the activities in the data set
-
 full_set %>%
      select(subject, activity) %>%
      cbind(select(full_set, matches("_mean_|_std_"))) %>%
  {.} -> mean_std_set
 
-# From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+# Use descriptive activity names to name the activities in the data set
 
-mean_std_set %>% 
+left_join(mean_std_set, activity_labels, by = c("activity" = "V1")) %>%
+  mutate(activity = V2, .after = subject, .keep = "unused") %T>%
+  str() %>%
+  {.} -> activity_mean_std_set
+
+# From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+activity_mean_std_set %>% 
   group_by(subject, activity) %>%
   summarise(across(everything(), list(mean))) -> all_means
 
