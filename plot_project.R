@@ -46,5 +46,5 @@ while(TRUE) {
   }
 }
 
-my_dataset <- read.table(text = paste(lines, collapse='\n'), header = TRUE, stringsAsFactors = FALSE, sep=';')
+my_dataset <- fread(text = paste(lines, collapse='\n'))
 
