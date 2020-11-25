@@ -4,6 +4,7 @@ library(lubridate)
 library(stringi)
 library(data.table)
 
+# working_dir <- getwd()
 file_destination <- "./data/"
 file_name <- paste(file_destination, "household_power_consumption.txt", sep = "")
 
@@ -29,6 +30,8 @@ make_grep_expression = function() {
   grep_expr <- str_c(grep_expr_list, sep = "", collapse = "|")
   
   # grep -e "^1/2/2007;\|^2/2/2007;" household_power_consumption.txt | tail
+  # no NAs
+  # ~/work/data_science_coursera/coursera_course/data % grep -e "^1/2/2007;\|^2/2/2007;" household_power_consumption.txt | grep "?" | head                    
   grep_expr
 }
 
@@ -67,8 +70,23 @@ fread(text = paste(lines, collapse='\n')) %>%
   my_dataset
 }
 
+first_png = function() {
+  png(file="plot1.png")
+  hist(my_dataset$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
+  dev.off()
+  # /Users/ashipunova/work/data_science_coursera/coursera_course/plot1.png
+}
+
+second_png = function() {
+  png(file="plot1.png")
+  hist(my_dataset$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
+  dev.off()
+  # /Users/ashipunova/work/data_science_coursera/coursera_course/plot1.png
+}
+
 # __main__
 
-lines <- read_data()
-my_dataset <- clean_data(lines)
+#lines <- read_data()
+#my_dataset <- clean_data(lines)
 str(my_dataset)
+first_png()
