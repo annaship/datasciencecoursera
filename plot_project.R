@@ -62,7 +62,7 @@ read_data = function() {
 
 clean_data <- function(lines) {
 fread(text = paste(lines, collapse='\n')) %>%
-  mutate(date_time = mdy_hms(paste(Date, Time)), .keep = "unused") %>% 
+  mutate(date_time = dmy_hms(paste(Date, Time)), .keep = "unused") %>% 
   relocate(date_time) %>%
   # str()
   {.} -> my_dataset
@@ -70,23 +70,63 @@ fread(text = paste(lines, collapse='\n')) %>%
   my_dataset
 }
 
-first_png = function() {
+png1 = function() {
   png(file="plot1.png")
   hist(my_dataset$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
   dev.off()
   # /Users/ashipunova/work/data_science_coursera/coursera_course/plot1.png
 }
 
-second_png = function() {
-  png(file="plot1.png")
-  hist(my_dataset$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
+png2 = function() {
+  png(file="plot2.png")
+  with(my_dataset, 
+       plot(date_time, Global_active_power, 
+            type = 'n', 
+            ylab = "Global Active Power (kilowatts)",
+            xlab = "")
+       )
+  
+  with(my_dataset, 
+    lines(date_time, Global_active_power, pch = 20)
+  )
   dev.off()
-  # /Users/ashipunova/work/data_science_coursera/coursera_course/plot1.png
+}
+
+png3 = function() {
+  png(file="plot2.png")
+  with(my_dataset, 
+       plot(date_time, Global_active_power, 
+            type = 'n', 
+            ylab = "Global Active Power (kilowatts)",
+            xlab = "")
+  )
+  
+  with(my_dataset, 
+       lines(date_time, Global_active_power, pch = 20)
+  )
+  dev.off()
 }
 
 # __main__
-
-#lines <- read_data()
-#my_dataset <- clean_data(lines)
+# download_data()
+lines <- read_data()
+my_dataset <- clean_data(lines)
 str(my_dataset)
-first_png()
+png1()
+png2()
+
+with(my_dataset, 
+     plot(date_time, Sub_metering_1, 
+          type = 'n', 
+          ylab = "Energy sub metering",
+          xlab = "")
+)
+
+with(my_dataset,
+lines(date_time, Sub_metering_1, pch = 20))
+
+with(my_dataset,
+lines(date_time, Sub_metering_2, pch = 20, col = "red"))
+
+with(my_dataset,
+lines(date_time, Sub_metering_3, pch = 20, col = "blue"))
