@@ -2,6 +2,7 @@ library(stringr)
 library(dplyr)
 library(lubridate)
 library(stringi)
+library(data.table)
 
 # file_url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 # if(!file.exists("./data")){ dir.create("./data") }
@@ -15,16 +16,15 @@ file_name <- paste(file_destination, "household_power_consumption.txt", sep = ""
 # unlink(temp)
 #
 data_file <- file(file_name, "r")
+
 used_dates <- c("2007-02-01", "2007-02-02") %>% 
   ymd() %>%
   format("%e/%m/%Y")
-
 single_digit_used_dates <- gsub("/0", "/", used_dates)
 
 grep_expr_list <- lapply(single_digit_used_dates, function(d) {
   paste("^", trimws(d[1]), ";", sep = "")
 })
-
 grep_expr <- str_c(grep_expr_list, sep = "", collapse = "|")
 
 # grep -e "^1/2/2007;\|^2/2/2007;" household_power_consumption.txt | tail
@@ -46,5 +46,9 @@ while(TRUE) {
   }
 }
 
-my_dataset <- fread(text = paste(lines, collapse='\n'))
+fread(text = paste(lines, collapse='\n')) %>%
+  mutate(date_time = mdy_hms(paste(Date, Time)), .keep = "unused") %>% 
+  relocate(date_time) %>%
+  # str()
+  {.} -> my_dataset
 
