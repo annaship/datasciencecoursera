@@ -28,12 +28,21 @@ grep_expr <- str_c(grep_expr_list, sep = "", collapse = "|")
 
 # grep -e "^1/2/2007;\|^2/2/2007;" household_power_consumption.txt | tail
 
-lines <- c()
+lines <- list()
+i <- 1
+
+# Headers
+readLines(data_file, 1)
+lines[[i]] <- line
+i <- i + 1
+
 while(TRUE) {
   line = readLines(data_file, 1)
   # browser()
   if (length(line) == 0) break
   else if(grepl(grep_expr, line)) {
-    lines <- c(lines, line)
-    }
+    lines[[i]] <- line
+    i <- i + 1
+  }
 }
+
