@@ -1,6 +1,7 @@
 library(stringr)
 library(dplyr)
 library(lubridate)
+library(stringi)
 
 # file_url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 # if(!file.exists("./data")){ dir.create("./data") }
@@ -32,8 +33,7 @@ lines <- list()
 i <- 1
 
 # Headers
-readLines(data_file, 1)
-lines[[i]] <- line
+lines[[i]] <- readLines(data_file, 1)
 i <- i + 1
 
 while(TRUE) {
@@ -45,4 +45,6 @@ while(TRUE) {
     i <- i + 1
   }
 }
+
+my_dataset <- read.table(text = paste(lines, collapse='\n'), header = TRUE, stringsAsFactors = FALSE, sep=';')
 
