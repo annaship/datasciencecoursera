@@ -129,20 +129,20 @@ download_data()
 lines <- read_data()
 my_dataset <- clean_data(lines)
 # str(my_dataset)
-png(file="plot1.png")
+png(file="plot1.png", width = 480, height = 480)
 png1()
 dev.off()
 
-png(file="plot2.png")
+png(file="plot2.png", width = 480, height = 480)
 date_time_graph_w_lines(my_dataset$Global_active_power, 
               ylab = "Global Active Power (kilowatts)")
 dev.off()
 
-png(file="plot3.png")
+png(file="plot3.png", width = 480, height = 480)
 png3()
 dev.off()
 
-png(file="plot4.png")
+png(file="plot4.png", width = 480, height = 480)
 png4()
 dev.off()
 
