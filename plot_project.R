@@ -71,14 +71,11 @@ fread(text = paste(lines, collapse='\n')) %>%
 }
 
 png1 = function() {
-  png(file="plot1.png")
   hist(my_dataset$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
-  dev.off()
   # /Users/ashipunova/work/data_science_coursera/coursera_course/plot1.png
 }
 
 png2 = function() {
-  png(file="plot2.png")
   with(my_dataset, 
        plot(date_time, Global_active_power, 
             type = 'n', 
@@ -89,11 +86,9 @@ png2 = function() {
   with(my_dataset, 
     lines(date_time, Global_active_power, pch = 20)
   )
-  dev.off()
 }
 
 png3 = function() {
-  png(file="plot3.png")
   with(my_dataset, 
        plot(date_time, Sub_metering_1, 
             type = 'n', 
@@ -115,17 +110,61 @@ png3 = function() {
   
   with(my_dataset,
        lines(date_time, Sub_metering_3, pch = 20, col = "blue"))
+}
+
+volt_gr = function() {
+  with(my_dataset, 
+       plot(date_time, Voltage, 
+            type = 'n', 
+            ylab = "Voltage",
+            xlab = "datetime")
+  )
   
-  dev.off()
+  with(my_dataset, 
+       lines(date_time, Voltage, pch = 20)
+  )
+}
+
+global_reactive_power_gr = function() {
+  with(my_dataset, 
+       plot(date_time, Global_reactive_power, 
+            type = 'n', 
+            #ylab = "Global Active Power",
+            xlab = "datetime")
+  )
+  
+  with(my_dataset, 
+       lines(date_time, Global_reactive_power, pch = 20)
+  )
+}
+
+png4 = function() {
+  par(mfcol = c(2, 2))
+  png2()
+  png3()
+  volt_gr()
+  global_reactive_power_gr()
 }
 
 # __main__
 
-download_data()
-lines <- read_data()
-my_dataset <- clean_data(lines)
-str(my_dataset)
+#download_data()
+#lines <- read_data()
+#my_dataset <- clean_data(lines)
+#str(my_dataset)
+png(file="plot1.png")
 png1()
+dev.off()
+
+png(file="plot2.png")
 png2()
+dev.off()
+
+png(file="plot3.png")
 png3()
+dev.off()
+
+png(file="plot4.png")
+png4()
+dev.off()
 
