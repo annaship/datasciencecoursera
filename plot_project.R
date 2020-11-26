@@ -93,40 +93,39 @@ png2 = function() {
 }
 
 png3 = function() {
-  png(file="plot2.png")
+  png(file="plot3.png")
   with(my_dataset, 
-       plot(date_time, Global_active_power, 
+       plot(date_time, Sub_metering_1, 
             type = 'n', 
-            ylab = "Global Active Power (kilowatts)",
+            ylab = "Energy sub metering",
             xlab = "")
   )
   
-  with(my_dataset, 
-       lines(date_time, Global_active_power, pch = 20)
+  legend("topright", 
+         legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+         col = c("black", "red", "blue"),
+         lty = 1
   )
+  
+  with(my_dataset,
+       lines(date_time, Sub_metering_1, pch = 20))
+  
+  with(my_dataset,
+       lines(date_time, Sub_metering_2, pch = 20, col = "red"))
+  
+  with(my_dataset,
+       lines(date_time, Sub_metering_3, pch = 20, col = "blue"))
+  
   dev.off()
 }
 
 # __main__
-# download_data()
+
+download_data()
 lines <- read_data()
 my_dataset <- clean_data(lines)
 str(my_dataset)
 png1()
 png2()
+png3()
 
-with(my_dataset, 
-     plot(date_time, Sub_metering_1, 
-          type = 'n', 
-          ylab = "Energy sub metering",
-          xlab = "")
-)
-
-with(my_dataset,
-lines(date_time, Sub_metering_1, pch = 20))
-
-with(my_dataset,
-lines(date_time, Sub_metering_2, pch = 20, col = "red"))
-
-with(my_dataset,
-lines(date_time, Sub_metering_3, pch = 20, col = "blue"))
