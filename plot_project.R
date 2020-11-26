@@ -75,19 +75,6 @@ png1 = function() {
   # /Users/ashipunova/work/data_science_coursera/coursera_course/plot1.png
 }
 
-png2 = function() {
-  with(my_dataset, 
-       plot(date_time, Global_active_power, 
-            type = 'n', 
-            ylab = "Global Active Power (kilowatts)",
-            xlab = "")
-       )
-  
-  with(my_dataset, 
-    lines(date_time, Global_active_power, pch = 20)
-  )
-}
-
 png3 = function() {
   with(my_dataset, 
        plot(date_time, Sub_metering_1, 
@@ -100,6 +87,8 @@ png3 = function() {
          legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
          col = c("black", "red", "blue"),
          lty = 1
+         #,
+#         bty = "n"
   )
   
   with(my_dataset,
@@ -112,37 +101,26 @@ png3 = function() {
        lines(date_time, Sub_metering_3, pch = 20, col = "blue"))
 }
 
-volt_gr = function() {
-  with(my_dataset, 
-       plot(date_time, Voltage, 
-            type = 'n', 
-            ylab = "Voltage",
-            xlab = "datetime")
+date_time_graph_w_lines = function(y, xlab = "", ylab = "") {
+  plot(my_dataset$date_time, y, 
+       type = 'n', 
+       xlab = xlab,
+       ylab = ylab
   )
   
-  with(my_dataset, 
-       lines(date_time, Voltage, pch = 20)
-  )
-}
-
-global_reactive_power_gr = function() {
-  with(my_dataset, 
-       plot(date_time, Global_reactive_power, 
-            type = 'n', 
-            xlab = "datetime")
-  )
-  
-  with(my_dataset, 
-       lines(date_time, Global_reactive_power, pch = 20)
-  )
+  lines(my_dataset$date_time, y, pch = 20)
 }
 
 png4 = function() {
   par(mfcol = c(2, 2))
-  png2()
+  date_time_graph_w_lines(my_dataset$Global_active_power, 
+                          ylab = "Global Active Power")
   png3()
-  volt_gr()
-  global_reactive_power_gr()
+  date_time_graph_w_lines(my_dataset$Voltage, 
+                          xlab = "datetime", ylab = "Voltage")
+  date_time_graph_w_lines(my_dataset$Global_reactive_power, 
+                          xlab = "datetime", 
+                          ylab = "Global_reactive_power")
 }
 
 # __main__
@@ -156,7 +134,8 @@ png1()
 dev.off()
 
 png(file="plot2.png")
-png2()
+date_time_graph_w_lines(my_dataset$Global_active_power, 
+              ylab = "Global Active Power (kilowatts)")
 dev.off()
 
 png(file="plot3.png")
