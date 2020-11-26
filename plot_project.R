@@ -129,7 +129,6 @@ global_reactive_power_gr = function() {
   with(my_dataset, 
        plot(date_time, Global_reactive_power, 
             type = 'n', 
-            #ylab = "Global Active Power",
             xlab = "datetime")
   )
   
@@ -148,10 +147,10 @@ png4 = function() {
 
 # __main__
 
-#download_data()
-#lines <- read_data()
-#my_dataset <- clean_data(lines)
-#str(my_dataset)
+download_data()
+lines <- read_data()
+my_dataset <- clean_data(lines)
+# str(my_dataset)
 png(file="plot1.png")
 png1()
 dev.off()
