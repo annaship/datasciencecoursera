@@ -1,4 +1,5 @@
 library(ggplot2)
+library(dplyr)
 
 file_destination <- "./data/"
 
@@ -40,21 +41,27 @@ plot2 <- function(NEI) {
 
 plot3 <- function(NEI) {
   balt <- subset(NEI, fips == "24510")
-  balt1 <- transform(balt, new_type = as.factor(balt$type), new_year = as.factor(balt$year))
-  type1 <- split(balt1, balt1$new_type)
-  
-  res1 <- tapply(balt1$Emissions, balt1$year, sum)
-  res2 <- transform(res1, year = rownames(res1))
-  
-  qplot(year, Total.Emission, data = res2, facets = . ~ type)
-  for (i in seq(length(type1))) {
+  qplot(as.factor(year), Emissions, data = balt, facets = . ~ as.factor(type)) + labs(x = "Years", title = "Emissions in the Baltimore City")
+}
 
-    names(res2) <- (c("Total.Emission", "Year"))
-    with(res2, ggplot(year, Total.Emission, ylab = "Total Emissions", xlim = c(1998, 2009) ))
-    title(main = unique(type1[[i]]$type))
-  }
+# ===
+# Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
+
+# > length(unique(grep("coal", SCC$SCC.Level.Four, ignore.case = T, value = T )))
+# > length(unique(grep("combustion", SCC$SCC.Level.Four, ignore.case = T, value = T ))) 44
+# > length(unique(grep("combustion", SCC$Short.Name, ignore.case = T, value = T ))) 46
+# > comb_coal <- unique(grep("coal", comb, ignore.case = T, value = T )) 8
+
+plot4 <- function() {
+  coal_combustion0 <- grep("combustion", SCC$Short.Name, ignore.case = T, value = T)
+  coal_combustion1 <- grepl("coal", coal_combustion0, ignore.case = T)
+  
+  coal_combustion <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
+  # sum(coal_combustion) 8
   
 }
+
+
 
 # ===
 
@@ -69,4 +76,4 @@ plot3 <- function(NEI) {
 # clean_year(NEI)
 # plot1(NEI)
 # plot2(NEI)
-plot3(NEI)
+# plot3(NEI)
