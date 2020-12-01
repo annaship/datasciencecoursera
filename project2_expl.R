@@ -53,10 +53,7 @@ plot3 <- function(NEI) {
 # > comb_coal <- unique(grep("coal", comb, ignore.case = T, value = T )) 8
 
 plot4 <- function() {
-  coal_combustion0 <- grep("combustion", SCC$Short.Name, ignore.case = T, value = T)
-  coal_combustion1 <- grepl("coal", coal_combustion0, ignore.case = T)
-  
-  coal_combustion <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
+  coal_combustion_logic <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
   # sum(coal_combustion) 8
   
 }
