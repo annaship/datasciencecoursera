@@ -52,19 +52,18 @@ plot3 <- function(NEI) {
 # > length(unique(grep("combustion", SCC$Short.Name, ignore.case = T, value = T ))) 46
 # > comb_coal <- unique(grep("coal", comb, ignore.case = T, value = T )) 8
 
-plot4 <- function() {
-  coal_combustion_logic <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
-  # sum(coal_combustion) 8
-  # ccl <- SCC$SCC[coal_combustion_logic]
-  coal_combustion_df <- filter(SCC,
-                               grepl("(coal.*combustion)| (combustion.*coal)", Short.Name, ignore.case = T))
-  SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+plot4 <- function(NEI, SCC) {
+
+  coal_combustion_df <- SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
   
-  good_scc <- coal_combustion_df$SCC
+  coal_combustion_df_nei <- merge(NEI, coal_combustion_df, by = "SCC")
   
-  NEI %>% 
-    left_join(coal_combustion_df, by = "SCC") -> coal_combustion_df_nei
-  
+#   coal_combustion_df_nei <- NEI[NEI$SCC %in% coal_combustion_val, ]
+
+#   qplot(as.factor(year), Emissions, data = coal_combustion_df_nei) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+   
+   qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+   
 }
 
 
@@ -83,3 +82,4 @@ plot4 <- function() {
 # plot1(NEI)
 # plot2(NEI)
 # plot3(NEI)
+plot4(NEI, SCC)
