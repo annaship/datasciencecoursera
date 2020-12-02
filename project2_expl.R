@@ -89,12 +89,14 @@ plot6 <- function(NEI, SCC) {
   
   all_years <- as.factor(year)
   p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
-    scale_x_discrete(labels = all_years)
      labs(x = "Years", title = "Motor vehicle emissions in Baltimore") + 
-       #+ geom_point()
-       # scale_x_continuous(name="Years", limits=as.factor(year))
+     scale_y_continuous(name = "Years", limits = c(10, 66))
+  #+ geom_point()
+     
+  p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + 
+    labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA") +
+    scale_y_continuous(name = "Years", limits = c(10, 66))
   
-  p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
   grid.arrange(p1, p2, nrow = 1)
   
 }
