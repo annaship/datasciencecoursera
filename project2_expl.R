@@ -55,6 +55,15 @@ plot3 <- function(NEI) {
 plot4 <- function() {
   coal_combustion_logic <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
   # sum(coal_combustion) 8
+  # ccl <- SCC$SCC[coal_combustion_logic]
+  coal_combustion_df <- filter(SCC,
+                               grepl("(coal.*combustion)| (combustion.*coal)", Short.Name, ignore.case = T))
+  SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+  
+  good_scc <- coal_combustion_df$SCC
+  
+  NEI %>% 
+    left_join(coal_combustion_df, by = "SCC") -> coal_combustion_df_nei
   
 }
 
