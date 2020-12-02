@@ -1,5 +1,6 @@
 library(ggplot2)
 library(dplyr)
+library(gridExtra)
 
 file_destination <- "./data/"
 
@@ -78,6 +79,25 @@ plot5 <- function(NEI, SCC) {
 # ===
 # Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (\color{red}{\verb|fips == "06037"|}fips == "06037"). Which city has seen greater changes over time in motor vehicle emissions?
 
+plot6 <- function(NEI, SCC) {
+  
+  vehicle_df <- SCC[grepl("Motor Vehicl", SCC$Short.Name, ignore.case = T),]
+  
+  vehicle_df_nei <- merge(NEI, vehicle_df, by = "SCC")
+  vehicle_df_nei_Balt <- subset(vehicle_df_nei, fips == "24510")
+  vehicle_df_nei_LA <- subset(vehicle_df_nei, fips == "06037")
+  
+  all_years <- as.factor(year)
+  p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+    scale_x_discrete(labels = all_years)
+     labs(x = "Years", title = "Motor vehicle emissions in Baltimore") + 
+       #+ geom_point()
+       # scale_x_continuous(name="Years", limits=as.factor(year))
+  
+  p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+  grid.arrange(p1, p2, nrow = 1)
+  
+}
 
 # __main__
 
@@ -93,3 +113,4 @@ plot5 <- function(NEI, SCC) {
 # plot3(NEI)
 # plot4(NEI, SCC)
 # plot5(NEI, SCC)
+plot6(NEI, SCC)
