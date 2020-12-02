@@ -57,18 +57,27 @@ plot4 <- function(NEI, SCC) {
   coal_combustion_df <- SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
   
   coal_combustion_df_nei <- merge(NEI, coal_combustion_df, by = "SCC")
-  
-#   coal_combustion_df_nei <- NEI[NEI$SCC %in% coal_combustion_val, ]
 
-#   qplot(as.factor(year), Emissions, data = coal_combustion_df_nei) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
-   
    qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
    
 }
 
+# ===
+# How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
 
+plot5 <- function(NEI, SCC) {
+  
+  vehicle_df <- SCC[grepl("Motor Vehicl", SCC$Short.Name, ignore.case = T),]
+  
+  merge(NEI, vehicle_df, by = "SCC") %>%
+    subset(fips == "24510") -> vehicle_df_nei_balt
+  
+  qplot(as.factor(year), Emissions, data = vehicle_df_nei_balt, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+}
 
 # ===
+# Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (\color{red}{\verb|fips == "06037"|}fips == "06037"). Which city has seen greater changes over time in motor vehicle emissions?
+
 
 # __main__
 
@@ -82,4 +91,5 @@ plot4 <- function(NEI, SCC) {
 # plot1(NEI)
 # plot2(NEI)
 # plot3(NEI)
-plot4(NEI, SCC)
+# plot4(NEI, SCC)
+# plot5(NEI, SCC)
