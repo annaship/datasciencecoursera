@@ -14,27 +14,27 @@ download_data = function() {
   unlink(temp)
 }
 
-# ===
-# 1) Have total emissions from PM2.5 decreased in the United States from 1999 to 2008? Using the base plotting system, make a plot showing the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008.
-
 clean_year <- function(NEI) {
   y <- as.Date(as.character(NEI$year), "%Y")
   NEI$year <- as.factor(y)
 }
 
-plot1 <- function(NEI) {
+# ===
+# 1) Have total emissions from PM2.5 decreased in the United States from 1999 to 2008? Using the base plotting system, make a plot showing the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008.
+
+plot1 <- function(NEI, title = "") {
   res1 <- tapply(NEI$Emissions, NEI$year, sum)
   res2 <- transform(res1, year = rownames(res1))
   names(res2) <- (c("Total.Emission", "Year"))
   with(res2, plot(year, Total.Emission, ylab = "Total Emissions", xlim = c(1998, 2009) ))
+  title(main = title)
 }
 # ===
 # 2) Have total emissions from PM2.5 decreased in the Baltimore City, Maryland (\color{red}{\verb|fips == "24510"|}fips == "24510") from 1999 to 2008? Use the base plotting system to make a plot answering this question.
 
 plot2 <- function(NEI) {
   balt <- subset(NEI, fips == "24510")
-  plot1(balt)
-  title(main = "Total emissions in the Baltimore City")
+  plot1(balt, "Total emissions in the Baltimore City")
 }
   
 # ===
@@ -42,7 +42,12 @@ plot2 <- function(NEI) {
 
 plot3 <- function(NEI) {
   balt <- subset(NEI, fips == "24510")
-  qplot(as.factor(year), Emissions, data = balt, facets = . ~ as.factor(type)) + labs(x = "Years", title = "Emissions in the Baltimore City") + geom_point()
+  
+  p3 <- qplot(as.factor(year), Emissions, 
+        data = balt, 
+        facets = . ~ as.factor(type)) + 
+    labs(x = "Years", title = "Emissions in the Baltimore City by Type")
+  print(p3)
 }
 
 # ===
@@ -59,7 +64,11 @@ plot4 <- function(NEI, SCC) {
   
   coal_combustion_df_nei <- merge(NEI, coal_combustion_df, by = "SCC")
 
-   qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources") + geom_point()
+  p4 <- qplot(as.factor(year), Emissions, 
+         data = coal_combustion_df_nei, 
+         facets = . ~ as.factor(SCC)) + 
+     labs(x = "Years", title = "Emissions from coal combustion-related sources")
+   print(p4)
    
 }
 
@@ -73,7 +82,12 @@ plot5 <- function(NEI, SCC) {
   merge(NEI, vehicle_df, by = "SCC") %>%
     subset(fips == "24510") -> vehicle_df_nei_balt
   
-  qplot(as.factor(year), Emissions, data = vehicle_df_nei_balt, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources") + geom_point()
+  p5 <- qplot(as.factor(year), Emissions, 
+        data = vehicle_df_nei_balt, 
+        facets = . ~ as.factor(SCC)) + 
+    labs(x = "Years", title = "Emissions from motor vehicle sources for Baltimore")
+  print(p5)
+
 }
 
 # ===
@@ -125,15 +139,15 @@ plot6 <- function(NEI, SCC) {
 
 # __main__
 
-download_data()
+#download_data()
 
-NEI <- readRDS("data/summarySCC_PM25.rds")
-SCC <- readRDS("data/Source_Classification_Code.rds")
+#NEI <- readRDS("data/summarySCC_PM25.rds")
+#SCC <- readRDS("data/Source_Classification_Code.rds")
 
 clean_year(NEI)
 
 png(file = "plot1.png")
-plot1(NEI)
+plot1(NEI, "Total emissions in the US")
 dev.off()
 
 png(file = "plot2.png")
