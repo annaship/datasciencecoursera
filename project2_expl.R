@@ -169,3 +169,5 @@ dev.off()
 png(file = "plot6.png")
 plot6(NEI, SCC)
 dev.off()
+
+# For plot 3, it is better to sum up by type to clearly see the trend by type. Similarly, plot5 and 6 to sum up would make more sense to see the trend by year. By splitting data into multiple panels by scc source code, it is hard to draw a conclusion. Also, SCC column EI.Sector has category for motor vehicle, which is is a better criteria than using Short Name. Your sum seems to be much lower, so some records must have been left out.
