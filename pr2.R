@@ -1,24 +1,37 @@
-filt1 <- with(storm_data_csv, FATALITIES >= mean(FATALITIES, na.rm = T))
-filt2 <- with(storm_data_csv, INJURIES >= mean(INJURIES, na.rm = T))
+storm_data_csv[order(-storm_data_csv$FATALITIES),] %>% 
+  select(FATALITIES) %>%
+  head(10) %>%
+  {.} -> fat10
 
-order(storm_data_csv$FATALITIES, decreasing = T) %>% head(10) -> fat10
+storm_data_csv[order(-storm_data_csv$INJURIES),] %>% 
+  select(INJURIES) %>%
+  head(10) %>%
+  {.} -> inj10
 
-order(storm_data_csv$INJURIES, decreasing = T) %>% head(10) -> inj10
-
-filter(storm_data_csv, FATALITIES %in% fat10) %>% head
-       
-        %in% fat10 | INJURIES %in% inj10) %>% 
+storm_data_csv %>%
+  filter(FATALITIES >= min(fat10) | INJURIES >= min(inj10) ) %>% 
   select(STATE__, STATE, EVTYPE, FATALITIES, INJURIES) %>%
-  group_by(EVTYPE) -> new_data_health
-  
+  group_by(EVTYPE) %>%
+  {.} -> new_data_health
 
-new_data <- filter(storm_data_csv, filt1 | filt2)
-new_data %>%
-select(STATE__, STATE, EVTYPE, FATALITIES, INJURIES) %>%
-group_by(EVTYPE) -> new_data_health
 
-ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
+storm_data_csv %>%
+  filter(FATALITIES >= min(fat10) | INJURIES >= min(inj10) ) %>% 
+  select(STATE__, STATE, EVTYPE, fat_inj = FATALITIES) %>%
+  transform(health_type = "FATALITIES") %>%
+  {.} -> new_data_fat
+
+storm_data_csv %>%
+  filter(FATALITIES >= min(fat10) | INJURIES >= min(inj10) ) %>% 
+  select(STATE__, STATE, EVTYPE, fat_inj = INJURIES) %>%
+  transform(health_type = "INJURIES") %>%
+  {.} -> new_data_inj
+
+rbind(new_data_fat, new_data_inj) %>% head(2)
+
+
+ggplot(data=new_data_health, aes(x=EVTYPE, y=FATALITIES)) +
   geom_bar(stat="identity")
 # Use position=position_dodge()
-ggplot(data=df2, aes(x=dose, y=len, fill=supp)) +
+ggplot(data=new_data_health, aes(x=EVTYPE, y=INJURIES)) +
   geom_bar(stat="identity", position=position_dodge())
