@@ -54,35 +54,10 @@ storm_data_csv <- read.csv(file_destination)
 one_max_fat = storm_data_csv[storm_data_csv$FATALITIES == max(storm_data_csv$FATALITIES),]
 
 one_max_inj = storm_data_csv[storm_data_csv$INJURIES == max(storm_data_csv$INJURIES),]
-```
-```{r health by state}
-
-storm_data_csv %>% 
-  group_by(STATE) %>%
-  filter(FATALITIES == max(FATALITIES)) %>%
-  select(STATE, EVTYPE) %>% 
-  unique() %>%
-  {.} -> fatal_by_state
-
-storm_data_csv %>% 
-  group_by(STATE) %>%
-  filter(INJURIES == max(INJURIES)) %>%
-  select(STATE, EVTYPE) %>% 
-  unique() %>%
-  {.} -> inj_by_state
 
 get_max10 = function(input_data, clmn_name) {
   input_data %>%
     slice_max(order_by = !!as.symbol(clmn_name), n = 10)
-}
-
-fat_10_max <- get_max10(storm_data_csv, "FATALITIES")
-inj_10_max <- get_max10(storm_data_csv, "INJURIES")
-
-unique_max = function(input_data) {
-  input_data %>% 
-    aggregate(fat_inj ~ EVTYPE, ., max) %>%
-    left_join(input_data) 
 }
 
 prepare_for_join = function(input_data, clmn_name) {
@@ -92,6 +67,15 @@ prepare_for_join = function(input_data, clmn_name) {
     group_by(EVTYPE)
 }
 
+unique_max = function(input_data) {
+  input_data %>% 
+    aggregate(fat_inj ~ EVTYPE, ., max) %>%
+    left_join(input_data) 
+}
+
+fat_10_max <- get_max10(storm_data_csv, "FATALITIES")
+inj_10_max <- get_max10(storm_data_csv, "INJURIES")
+
 new_data_inj0 <- prepare_for_join(inj_10_max, "INJURIES")
 new_data_fat0 <- prepare_for_join(fat_10_max, "FATALITIES")
 
@@ -100,6 +84,18 @@ new_data_inj <- unique_max(new_data_inj0)
 
 new_data_health <- rbind(new_data_fat, new_data_inj)
 
+```
+```{r health by state}
+
+by_state = function(input_data, clmn_name) {
+  input_data %>% 
+  group_by(STATE) %>%
+  filter(!!as.symbol(clmn_name) == max(!!as.symbol(clmn_name))) %>%
+  select(STATE, EVTYPE) %>% 
+  unique()
+}
+fatal_by_state <- by_state(storm_data_csv, "FATALITIES")
+inj_by_state <- by_state(storm_data_csv, "INJURIES")
 ```
 
 <!-- 2. Across the United States, which types of events have the greatest economic consequences? -->
