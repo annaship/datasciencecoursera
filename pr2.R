@@ -81,4 +81,6 @@ ggplot(data=new_data_health, aes(x=EVTYPE, y=fat_inj, fill = health_type)) +
 ggplot(data=new_data_health, aes(x=EVTYPE, y=fat_inj, fill = health_type)) +
   geom_bar(stat="identity", position=position_dodge()) +
   geom_text(aes(label=fat_inj), vjust=1.6, color="white",
-            position = position_dodge(0.9), size=3.5)
+            position = position_dodge(0.9), size=3.5) +
+  labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to population health") + 
+    guides(fill=guide_legend(title="Harm type"))
