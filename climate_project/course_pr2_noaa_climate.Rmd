@@ -7,14 +7,21 @@ output:
     css: ./storm_data/mystyle.css
 ---
 
-```{r comment='', echo=FALSE, results='asis'}
+```{r comment = '', echo = FALSE, results = 'asis'}
 
 writeLines("
 table {
-    width: 100%;
-    display: block;
-    border: 1px solid;
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  width: 100%;
+  display: block;
+  border: 1px solid;
 }
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+
 tbody {
     height: 20em;
     display: inline-block;
@@ -32,11 +39,12 @@ caption {
 
 ```{r setup}
 if(!file.exists("./storm_data")){ dir.create("./storm_data") }
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
 knitr::opts_knit$set(root.dir = "./storm_data")
 library(readr)
 library(dplyr)
 library(ggplot2)
+library(kableExtra)
 
 ```
 
@@ -95,13 +103,16 @@ storm_data_csv %>%
 ```
 
 ```{r comment='', echo=FALSE, results='asis'}
-knitr::kable(fatal_by_state[order(fatal_by_state$STATE),], 
-            caption = "Fatalities by state", 
-            floating.environment = "sidewaystable")
- 
+
+fatal_by_state[order(fatal_by_state$STATE),] %>%
+  kable(caption = "<b>Fatalities by state</b>") %>%
+  kable_classic(full_width = F) %>%
+  kable_material("striped") %>%
+  kable_styling(fixed_thead = T) %>%
+  scroll_box(width = "100%", height = "20em")
+
 knitr::kable(inj_by_state[order(inj_by_state$STATE),], 
-            caption = "Injuries by state", 
-            floating.environment = "sidewaystable")
+            caption = "Injuries by state")
 ```
 
 2. Across the United States, which types of events have the greatest economic consequences?
@@ -135,12 +146,10 @@ storm_data_csv %>%
 
 ```
 
-```{r comment='', echo=FALSE, results='asis'}
+```{r comment = '', echo = FALSE, results = 'asis'}
 knitr::kable(PROPDMG_by_state[order(PROPDMG_by_state$STATE),], 
-            caption = "Property damage by state", 
-            floating.environment="sidewaystable")
+            caption = "Property damage by state")
  
 knitr::kable(CROPDMG_by_state[order(CROPDMG_by_state$STATE),], 
-            caption = "Crop damage by state", 
-            floating.environment="sidewaystable")
+            caption = "Crop damage by state")
 ```
