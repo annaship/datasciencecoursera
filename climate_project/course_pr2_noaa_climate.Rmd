@@ -10,28 +10,11 @@ output:
 ```{r comment = '', echo = FALSE, results = 'asis'}
 
 writeLines("
-table {
-  margin: auto;
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
-  width: 100%;
-  display: block;
-  border: 1px solid;
-}
-table thead th { border-bottom: 1px solid #ddd; }
-th, td { padding: 5px; }
-thead, tfoot, tr:nth-child(even) { background: #eee; }
-
-tbody {
-    height: 20em;
-    display: inline-block;
-    width: 100%;
-    overflow: auto;
-}
 caption {
-    width: 100%;
-    font-weight: bold;
-    font-size: 2em;
+color: black;
+text-align: center;
+font-weight: bold;
+font-size: x-large;
 }
 ", 
            con = "mystyle.css")
@@ -104,15 +87,19 @@ storm_data_csv %>%
 
 ```{r comment='', echo=FALSE, results='asis'}
 
-fatal_by_state[order(fatal_by_state$STATE),] %>%
-  kable(caption = "<b>Fatalities by state</b>") %>%
+kable_tab = function(x, caption = "") {
+  x %>%
+  kable(caption = caption) %>%
   kable_classic(full_width = F) %>%
   kable_material("striped") %>%
   kable_styling(fixed_thead = T) %>%
-  scroll_box(width = "100%", height = "20em")
+  scroll_box(height = "20em")
+}
 
-knitr::kable(inj_by_state[order(inj_by_state$STATE),], 
-            caption = "Injuries by state")
+kable_tab(fatal_by_state[order(fatal_by_state$STATE),], caption = "Fatalities by state")
+
+kable_tab(inj_by_state[order(inj_by_state$STATE),], caption = "Injuries by state")
+
 ```
 
 2. Across the United States, which types of events have the greatest economic consequences?
