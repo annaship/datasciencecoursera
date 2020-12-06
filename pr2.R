@@ -1,3 +1,17 @@
+get_max10 = function(input_data, clmn_name) {
+  input_data %>%
+  group_by(EVTYPE) %>%
+    arrange(-!!as.symbol(clmn_name)) %>%
+    slice(10)
+}
+
+# !!as.symbol(column)
+# df %>% 
+#   filter_at(vars(column), any_vars(. == 1))
+
+
+a10_1 <- get_max10(storm_data_csv, "FATALITIES")
+
 storm_data_csv[order(-storm_data_csv$FATALITIES),] %>% 
   select(FATALITIES) %>%
   head(10) %>%
@@ -19,11 +33,14 @@ storm_data_csv %>%
   filter(FATALITIES >= min(fat10) | INJURIES >= min(inj10) ) %>% 
   select(STATE__, STATE, EVTYPE, fat_inj = FATALITIES) %>%
   transform(health_type = "FATALITIES") %>%
-  aggregate(fat_inj ~ EVTYPE, ., max) %>%
-
-    left_join() %>%
-  group_by(EVTYPE) %>%
   {.} -> new_data_fat
+
+new_data_fat %>% aggregate(fat_inj ~ EVTYPE, ., max) %>%
+    left_join(new_data_fat) %>%
+  {.} -> new_data_fat
+
+  
+  # group_by(EVTYPE) %>%
 
 mydf %>%
   group_by(Sample) %>% # for each unique sample
