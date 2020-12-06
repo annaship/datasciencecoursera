@@ -6,7 +6,8 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+if(!file.exists("./storm_data")){ dir.create("./storm_data") }
+knitr::opts_chunk$set(echo = TRUE, root.dir = "./storm_data")
 library(readr)
 
 ```
@@ -33,25 +34,11 @@ There should be a section titled Results in which your results are presented.
 getwd()
 file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
 
-if(!file.exists("./storm_data")){ dir.create("./storm_data") }
-
-file_destination = "./storm_data"
-
-temp <- tempfile()
-download.file(file_url, temp)
-list.files(temp, all.files = T)
-file.exists("temp")
-read.csv("file.csv.bz2")
-
-unzip(temp, exdir = file_destination)
-unlink(temp)
-
-setwd("./storm_data")
-
-read.csv("file.csv.bz2")
+file_destination = "StormData.csv.bz2"
+download.file(file_url, destfile = file_destination)
 
 
-storm_data_csv <- readr::read_csv(file_url, )
+storm_data_csv <- read.csv(file_destination)
 
 ```
 
