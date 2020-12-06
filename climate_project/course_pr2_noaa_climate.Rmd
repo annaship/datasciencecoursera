@@ -2,22 +2,49 @@
 title: "climate_data_analysis"
 author: "Anna Shipunova"
 date: "12/5/2020"
-output: html_document
+output: 
+  html_document:
+    css: ./storm_data/mystyle.css
 ---
+
+```{r comment='', echo=FALSE, results='asis'}
+
+writeLines("
+table {
+    width: 100%;
+    display: block;
+    border: 1px solid;
+}
+tbody {
+    height: 20em;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
+caption {
+    width: 100%;
+    font-weight: bold;
+    font-size: 2em;
+}
+", 
+           con = "mystyle.css")
+```
 
 ```{r setup}
 if(!file.exists("./storm_data")){ dir.create("./storm_data") }
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = "./storm_data")
 library(readr)
+library(dplyr)
+library(ggplot2)
 
 ```
 
-## Title:   
-Your document should have a title that briefly summarizes your data analysis
+## Which types of severe weather events have most health and economics impact.
 
 ## Synopsis:  
 Immediately after the title, there should be a synopsis which describes and summarizes your analysis in at most 10 complete sentences.
+Most fatalities are caused by **heat** and most injures by **tornadoes**.
 
 ## Data Processing  
 There should be a section titled Data Processing which describes (in words and code) how the data were loaded into R and processed for analysis. In particular, your analysis must start from the raw CSV file containing the data. You cannot do any preprocessing outside the document. If preprocessing is time-consuming you may consider using the \color{red}{\verb|cache = TRUE|}cache = TRUE option for certain code chunks.
@@ -25,14 +52,7 @@ There should be a section titled Data Processing which describes (in words and c
 ## Results  
 There should be a section titled Results in which your results are presented.
 
-## Questions
-
-1. Across the United States, which types of events (as indicated in the \color{red}{\verb|EVTYPE|}EVTYPE variable) are most harmful with respect to population health?  
-2. Across the United States, which types of events have the greatest economic consequences?
-
-
 ```{r downloading_data, cache=TRUE}
-getwd()
 file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
 
 file_destination = "StormData.csv.bz2"
@@ -41,13 +61,86 @@ download.file(file_url, destfile = file_destination)
 storm_data_csv <- read.csv(file_destination)
 
 ```
+## Questions
 
-## Including Plots
+1. Across the United States, which types of events (as indicated in the EVTYPE variable) are most harmful with respect to population health?  
 
-You can also embed plots, for example:
+```{r health}
+max_fat = storm_data_csv[storm_data_csv$FATALITIES == max(storm_data_csv$FATALITIES),]
+max_fat$EVTYPE %>% unique()
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+max_inj = storm_data_csv[storm_data_csv$INJURIES == max(storm_data_csv$INJURIES),]
+max_inj$EVTYPE %>% unique()
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The same by state:
+
+```{r health by state}
+
+storm_data_csv %>% 
+  group_by(STATE) %>%
+  filter(FATALITIES == max(FATALITIES)) %>%
+  select(STATE, EVTYPE) %>% 
+  unique() %>%
+  {.} -> fatal_by_state
+
+storm_data_csv %>% 
+  group_by(STATE) %>%
+  filter(INJURIES == max(INJURIES)) %>%
+  select(STATE, EVTYPE) %>% 
+  unique() %>%
+  {.} -> inj_by_state
+
+```
+
+```{r comment='', echo=FALSE, results='asis'}
+knitr::kable(fatal_by_state[order(fatal_by_state$STATE),], 
+            caption = "Fatalities by state", 
+            floating.environment = "sidewaystable")
+ 
+knitr::kable(inj_by_state[order(inj_by_state$STATE),], 
+            caption = "Injuries by state", 
+            floating.environment = "sidewaystable")
+```
+
+2. Across the United States, which types of events have the greatest economic consequences?
+
+```{r economics}
+max_PROPDMG <- filter(storm_data_csv, PROPDMG == max(PROPDMG)) 
+max_PROPDMG$EVTYPE %>% unique()
+
+max_CROPDMG <- filter(storm_data_csv, CROPDMG == max(CROPDMG)) 
+max_CROPDMG$EVTYPE %>% unique()
+
+```
+
+The same by state:
+
+```{r economics by state}
+
+storm_data_csv %>% 
+  group_by(STATE) %>%
+  filter(PROPDMG == max(PROPDMG)) %>%
+  select(STATE, EVTYPE) %>% 
+  unique() %>%
+  {.} -> PROPDMG_by_state
+
+storm_data_csv %>% 
+  group_by(STATE) %>%
+  filter(CROPDMG == max(CROPDMG)) %>%
+  select(STATE, EVTYPE) %>% 
+  unique() %>%
+  {.} -> CROPDMG_by_state
+
+```
+
+```{r comment='', echo=FALSE, results='asis'}
+knitr::kable(PROPDMG_by_state[order(PROPDMG_by_state$STATE),], 
+            caption = "Property damage by state", 
+            floating.environment="sidewaystable")
+ 
+knitr::kable(CROPDMG_by_state[order(CROPDMG_by_state$STATE),], 
+            caption = "Crop damage by state", 
+            floating.environment="sidewaystable")
+```
