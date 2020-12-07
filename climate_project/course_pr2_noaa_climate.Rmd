@@ -144,8 +144,19 @@ CROPDMG_by_state <- by_state(storm_data_csv, "CROPDMG")
 <!-- Injuries for all the US: `r one_max_inj$EVTYPE %>% unique()`.   -->
 
 ```{r health_plot}
-ggplot(data = new_data_health, 
-       aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+
+total_number_table <- table(new_data_health$total_number)
+total_number_levels <- names(total_number_table)[order(total_number_table)]
+new_data_health$total_number_ord <- factor(new_data_health$total_number, levels = total_number_levels)
+
+new_data_health$total_number_ord2 <- with(new_data_health, reorder(total_number, total_number, function(x) -length(x)))
+
+new_data_health %>%
+  
+ggplot(
+  # data = new_data_health, 
+       aes(y = total_number_ord2, x = EVTYPE, fill = dmg_type)) +
+  coord_flip() +
   geom_bar(stat = "identity", position = position_dodge()) +
   geom_text(aes(label = total_number), 
             hjust = 1.6,
