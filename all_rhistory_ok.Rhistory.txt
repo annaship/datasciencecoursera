@@ -3678,3 +3678,4206 @@ str(ida_df[ida_df$ACR == 3 & ida_df$AGS == 6,])
 str(ida_df$SERIALNO[ida_df$ACR == 3 & ida_df$AGS == 6,])
 str(ida_df$SERIALNO[ida_df$ACR == 3 & ida_df$AGS == 6])
 savehistory("~/work/data_science_coursera/coursera_course/h8.Rhistory")
+download.file(fgdp_url, destfile = "./data/FGDP.csv", method = "curl")
+fgdp <- read_csv("./data/FGDP.csv")
+View(fgdp)
+fgdp <- read_csv("./data/FGDP.csv", skip = 4)
+mm <- sapply(fgdp$X5, gsub(",", ""))
+gsub(",", "", fgdp$X5) %>% head()
+gsub(",", "", fgdp$X5) %>% as.numeric %>% head
+gsub(",", "", fgdp$X5) %>% as.numeric %>% mean(rm.na = T)
+amm <- gsub(",", "", fgdp$X5)
+tail(amm)
+amm[!is.na(amm)] %>% length()
+amm <- amm[!is.na(amm)]
+mean(amm)
+str(amm)
+amm <- (gsub(",", "", fgdp$X5) %>% as.numeric)
+str(amm)
+tail(amm)
+length(amm)
+amm <- amm[!is.na(amm)]
+length(amm)
+mean(amm)
+tail(fgdp)
+mm <- fgdp$X5
+tail(mm)
+mm <- mm[!is.na(mm)]
+tail(mm)
+tail(fgdp, n = 15)
+mm <- gsub(",", "", mm)
+mm <- as.numeric(mm)
+any(is.na(mm))
+which(is.na(mm))
+mm[191]
+fgdp$X5[191]
+fgdp$X5[c(paste(which(is.na(mm)), sep = ","))]
+mean(mm, rm.na = T)
+mm
+mmi <- mm[!is.na(mm)]
+mean(mmi)
+gdp_new <- read_csv(/Users/ashipunova/Downloads/GDP.csv)
+gdp_new <- read_csv("/Users/ashipunova/Downloads/GDP.csv")
+GDPrank <- data.table::fread('https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv'
+, skip=5
+, nrows=190
+, select = c(1, 2, 4, 5)
+, col.names=c("CountryCode", "Rank", "Country", "GDP")
+)
+View(GDPrank)
+gsub(pattern = ",", replacement = "", GDPrank$GDP) %>% head
+gsub(pattern = ",", replacement = "", GDPrank$GDP) %>% str_trim() %>% head
+gsub(pattern = ",", replacement = "", GDPrank$GDP) %>% str_trim() %>% as.numeric %>% head
+mmp <- (gsub(pattern = ",", replacement = "", GDPrank$GDP) %>% str_trim() %>% as.numeric)
+mean(mmp)
+names(GDPrank)
+names(GDPrank)[1]
+names(GDPrank)[3] <- "countryNames"
+GDPrank %>% grep("^United", countryNames)
+grep("^United", GDPrank$countryNames)
+countryNames <- GDPrank$countryNames
+grep("^United", countryNames)
+grep("^United", countryNames), 3
+grep("^United", countryNames, value = T)
+grep("^United", countryNames[1:98], value = T)
+countryNames[99]
+countryNames[186]
+grep("^United", countryNames[-c(99, 186)], value = T)
+f_name32
+data2<-read.csv(dest32,stringsAsFactors = FALSE)
+str(data2)
+View(data2)
+rank_long <- join(data2, GDPrank, by = "CountryCode")
+rank_long <- plyr::join(data2, GDPrank, by = "CountryCode")
+View(rank_long)
+grep("year", names(rank_long), value = T)
+grep("end", names(rank_long), value = T)
+rank_long$National.accounts.base.year
+rank_long$National.accounts.base.year[length(rank_long$National.accounts.base.year) > 4]
+rank_long$National.accounts.base.year[length(rank_long$National.accounts.base.year) > 6]
+rank_long$National.accounts.base.year[[1]]
+rank_long$National.accounts.base.year[[1]] %>% length()
+rank_long$National.accounts.base.year[[1]] %>% nchar
+rank_long$National.accounts.base.year[nchar(rank_long$National.accounts.base.year) > 4]
+year_name <- grep("year", names(rank_long), value = T)
+fisc_name <- grep("fisc", names(rank_long), value = T)
+year_name
+rank_long$National.accounts.reference.year[nchar(rank_long$National.accounts.reference.year) > 4]
+rank_long$National.accounts.reference.year
+rank_long$National.accounts.reference.year[nchar(rank_long$National.accounts.reference.year) > 4 & !is.na(rank_long$National.accounts.reference.year)]
+rank_long %>% filter(!is.na(National.accounts.reference.year))
+rank_long %>% filter(!is.na(National.accounts.reference.year)) %>% select(National.accounts.reference.year)
+year_name
+rank_long %>% filter(!is.na(PPP.survey.year)) %>% select(PPP.survey.year) %>% head()
+rank_long %>% filter(!is.na(PPP.survey.year)) %>% select(PPP.survey.year) %>% nchar() > 4
+ppp_s <- rank_long %>% filter(!is.na(PPP.survey.year)) %>% select(PPP.survey.year)
+rank_long$PPP.survey.year[nchar(rank_long$PPP.survey.year) > 4 & !is.na(rank_long$PPP.survey.year)]
+unique(ppp_s)
+year_name <- grep("onth", names(rank_long), value = T)
+year_name
+names(rank_long)
+head(rank_long)
+l <- sapply(colnames(rank_long), function(x) grep("fiscal year end", rank_long[, x], value = T, ignore.case = T))
+l
+l$Special.Notes
+grep("June", l$Special.Notes, value = T, ignore.case = T)
+grep("June", l$Special.Notes, value = T, ignore.case = T) %>% length()
+library(quantmod)
+amzn = getSymbols("AMZN",auto.assign=FALSE)
+sampleTimes = index(amzn)
+install.packages("quantmod")
+library(quantmod)
+amzn = getSymbols("AMZN",auto.assign=FALSE)
+sampleTimes = index(amzn)
+View(sampleTimes)
+str(sampleTimes)
+grep("2012", sampleTimes, value = T) %>% head
+grep("2012", sampleTimes, value = T) %>% length()
+sampleTimes %>% year() %>% head()
+sampleTimes %>% year() == 2007 %>% head()
+sampleTimes %>% year() == 2012 %>% table()
+tt <- sampleTimes %>% year() == 2012
+head(tt)
+table(tt)
+tt <- sampleTimes %>% year() == 2012 & wday() == 2
+tt <- sampleTimes %>% year() == 2012
+sampleTimes[tt] %>% head
+sampleTimes[tt] %>% wday(1)
+sampleTimes[tt] %>% wday()
+sampleTimes[tt] %>% wday(label = T)
+grep("Mon", sampleTimes[tt] %>% wday(label = T), value = T)
+grep("Mon", sampleTimes[tt] %>% wday(label = T), value = T) %>% length()
+file_url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+if(!file.exists("./data")){ dir.create("./data") }
+temp <- tempfile()
+download.file(file_url, temp)
+str(temp)
+arch_info <- unzip(zipfile, list = FALSE)
+arch_info <- unzip(temp, list = FALSE)
+str(arch_info)
+View(arch_info)
+# arch_info <- unzip(temp, list = FALSE)
+unzip(temp, exdir = file_destination)
+file_destination <- "./data/cleaning_project_data/"
+# arch_info <- unzip(temp, list = FALSE)
+unzip(temp, exdir = file_destination)
+unlink(temp)
+d_data <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt"))
+d_data <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt", sep = ""))
+str(d_data)
+561/128
+features <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "features.txt", sep = ""))
+features <- read.table(paste(file_destination, "UCI HAR Dataset/", "features.txt", sep = ""))
+X_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt", sep = ""))
+X_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "X_test.txt", sep = ""))
+str(X_test)
+X_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt", sep = ""))
+X_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "X_test.txt", sep = ""))
+features <- read.table(paste(file_destination, "UCI HAR Dataset/", "features.txt", sep = ""))
+file_destination <- "./data/cleaning_project_data/"
+X_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt", sep = ""))
+X_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "X_test.txt", sep = ""))
+features <- read.table(paste(file_destination, "UCI HAR Dataset/", "features.txt", sep = ""))
+savehistory("~/work/data_science_coursera/coursera_course/h5.Rhistory")
+activity_labels <- read.table(paste(file_destination, "UCI HAR Dataset/", "activity_labels.txt", sep = ""))
+list.files(paste(file_destination, "UCI HAR Dataset", sep = ""))
+list.files(paste(file_destination, "UCI HAR Dataset", sep = ""), recursive = T)
+View(X_test)
+file_destination <- "./data/cleaning_project_data/"
+x_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt", sep = ""))
+y_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "y_train.txt", sep = ""))
+subject_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "subject_train.txt", sep = ""))
+x_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "X_test.txt", sep = ""))
+y_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "y_test.txt", sep = ""))
+subject_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "subject_test.txt", sep = ""))
+features <- read.table(paste(file_destination, "UCI HAR Dataset/", "features.txt", sep = ""))
+activity_labels <- read.table(paste(file_destination, "UCI HAR Dataset/", "activity_labels.txt", sep = ""))
+features %>% tolower() gsub([])
+features %>% tolower()
+{ browser(); . } %>% head() %>%
+gsub("\W+", "_")
+str_replace_all("angle(z,gravitymean)", "\W", "_")
+str_replace_all("angle(z,gravitymean)", "[^a-z]", "_")
+str_replace_all("angle(z,gravitymean)", "[^a-z]+", "_")
+features %>%
+tolower() %>%
+{ browser(); . } %>% head() %>%
+str_replace_all("[^a-z]+", "_") %>%
+{ browser(); . } %>% head() %>%
+{.} -> feature_names_ok
+exit()
+0
+features %>%
+tolower() %T>%
+head() %>%
+str_replace_all("[^a-z]+", "_")
+features %>%
+tolower() %T>%
+head() %>%
+str_replace_all("[^a-z ]+", "_") %>%
+head()
+features %>%
+tolower() %T>%
+head() %>%
+str_replace_all("[^a-z ]+", "_") -> feature_names_ok
+features$V2 %>%
+tolower() %T>%
+head() %>%
+str_replace_all("[^a-z ]+", "_") %>%
+{.}-> feature_names_ok
+View(feature_names_ok)
+names(x_test) <- feature_names_ok
+new_set <- rbind(x_train, x_test)
+names(x_train) <- feature_names_ok
+new_set <- rbind(x_train, x_test)
+7352+2947
+full_set <- rbind(x_train, x_test)
+View(new_set)
+rm(new_set)
+View(feature_names_ok)
+new_set.filter(regex=("_mead_|_std_")) %>% head()
+new_set %>% filter(regex=("_mead_|_std_")) %>% head()
+full_set %>% filter(regex=("_mead_|_std_")) %>% head()
+full_set %>% filter(regex == ("_mead_|_std_")) %>% head()
+names(full_set) %>%
+head()
+unique(names(full_set)) %>% length()
+unique(features$V1)  %>% length()
+unique(features$V2)  %>% length()
+unique(feature_names_ok)  %>% length()
+sapply(feature_names_ok, function(x) length(unique(x)))
+sapply(feature_names_ok, function(x) length(unique(x))) %>% head()
+table(feature_names_ok)
+table(feature_names_ok) %>%
+{.} -> table_feature_names_ok
+str(v)
+str(table_feature_names_ok)
+filter(table_feature_names_ok, function(x) x > 1)
+as.data.frame(table(feature_names_ok)) %>% filter(function(x) x > 1)
+as.data.frame(table(feature_names_ok))
+as.data.frame(table(feature_names_ok)) %>% filter(Freq > 1)
+as.data.frame(table(feature_names_ok)) %>% filter(Freq > 1) %>% regex("mead|std")
+as.data.frame(table(feature_names_ok)) %>% filter(Freq > 1) %>% filter(regex("mead|std"))
+as.data.frame(table(feature_names_ok)) %>% filter(Freq > 1) %>% filter(regex == "mead|std")
+as.data.frame(table(feature_names_ok)) %>% filter(Freq > 1) -> repeating_names
+str(repeating_names)
+repeating_names %>% filter(regexpr("mead|std", feature_names_ok))
+full_set %>% filter(regexpr("mead|std"), colnames())
+colnames(full_set) %>% filter(regexpr("mead|std"))
+colnames(full_set) %>% grep(regexpr("mead|std"))
+colnames(full_set) %>% grepl(regexpr("mead|std"))
+colnames(full_set) %>% grepl("mead")
+colnames(full_set) %>% grepl("mean")
+colnames(full_set) %>% regexpr("mean")
+regexpr("mean", colnames(full_set))
+regexpr("mean|std", colnames(full_set), value = T) %>% head
+regexpr("mean|std", colnames(full_set)) %>% head
+which(regexpr("mean|std", colnames(full_set)))
+filter(colnames(full_set), regexpr("mean|std", colnames(full_set)))
+regexpr("mean|std", colnames(full_set)) %>% head
+ff <- colnames(full_set)
+regexpr("mean|std", colnames(full_set)) %>% ff
+txt <- c("The", "licenses", "for", "most", "software", "are",
+"designed", "to", "take", "away", "your", "freedom",
+"to", "share", "and", "change", "it.",
+"", "By", "contrast,", "the", "GNU", "General", "Public", "License",
+"is", "intended", "to", "guarantee", "your", "freedom", "to",
+"share", "and", "change", "free", "software", "--",
+"to", "make", "sure", "the", "software", "is",
+"free", "for", "all", "its", "users")
+txt
+regexpr("en", txt)
+gregexpr("e", txt)
+findArgs <- function(env, pattern) {
+nms <- ls(envir = as.environment(env))
+nms <- nms[is.na(match(nms, c("F","T")))] # <-- work around "checking hack"
+aa <- sapply(nms, function(.) { o <- get(.)
+if(is.function(o)) names(formals(o)) })
+iw <- sapply(aa, function(a) any(grepl(pattern, a, ignore.case=TRUE)))
+aa[iw]
+}
+sapply(ff, function(a) any(grepl("mean", a, ignore.case=TRUE)))
+sapply(ff, function(a) any(grepl("_mean_", a, ignore.case=TRUE)))
+sapply(ff, function(a) any(grepl("\_mean\_", a, ignore.case=TRUE)))
+sapply(ff, function(a) any(grepl("_mean_", a, ignore.case=TRUE)))
+sapply(ff, function(a) grepl("_mean_", a, ignore.case=TRUE))
+grep("_mean_", ff, ignore.case=TRUE, value = T)
+grep("_mean_", ff, ignore.case=TRUE, value = T) %>% length()
+grep("_mean_", ff, ignore.case=TRUE, value = T) %>%
+unique() %>%
+length()
+grep("_std_", ff, ignore.case=TRUE, value = T) %>%
+unique() %>%
+length()
+grep("_std_", ff, ignore.case=TRUE, value = T) %>%
+length()
+grep("_std_", ff, ignore.case=TRUE, value = T) -> std_names
+grep("_mean_", ff, ignore.case=TRUE, value = T) -> mean_names
+cat(std_names, mean_names)
+cat(std_names, mean_names) %>% length()
+select(full_set, contains("mean")) %>% str
+full_set %>%
+select(contains("_mean_|_std_")) %>% str
+full_set %>%
+select(contains("_mean_")) %>% str
+full_set %>%
+select(matches("_mean_|_std_")) %>% str
+full_set %>%
+select(matches("_mean_|_std_")) -> mean_std_set
+subject_y_x_test <- cbind(subject_test, y_test, c_test)
+subject_y_x_test <- cbind(subject_test, y_test, x_test)
+subject_y_x_test <- cbind(subject = subject_test, activity = y_test, x_test)
+subject_y_x_test <- cbind(subject_test, y_test, x_test)
+colnames(subject_y_x_test$V1) <- "subject"
+q <- cbind(subj=subject_test, act=y_test)
+names(q)
+rm(q)
+subject_y_x_test <- cbind("subject" = subject_test, "activity" = y_test, x_test)
+subject_y_x_test <- cbind("subject"=subject_test, "activity"=y_test, x_test)
+subject_y_x_test <- as.data.frame(cbind("subject" = subject_test, "activity" = y_test, x_test))
+setnames(subject_y_x_test, old = c('V1','V2'), new = c('subject','activity'))
+library(data.table)
+setnames(subject_y_x_test, old = c('V1','V2'), new = c('subject','activity'))
+names(subject_y_x_test)
+names(subject_y_x_test)[1:2]
+subject_y_x_test <- cbind("subject" = subject_test, "activity" = y_test, x_test)
+cbind(subject_test, x_test) %>%
+setnames(old = "V1", new = "subject") %T>%
+names()[1:2] %>%
+cbind(y_test, x_test) %>%
+setnames(old = "V1", new = "activity") %T>%
+names()[1:2] %>%
+{.} -> subj_activ_x_test
+cbind(subject_test, x_test) %>%
+setnames(old = "V1", new = "subject") %>%
+cbind(y_test, x_test) %>%
+setnames(old = "V1", new = "activity") %>%
+{.} -> subj_activ_x_test
+rm(subject_y_x_test)
+as.data.frame(subject_test)
+as.data.frame(subject_test) %>% head
+as.data.frame(subject_test)
+%>% setnames(old = "V1", new = "subject")
+%>% head
+as.data.frame(subject_test) %>%
+setnames(old = "V1", new = "subject") %>%
+head
+cbind("subject" = as.data.frame(subject_test), "activity" = y_test, as.data.frame(x_test)) %>%
+head
+subj_act_test <- cbind("subject" = as.data.frame(subject_test), "activity" = as.data.frame(y_test), x_test)
+rm(subj_act_test)
+rm(subj_activ_x_test)
+str(y_test)
+str(subject_test)
+names(subject_train)
+names(subject_train) <- "subject"
+names(subject_train)
+names(subject_test)
+names(y_test)
+names(y_test) <- "activity"
+names(y_train) <- "activity"
+# combine train set
+subject_activity_x_train <- cbind(subject_train, y_train, x_train)
+# combine test set
+subject_activity_x_test <- cbind(subject_test, y_test, x_test)
+View(x_test)
+View(subject_activity_x_test)
+full_set <- rbind(subject_activity_x_train, subject_activity_x_test)
+full_set %>%
+select(matches("_mean_|_std_")) -> mean_std_set
+savehistory("~/work/data_science_coursera/coursera_course/h6.Rhistory")
+left_join(full_set, activity_labels, by = c("activity" = "V1")) %>% str()
+full_set %>%
+select(matches("_mean_|_std_")) %>%
+cbind(select(full_set, subject, activity))
+{.}-> mean_std_set
+full_set %>%
+select(matches("_mean_|_std_")) %>%
+cbind(select(full_set, subject, activity)) %>%
+{.}-> mean_std_set
+full_set %>%
+select(matches("_mean_|_std_")) %>%
+cbind() %>%
+{.}-> mean_std_set
+full_set %>%
+select(subject, activity) %>%
+cbind(select(full_set, matches("_mean_|_std_"))) %>%
+{.}-> mean_std_set
+full_set %>%
+select(subject, activity) %>%
+cbind(select(matches("_mean_|_std_"))) %>%
+{.}-> mean_std_set1
+left_join(mean_std_set, activity_labels, by = c("activity" = "V1")) %>%
+str()
+left_join(mean_std_set, activity_labels, by = c("activity" = "V1")) %T>%
+str() %>%
+mutate(activity = V2, after = subject) %>%
+str()
+left_join(mean_std_set, activity_labels, by = c("activity" = "V1")) %>%
+mutate(activity = V2, .after = subject) %>%
+str()
+left_join(mean_std_set, activity_labels, by = c("activity" = "V1")) %>%
+mutate(activity = V2, .after = subject, .keep = "unused") %>%
+str()
+left_join(mean_std_set, activity_labels, by = c("activity" = "V1")) %>%
+mutate(activity = V2, .after = subject, .keep = "unused") %T>%
+str() %>%
+{.} -> activity_mean_std_set
+activity_mean_std_set %>%
+savehistory("~/work/data_science_coursera/coursera_course/h7.Rhistory")
+activity_mean_std_set %>%
+group_by(subject, activity) %>%
+str() %>% head()
+activity_mean_std_set %>%
+group_by(subject, activity) -> t1
+sapply(t1, function(field) {summarise(mean(x))})
+activity_mean_std_set %>%
+group_by(subject, activity) -> t1
+sapply(t1, function(field) {summarise(mean(field))})
+activity_mean_std_set %>%
+group_by(subject, activity) %>%
+str()
+for (field in names(t1)) {}
+for (field in names(t1)) {
+summarise(field_avg = mean(field, na.rm = T))
+}
+for (field in names(t1)) {
+summarise(t1, field_avg = mean(field, na.rm = T))
+}
+summarise(t1, field_avg = mean(t1[1], na.rm = T))
+summarise(t1, field_avg = mean(t1[3], na.rm = T))
+t1[3] %>% head
+summarise(t1, field_avg = mean(t1[3], na.rm = T))
+t1$field_avg %>% head
+summarise(t1, field_avg = mean(t1[4], na.rm = T))
+summarise(t1, field_avg = mean(t1[manes(t1)[3]], na.rm = T))
+nn <- names(t1)[3]
+summarise(t1, field_avg = mean(nn, na.rm = T))
+t1 %>% head()
+t1 %>% group_by(subject) %>%
+summarise(avg_tbodygyrojerkmag_mean_ = mean(v, na.rm = T)) %>%
+head()
+t1 %>% group_by(subject) %>%
+summarise(avg_tbodygyrojerkmag_mean_ = mean(tbodygyrojerkmag_mean_, na.rm = T)) %>%
+head()
+mean_std_set %>% group_by(subject, activity) %>%
+summarise(avg_tbodygyrojerkmag_mean_ = mean(tbodygyrojerkmag_mean_, na.rm = T)) %>%
+head()
+mean_std_set %>% group_by(subject, activity) %>%
+summarise(mean(na.rm = T)) %>%
+head()
+mean_std_set %>% group_by(subject, activity) %>%
+summarise(avg_tbodygyrojerkmag_mean_ = mean(tbodygyrojerkmag_mean_, na.rm = T)) %>% table()
+mean_std_set %>% group_by(subject, activity) %>%
+summarise(across(everything(), list(mean)))
+View(activity_mean_std_set)
+activity_mean_std_set %>% group_by(subject, activity) %>%
+summarise(across(everything(), list(mean))) -> all_mean
+View(all_mean)
+View(activity_mean_std_set)
+68*6
+18*6
+unique(full_set$subject)
+max(full_set$subject)
+30*6
+x_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "X_train.txt", sep = ""))
+y_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "y_train.txt", sep = ""))
+subject_train <- read.table(paste(file_destination, "UCI HAR Dataset/train/", "subject_train.txt", sep = ""))
+x_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "X_test.txt", sep = ""))
+y_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "y_test.txt", sep = ""))
+subject_test <- read.table(paste(file_destination, "UCI HAR Dataset/test/", "subject_test.txt", sep = ""))
+features <- read.table(paste(file_destination, "UCI HAR Dataset/", "features.txt", sep = ""))
+activity_labels <- read.table(paste(file_destination, "UCI HAR Dataset/", "activity_labels.txt", sep = ""))
+features$V2 %>%
+tolower() %>%
+str_replace_all("[^a-z ]+", "_") %>%
+{.} -> feature_names_ok
+names(x_test) <- feature_names_ok
+names(x_train) <- feature_names_ok
+names(subject_train) <- "subject"
+names(subject_test) <- "subject"
+names(y_test) <- "activity"
+names(y_train) <- "activity"
+subject_activity_x_train <- cbind(subject_train, y_train, x_train)
+## combine test set
+subject_activity_x_test <- cbind(subject_test, y_test, x_test)
+full_set <- rbind(subject_activity_x_train, subject_activity_x_test)
+full_set %>%
+select(subject, activity) %>%
+cbind(select(full_set, matches("_mean_|_std_"))) %>%
+{.} -> mean_std_set
+mean_std_set %>%
+group_by(subject, activity) %>%
+summarise(across(everything(), list(mean))) -> all_means
+full_set %>%
+select(subject, activity) %>%
+cbind(select(full_set, matches("_mean_|_std_"))) %>%
+{.} -> mean_std_set
+left_join(mean_std_set, activity_labels, by = c("activity" = "V1")) %>%
+mutate(activity = V2, .after = subject, .keep = "unused") %T>%
+str() %>%
+{.} -> activity_mean_std_set
+activity_mean_std_set %>%
+group_by(subject, activity) %>%
+summarise(across(everything(), list(mean))) -> all_means
+View(activity_mean_std_set)
+View(all_means)
+write_csv(all_means, paste(file_destination, "/tidy_all_means.csv", sep = ""))
+out_file_name <- paste(file_destination, "/tidy_all_means.csv.gz", sep = "")
+write.csv(all_means, file=gzfile(out_file_name))
+list.files("/var/folders/j4/90zh63717l98153d_0cyw9140000gn/T/")
+rmarkdown::render("/Users/ashipunova/Documents/GitHub/datasciencecoursera/cleaning_data_project/CodeBook.md")
+file_path_code_book = "/Users/ashipunova/Documents/GitHub/datasciencecoursera/cleaning_data_project/CodeBook.md"
+source('~/Documents/GitHub/datasciencecoursera/cleaning_data_project/run_analysis.R')
+savehistory("~/work/data_science_coursera/coursera_course/h8.Rhistory")
+
+source('~/Documents/GitHub/datasciencecoursera/cleaning_data_project/run_analysis.R')
+out_file_name <- paste(file_destination, "/tidy_all_means.txt", sep = "")
+write.table(all_means, file = out_file_name, row.name=FALSE)
+d <- "Nov 23, 2020 07:01 PST"
+mdy(d)
+mdy_hm(d, tz = "PST")
+d <- "Nov 23, 2020 07:01"
+mdy_hm(d, tz = "PST")
+mdy_hm(d, tz = "A")
+Sys.timezone()
+str(OlsonNames())
+library(stringr)
+grep("Francisco", OlsonNames())
+grep("America", OlsonNames())
+grep("America", OlsonNames(), value = T)
+mdy_hm(d, tz = "America/Los_Angeles")
+mdy_hm(d, tz = "America/Los_Angeles") %>% str()
+mdy_hm(d, tz = "America/Los_Angeles") %>% format(tz = "America/New_York")
+savehistory("~/work/data_science_coursera/coursera_course/h9.Rhistory")
+
+source('~/.active-rstudio-document')
+library(dplyr)
+# read train data
+X_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+Y_train <- read.table("./UCI HAR Dataset/train/Y_train.txt")
+Sub_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
+# read test data
+X_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+Y_test <- read.table("./UCI HAR Dataset/test/Y_test.txt")
+Sub_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+# read data description
+variable_names <- read.table("./UCI HAR Dataset/features.txt")
+# read activity labels
+activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
+# 1. Merges the training and the test sets to create one data set.
+X_total <- rbind(X_train, X_test)
+Y_total <- rbind(Y_train, Y_test)
+Sub_total <- rbind(Sub_train, Sub_test)
+# 2. Extracts only the measurements on the mean and standard deviation for each measurement.
+selected_var <- variable_names[grep("mean\\(\\)|std\\(\\)",variable_names[,2]),]
+X_total <- X_total[,selected_var[,1]]
+# 3. Uses descriptive activity names to name the activities in the data set
+colnames(Y_total) <- "activity"
+Y_total$activitylabel <- factor(Y_total$activity, labels = as.character(activity_labels[,2]))
+activitylabel <- Y_total[,-1]
+# 4. Appropriately labels the data set with descriptive variable names.
+colnames(X_total) <- variable_names[selected_var[,1],2]
+# 5. From the data set in step 4, creates a second, independent tidy data set with the average
+# of each variable for each activity and each subject.
+colnames(Sub_total) <- "subject"
+total <- cbind(X_total, activitylabel, Sub_total)
+total_mean <- total %>% group_by(activitylabel, subject) %>% summarize_each(funs(mean))
+write.table(total_mean, file = "./UCI HAR Dataset/tidydata.txt", row.names = FALSE, col.names = TRUE)
+savehistory("~/work/data_science_coursera/coursera_course/h10.Rhistory")
+
+getwd()
+library(datasets)
+data(cars)
+with(cars, plot(speed, dist))
+library(lattice)
+state <- data.frame(state.x77, region = state.region)
+xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1))
+library(ggplot2)
+data("mpg")
+qplot(displ, hwy, data = mpg)
+hist(airquality$Ozone)
+with(airquality, plot(Wind, Ozone))
+airquality <- transform(airquality, Month = factor(Month))
+boxplot(Ozone ~ Month, airquality, xlab = "Month", ylab = "Ozone (ppb")
+colors()
+par("bg")
+library(datasets)
+with(airquality, plot(Wind, Ozone))
+title(main = "Ozone and Wind in New York City")  ## Add a title
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City"))
+with(subset(airquality, Month == 5), points(Wind, Ozone, col = "blue"))
+knitr::opts_chunk$set(echo = TRUE)
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City", type = "n"))
+with(subset(airquality, Month == 5), points(Wind, Ozone, col = "blue"))
+with(subset(airquality, Month != 5), points(Wind, Ozone, col = "red"))
+legend("topright", pch = 1, col = c("blue", "red"), legend = c("May", "Other Months"))
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City", type = "n"))
+with(subset(airquality, Month == 5), points(Wind, Ozone, col = "blue"))
+with(subset(airquality, Month != 5), points(Wind, Ozone, col = "red"))
+legend("topright", pch = 1, col = c("blue", "red"), legend = c("May", "Other Months"))
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City", pch = 20))
+model <- lm(Ozone ~ Wind, airquality)
+abline(model, lwd = 2)
+par(mfrow = c(1, 2))
+with(airquality, {
+plot(Wind, Ozone, main = "Ozone and Wind")
+plot(Solar.R, Ozone, main = "Ozone and Solar Radiation")
+})
+par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
+with(airquality, {
+plot(Wind, Ozone, main = "Ozone and Wind")
+plot(Solar.R, Ozone, main = "Ozone and Solar Radiation")
+plot(Temp, Ozone, main = "Ozone and Temperature")
+mtext("Ozone and Weather in New York City", outer = TRUE)
+})
+x <- rnorm(100)
+hist(x)
+with(faithful, plot(eruptions, waiting))
+title(main = "Geither")
+pdf(file = myplot.pdf)
+pdf(file = "myplot.pdf")
+title(main = "Old Faithful Geyser data")
+with(faithful, plot(eruptions, waiting))
+title(main = "Old Faithful Geyser data")
+def.off
+def.off()
+dev.off()
+par(mfrow = c(1))
+par(mfrow = c(1,1))
+par(mfcol = c(1,1))
+with(faithful, plot(eruptions, waiting))
+dev.cur()
+dev.set
+dev.set(3)
+with(faithful, plot(eruptions, waiting))
+dev.set(2)
+with(faithful, plot(eruptions, waiting))
+dev.copy(png, file = "geyserplot.png")
+dev.off
+dev.off()
+dev.copy2pdf(file = "geyserplot.pdf")
+dev.off()
+with(faithful, plot(eruptions, waiting))
+install_from_swirl("Exploratory Data Analysis")
+library(swirl)
+install_from_swirl("Exploratory Data Analysis")
+swirl()
+head(pollution)
+dim(pollution)
+summary(pollution$pm25)
+quantile(ppm)
+boxplot(ppm, col = "blue")
+abline(h = 12)
+hist(ppm, col = "green")
+rug(ppm)
+low
+high
+hist(ppm, col = "green", breaks = 100)
+rug(ppm)
+hist(ppm, col = "green")
+abline(v = 12, lwd = 2)
+abline(v = median(ppm), col = "magents", lwd = 4)
+abline(v = median(ppm), col = "magenta", lwd = 4)
+names(pollution)
+reg <- table(pollution$region)
+reg
+barplot(reg, col = "wheat", main = "Number of Counties in Each Region")
+boxplot(pm2 ~ region, data = pollution, col = "red")
+boxplot(pm25 ~ region, data = pollution, col = "red")
+par(mfrow=c(2,1),mar=c(4,4,2,1))
+east <- subset(pollution, region == "east")
+head(east)
+hist(east$pm25, col = "green")
+hist(subset(pollution, region == "west")$pm25, col = "green")
+with(pollution, plot(latitude, pm25))
+abline(h = 12, lwd = 2, lty = 2)
+plot(pollution$latitude, ppm, col = pollution$region)
+abline(h=12, lwd = 2, lty = 2)
+par(mfrow = c(1, 2), mar = c(5, 4, 2, 1))
+west <- subset(pollution, region == "west")
+plot(west$latitude, west$pm25, main = "West")
+plot(east$latitude, east$pm25, main = "East")
+?Devices
+plot(faithful, eruptions, waiting)
+R(faithful, plot(eruptions, waiting))
+plot(faithful, c("eruptions", "waiting"))
+with(faithful, plot(eruptions, waiting))
+with(faithful, plot(eruptions, waiting, main = "Old Faithful Geyser data"))
+title(main = "Old Faithful Geyser data")
+dev.cur()
+pdf(file="myplot.pdf")
+with(faithful, plot(eruptions, waiting))
+title(main = "Old Faithful Geyser data")
+dev.cur()
+dev.off()
+dev.cur()
+with(faithful, plot(eruptions, waiting))
+title(main = "Old Faithful Geyser data")
+dev.copy(png, file = "geyserplot.png")
+dev.off()
+head(cars)
+whith(cars, plot(speed, dist))
+with(cars, plot(speed, dist))
+text(mean(cars$speed), max(cars$dist), "SWIRL rules!")
+head(state)
+table(state$region)
+xyplot(Life.Exp ~ Income | region, data = state, layout(c(4,1)))
+xyplot(Life.Exp ~ Income | region, data = state, layout = c(4,1))
+xyplot(Life.Exp ~ Income | region, data = state, layout = c(2,2))
+head(mpg)
+dim(mpg)
+table(mpg$model)
+qplot(displ, hwy, data = mpg)
+head(airquality)
+range(airquality$Ozone, na.rm = TRUE)
+hist(airquality$Ozone)
+table
+tabletable(airquality$Month)
+table(airquality$Month)
+boxplot(Ozone~Month, airquality)
+boxplot(Ozone~Month, airquality, xlab = "Month", ylab = "Ozone (ppb)", col.axis = "blue", col.lab = "red")
+boxplot(Ozone~Month, airquality, xlab = "Month", ylab = "Ozone (ppb)", col.axis = "blue", col.lab = "red", main = "Ozone and Wind in New York City")
+title(main="Ozone and Wind in New York City")
+with(airquality, plot(Wind, Ozone))
+title(main="Ozone and Wind in New York City")
+length(par())
+names(par)
+names(par())
+?par
+par()$pin
+par("fg")
+par("pch")
+?pch
+par("lty")
+scatterplot(airquality$Wind, airquality$Ozone, type = "n")
+plot(airquality$Wind, airquality$Ozone, type = "n")
+title(main = "Wind and Ozone in NYC")
+may subset(airquality$Month == 5)
+may <- subset(airquality$Month == 5)
+may <- subset(airquality, airquality$Month == 5)
+may <- subset(airquality, Month == 5)
+points(may$Wind, may$Ozone, col = "blue", pch = 17)
+notmay <- subset(airquality, !(Month == 5))
+notmay <- subset(airquality, Month!=5)
+notmay1 <- subset(airquality, !(Month == 5))
+identical(notmay, notmay1)
+points(notmay$Wind, notmay$Ozone, col = "red", pch = 8)
+legend("topright", pch = c(17,8), col = c("blue","red"), legend = c("May","Other Months"))
+abline(v = median(airquality$Wind), lty=2, lwd = 2)
+par(mfrow = c(1,2))
+plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")
+plot(airquality$Ozone, airquality$Solar.R, main = "Ozone and Solar Radiation")
+par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
+plot(airquality$Wind, airquality$Ozone, main = "Ozone and Wind")
+plot(airquality$Ozone, airquality$Solar.R, main = "Ozone and Solar Radiation")
+plot(airquality$Solar.R, airquality$Ozone, main = "Ozone and Solar Radiation")
+plot(airquality$Temp, airquality$Ozone, main = "Ozone and SolarTemperature")
+plot(airquality$Temp, airquality$Ozone, main = "Ozone and Temperature")
+mtext("Ozone and Weather in New York City", outer = TRUE)
+savehistory("~/work/data_science_coursera/coursera_course/h11.Rhistory")
+
+class(my_vector[1])
+length(my_vector[0])
+for (i in 1:length(my_vector)){
+print(i)
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector)){
+print("i = ")
+print(i)
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector) -1 ){
+print("i = ")
+print(i)
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+f_comp(str1, str2)
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+f_comp(str1, str2)
+}
+i
+str1
+str2
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector) -1 ){
+print("i = ")
+print(i)
+str1 <- my_vector[[i]]
+str2 <- my_vector[][i+1]]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector) -1 ){
+print("i = ")
+print(i)
+str1 <- my_vector[[i]]
+str2 <- my_vector[[i+1]]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+f_comp_coll <- function(str1, str2) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+append(res_l, res)
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp(str1, str2)
+}
+next
+}
+res_l
+res_l <- list()
+f_comp_coll <- function(str1, str2) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+append(res_l, res)
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2)
+}
+next
+}
+res_l
+res_l <- list()
+f_comp_coll <- function(str1, str2) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+append(res_l, res, length(res_l))
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2)
+}
+next
+}
+res_l()
+res_l
+source(/Users/ashipunova/BPC/linda/)
+source(/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt)
+source("/Users/ashipunova/BPC/linda/")
+source("/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt")
+my_data <- read.table("/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt", header = FALSE)
+tot_length <- length( my_data)
+tot_length
+tot_length <- length([my_data])
+my_data <- read.table("/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt", header = FALSE)
+View(my_data)
+nrow(my_data)
+tot_length <- nrow(my_data)
+res_list <- vector("list", tot_length)
+f_comp_coll <- function(str1, str2, i) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+res_list[[i]] <- res
+}
+my_data[i]
+my_data[1]
+my_data[0,1]
+my_data[1,1]
+my_data[1,2]
+my_data[2,1]
+input <- "/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt"
+my_seq <-  <- fread(input)
+my_seq <- fread(input)
+my_seq <- read(input)
+class(my_data)
+ncol(my_data)
+f_comp_coll <- function(str1, str2, i) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+res_list[[i]] <- res
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_vector[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2, i)
+}
+next
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2, i)
+}
+next
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2, i)
+}
+next
+}
+str1
+str2
+utf8ToInt(str1)
+typeof(str1)
+class(str1)
+head(my_data)
+my_data[2,1]
+class(my_data[[2,1]])
+my_data[[2,1]]
+typeof(my_data[[2,1]])
+typeof(my_data[[2,"V1"]])
+typeof(my_data[2,"V1"])
+help(my_data)
+head(my_data)
+e1 <-  my_data[2,1]
+e1 <-  my_data[[2,1]]
+typeof(e1)
+class(e1)
+my_data[2, ]
+v1 <- my_data[$V1]
+v1 <- my_data[V1]
+v1 <- my_data["V1"]
+class(v1)
+ncol(v1)
+nrow(v1)
+v1[1,1]
+mydata[c(1,1)]
+my_data[c(1,1)]
+my_data[c(2,)]
+my_data[c(2,1)]
+summary(my_data)
+str(my_data)
+my_data[c(1,1), c(1,1)]
+my_data[c(2,2), c(1,1)]
+e1 <- my_data[c(1,1), c(1,1)]
+length(e1)
+my_data[1, 1]
+my_data$V1[[1]]
+e1 <- my_data$V1[[1]]
+my_data[2]
+my_data[1]
+my_data[1,3]
+my_data[3,1]
+length(my_data[3,1])
+str3 <- my_data[3,1]
+utf8ToInt(str3)
+my_data <- read.table("/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt", header = FALSE, stringsAsFactors = FALSE)
+length(my_data[3,1])
+str3 <- my_data[3,1]
+utf8ToInt(str3)
+tot_length <- nrow(my_data)
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2, i)
+}
+next
+}
+head(res_list)
+f_comp_coll <- function(str1, str2, i) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+}
+f_comp_coll <- function(str1, str2) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+f_comp_coll(str1, str2, i)
+f_comp_coll(str1, str2)
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+f_comp_coll(str1, str2)
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+f_comp_coll(str1, str2, i)
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2)
+}
+next
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2)
+}
+next
+}
+1 + 1
+example <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8), nrow = 4, ncol = 2)
+View(example)
+iris
+install.packages(c("ade4", "ape", "backports", "BH", "BiocManager", "bit", "bit64", "boot", "broom", "callr", "class", "cli", "clipr", "covr", "crosstalk", "curl", "data.table", "DBI", "dbplyr", "devtools", "digest", "dplyr", "DT", "ellipsis", "fansi", "forcats", "foreach", "fs", "gdtools", "ggplot2", "gh", "git2r", "glue", "haven", "hms", "htmltools", "htmlwidgets", "httpuv", "httr", "igraph", "iterators", "jsonlite", "KernSmooth", "knitr", "labeling", "later", "lattice", "latticeExtra", "lifecycle", "lubridate", "MASS", "Matrix", "matrixStats", "mgcv", "mime", "modelr", "nanotime", "nlme", "nnet", "openssl", "pillar", "pkgbuild", "pkgload", "plyr", "prettyunits", "processx", "promises", "ps", "purrr", "R.methodsS3", "R.oo", "R.utils", "R6", "Rcpp", "RcppCCTZ", "RcppParallel", "RCurl", "readr", "remotes", "reshape2", "rex", "rlang", "rmarkdown", "roxygen2", "rstudioapi", "rversions", "rvest", "scales", "selectr", "shiny", "spatial", "stringi", "survival", "svglite", "sys", "systemfonts", "testthat", "tibble", "tidyr", "tidyselect", "tidyverse", "tinytex", "usethis", "vctrs", "withr", "xfun", "xml2", "xts", "yaml", "zoo"))
+version()
+version
+sessionInfo()
+install.packages("ggplot2")
+install.packages("devtools")
+sessionInfo()
+install.packages("KernSmooth")
+library(KernSmooth)
+detach("package:KernSmooth", unload = TRUE)
+library(magrittr)
+ymd(2007-02-01)
+ymd("2007-02-01")
+library(lubridate)
+ymd("2007-02-01")
+good_dates <- c(ymd("2007-02-01"), ymd("2007-02-02"))
+good_dates
+stamp_date("16/12/2006", ymd("2007-02-01"))
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+lines
+lines <- c()
+while(TRUE) {
+line = readLines(data_file, 1)
+if(length(line) == 0) break
+else if(grepl("^2007-02-01;", line) | grepl("^2007-02-02;", line)) {
+lines <- c(lines, line)
+}
+lines
+while(TRUE) {
+line = readLines(data_file, 1)
+if(length(line) == 0) break
+else if(grepl("^2007-02-01;", line) | grepl("^2007-02-02;", line)) {
+lines <- c(lines, line)
+}
+while(TRUE) {
+line = readLines(data_file, 1)
+if(length(line) == 0) break
+else if(grepl("^2007-02-01;", line) | grepl("^2007-02-02;", line)) {
+lines <- c(lines, line)
+}
+data_file
+# file_url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+# if(!file.exists("./data")){ dir.create("./data") }
+# temp <- tempfile()
+# download.file(file_url, temp)
+#
+file_destination <- "./data/"
+file_name <- paste(file_destination, "household_power_consumption.txt", sep = "")
+debugSource('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+used_dates <- c("2007-02-01", "2007-02-02") -> as.Date(format = "%d/%m/%y")
+used_dates <- c("2007-02-01", "2007-02-02") %>% as.Date(format = "%d/%m/%y")
+library("dplyr")
+used_dates <- c("2007-02-01", "2007-02-02") %>% as.Date(format = "%d/%m/%y")
+used_dates
+used_dates <- c("2007-02-01", "2007-02-02")
+as.Date(used_dates, format = "%d/%m/%y")
+as.Date(used_dates,
+format = "%m/%d/%y")
+a <- as.Date(used_dates,
+format = "%m/%d/%y")
+a
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+ymd()
+used_dates
+format(used_dates, "%d/%m/%y")
+format(used_dates, "%d/%m/%Y")
+data_file <- file(file_name, "r")
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%d/%m/%Y")
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+format("%d/%m/%Y")
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%d/%m/%Y")
+grep_expr <- ""
+for (d in used_dates) {
+e <- paste("^" + d + ";", sep = "")
+paste(grep_expr, e, sep = "|")
+}
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%d/%m/%Y")
+grep_expr <- ""
+for (d in used_dates) {
+e <- paste("^" + d + ";", sep = "")
+paste(grep_expr, e, sep = "|")
+}
+debugSource('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+d
+paste("^" + d + ";", sep = "")
+e <- paste("^", d, ";", sep = "")
+debugSource('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+paste(grep_expr, e, sep = "|")
+grep_expr_l <- lapply(used_dates, function(d) {
+list(paste("^", d, ";", sep = ""))
+})
+View(grep_expr_l)
+library(stringr)
+str_c(grep_expr_l, sep = "", collapse = NULL)
+grep_expr_l <- lapply(used_dates, function(d) {
+list(paste("^", d[1], ";", sep = ""))
+})
+str(grep_expr_l)
+grep_expr_l <- lapply(used_dates, function(d) {
+paste("^", d[1], ";", sep = "")
+})
+str_c(grep_expr_l, sep = "", collapse = NULL)
+str_c(grep_expr_l, sep = "|", collapse = NULL)
+str_c(grep_expr_l, sep = "|")
+str_c(grep_expr_l, sep = "", collapse = "|")
+gre<-str_c(grep_expr_l, sep = "", collapse = "|")
+line
+grep(gre, line, value = T)
+debugSource('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+grep_expr
+?strptime
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%e/%m/%Y") %>%
+sub('/0','/')
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%e/%m/%Y")
+used_dates %>%
+gsub('/0','/')
+gsub(used_dates[1], '/0','/')
+gsub(used_dates[1], '(.+)/0(.+)','\1/\2')
+gsub(used_dates[1], '(.+)/0(.+)','$1/$2')
+x <- c("1jan1960", "2jan1960", "31mar1960", "30jul1960")
+z <- as.Date(x, "%d%b%Y")
+z
+x <- "02"
+trimws(x, whitespace = "0")
+x = "01/02/2007"
+trimws(x, whitespace = "/0")
+trimws(x, whitespace = "0")
+gsub("([ab])", "\\1_\\1_", "abc and ABC")
+used_dates
+gsub("/0", "/", used_dates)
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%e/%m/%Y")
+single_digit_used_dates <- gsub("/0", "/", used_dates)
+grep_expr_list <- lapply(single_digit_used_dates, function(d) {
+paste("^", d[1], ";", sep = "")
+})
+grep_expr <- str_c(grep_expr_list, sep = "", collapse = "|")
+grep_expr
+debugSource('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+grep_expr_list <- lapply(single_digit_used_dates, function(d) {
+paste("^", trimws(d[1]), ";", sep = "")
+})
+grep_expr_list
+grep_expr <- str_c(grep_expr_list, sep = "", collapse = "|")
+grep_expr
+grep_expr <- str_c(grep_expr_list, sep = "", collapse = "\|")
+grep_expr <- str_c(grep_expr_list, sep = "", collapse = "\\|")
+x = "2/2/2007;23:50:00;3.624;0.104;241.110;15.000;0.000;0.000;18.000"
+grep(grep_expr, x)
+grep(grep_expr, x, value = T)
+grep_expr <- str_c(grep_expr_list, sep = "", collapse = "|")
+grep(grep_expr, x, value = T)
+debugSource('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+lines
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+library(stringi)
+t(stri_list2matrix(lines))
+res <- read.table(text=paste(lines, collapse='\n'), header = TRUE, stringsAsFactors = FALSE, sep=';')
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+res <- read.table(text=paste(lines, collapse='\n'), header = TRUE, stringsAsFactors = FALSE, sep=';')
+str(res)
+unique(res$Sub_metering_1)
+table(res$Sub_metering_1)
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+res <- fread(text = paste(lines, collapse='\n')
+)
+library(data.table)
+)
+res <- fread(text = paste(lines, collapse='\n'))
+str(res)
+identical(my_dataset, res)
+diff(my_dataset, res)
+my_dataset %>% transmute(Date, mdY()) %>% head()
+my_dataset %>% transmute(Date, lubridate::mdY()) %>% head()
+my_dataset %>% transmute(Date, lubridate::mdy()) %>% head()
+my_dataset %>% transmute(Date, mdy()) %>% head()
+library(anytime)
+install.packages("anytime")
+library(anytime)
+my_dataset %>% transmute(Date, anydate()) %>% head()
+my_dataset %>% transmute(Date = anydate()) %>% head()
+my_dataset %>% transmute(Date = anydate(Date)) %>% head()
+my_dataset %>% transmute(Date, mdy(Date)) %>% head()
+my_dataset %>% transmute(Date = mdy(Date)) %>% head()
+my_dataset %>% transmute(Date = mdy(Date), .keep = "unused") %>% head()
+my_dataset %>% transmute(Date = mdy(Date), keep = "unused") %>% head()
+my_dataset %>% mutate(Date = mdy(Date), .keep = "unused") %>% head()
+my_dataset %>% mutate(Date = mdy(Date), .keep = "unused") %>% str()
+my_dataset %>%
+mutate(Date = mdy(Date), .keep = "unused") %>%
+mutate(Time = hms(Time), .keep = "unused") %>%
+str()
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+my_dataset ->   mutate(date_time = mdy_hms(c(Date, Time)), .keep = "unused") %>% head(n = 2)
+res %>% head
+res %>%   mutate(date_time = mdy_hms(paste(Date, Time)), .keep = "unused") %>% head(n = 2)
+res %>%   mutate(date_time = mdy_hms(paste(Date, Time)), .keep = "unused") %>% str() %>% tail(n = 2)
+res %>%   mutate(date_time = mdy_hms(paste(Date, Time)), .keep = "unused", .before = first_col()) %>% str() %>% tail(n = 2)
+res %>%   mutate(date_time = mdy_hms(paste(Date, Time)), .keep = "unused") %>% relocate() %>% str()
+res %>%   mutate(date_time = mdy_hms(paste(Date, Time)), .keep = "unused") %>% relocate(date_time) %>% str()
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+make_grep_expression()
+read_data()
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+filter(my_dataset, Voltage = "?")
+filter(my_dataset, Voltage == "?")
+filter(my_dataset, Voltage == "NA")
+filter(my_dataset, date_time == dmy_hms("21/12/2006 11:23:00"))
+plot(my_dataset, Global_active_power)
+plot(my_dataset$Global_active_power)
+hist
+hist(my_dataset$Global_active_power)
+hist(my_dataset$Global_active_power, col = "red")
+hist(my_dataset$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)")
+hist(my_dataset$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
+savehistory("~/work/data_science_coursera/coursera_course/h12.Rhistory")
+
+dev.cur()
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+dev.off()
+getws()
+getwd()
+plot(my_dataset$Global_active_power, my_dataset$date_time)
+wday(my_dataset$date_time) %>% head()
+table(wday(my_dataset$date_time))
+sapply(my_dataset$date_time, function(x) {})
+sapply(my_dataset$date_time, function(x) {lubridate::wday(x, label = TRUE, abbr = T) }) %>% head()
+sapply(my_dataset$date_time, function(x) {lubridate::wday(x, label = TRUE, abbr = T) }) %>% table()
+plot(my_dataset$Global_active_power, sapply(my_dataset$date_time, function(x) {lubridate::wday(x, label = TRUE, abbr = T) }))
+plot(sapply(my_dataset$date_time, function(x) {lubridate::wday(x, label = TRUE, abbr = T) }), my_dataset$Global_active_power, )
+plot(sapply(my_dataset$date_time, function(x) {lubridate::wday(x, label = TRUE, abbr = T) }), my_dataset$Global_active_power)
+scatterplot(sapply(my_dataset$date_time, function(x) {lubridate::wday(x, label = TRUE, abbr = T) }), my_dataset$Global_active_power)
+library(car)
+data("cars")
+force(cars)
+scatterplot(mpg ~ wt | cyl, data=mtcars,
+xlab="Weight of Car", ylab="Miles Per Gallon",
+main="Enhanced Scatter Plot",
+labels=row.names(mtcars))
+xyplot(sapply(my_dataset$date_time, function(x) {lubridate::wday(x, label = TRUE, abbr = T) }), my_dataset$Global_active_power)
+d2 <- mutate(my_dataset, wdays = lubridate::wday(date_time, label = T, abbr = T))
+table(d2$wdays)
+with(d2, plot(Global_active_power, wdays))
+with(d2, plot(Global_active_power ~ wdays))
+don <- xts(x = dataset$count, order.by = dataset$date_time)
+lubridate::wday(ymd("2007-02-01"))
+lubridate::wday(ymd("2007-02-01"), label = T)
+lubridate::wday(ymd("2007-02-02"), label = T)
+table(dataset$date_time)
+table(my_dataset$date_time)
+data(gtemp_land)
+install.packages("astsa")
+str(temp_land)
+str(gtemp_land)
+library(astsa)
+str(gtemp_land)
+plot(gtemp_land)
+plot(date_time)
+plot(d2$date_time)
+plot(d2$date_time, d2$Global_active_power)
+str(d2$date_time)
+c("2007-02-01", "2007-02-02") %>%
+ymd()
+c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+day()
+month()
+c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+month()
+c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%e/%m/%Y")
+c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%e/%m/%Y") -> dd
+month(dd)
+day(dd)
+dd
+day(dd[1])
+wday(dd[1])
+wday(dd[1], label = T)
+lubridate::wday(dd[1], label = T)
+lubridate::wday(dd[2], label = T)
+used_dates
+used_dates <- c("2007-02-01", "2007-02-02") %>%
+ymd() %>%
+format("%e/%m/%Y")
+single_digit_used_dates <- gsub("/0", "/", used_dates)
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+unique(day(my_dataset$date_time))
+unique(lubridate::wday(my_dataset$date_time, label = T))
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+unique(lubridate::wday(my_dataset$date_time, label = T))
+savehistory("~/work/data_science_coursera/coursera_course/h13.Rhistory")
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_list)){
+print(i)
+str1 <- my_list[i]
+str2 <- my_list[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2)")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+a <-my_list[1]
+length(a)
+length(a[0])
+length(a[1])
+a[1]
+class(a[1])
+class(a[1][1])
+class(a[1][0])
+my_vector < c("TGGGGAATATTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCTTTCGGGTTGTAAAGCACTTTCAGTGAGGAGGAAAAGTT",
+"TGGGGAATATTGGACAATGGGCGAAAGCCTGATCCAGCAATTCCGCGTGTGTGAAGAAGGCCTTAGGGTTGTAAAGCACTTTAGTTCGGGAAGAAAAAGC",
+"TGGGGAATATTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCTTTCGGGTTGTAAAGCACTTTCAGTGAGGAGGAAAACCT",
+"TGGGGAATCTTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGTAGGGAGGAAGGCTT",
+"TGGGGAATCTTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGCAGGGAGGAAGGCTT",
+"TGGGGAATCTTAGACAATGGGCGCAAGCCTGATCTAGCGATGCCGCGTGAGTGATGAAGGCCTTAGGGTCGTAAAGCTCTTTCGCCTGTGAAGATAATGA",
+"TGGGGAATCTTGCACAATGGGCGAAAGCCTGATGCAGCCATGCCGCGTGAATGATGAAGGCCTTAGGGTTGTAAAATTCTTTCGCTAGGGATGATAATGA",
+"TGGGGAATATTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGAGTGAAGAAGGCCTTCGGGTTGTAAAGCTCTTTCAGATGCGAAGATGATGA",
+"TGGGGAATATTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGTTGTGAGGAAGGGGA",
+"TGGGGAATATTGCACAATGGGGGAAACCCTGATGCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGTTGTGAGGAAAAGTT")
+my_vector <- c("TGGGGAATATTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCTTTCGGGTTGTAAAGCACTTTCAGTGAGGAGGAAAAGTT",
+"TGGGGAATATTGGACAATGGGCGAAAGCCTGATCCAGCAATTCCGCGTGTGTGAAGAAGGCCTTAGGGTTGTAAAGCACTTTAGTTCGGGAAGAAAAAGC",
+"TGGGGAATATTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCTTTCGGGTTGTAAAGCACTTTCAGTGAGGAGGAAAACCT",
+"TGGGGAATCTTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGTAGGGAGGAAGGCTT",
+"TGGGGAATCTTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGCAGGGAGGAAGGCTT",
+"TGGGGAATCTTAGACAATGGGCGCAAGCCTGATCTAGCGATGCCGCGTGAGTGATGAAGGCCTTAGGGTCGTAAAGCTCTTTCGCCTGTGAAGATAATGA",
+"TGGGGAATCTTGCACAATGGGCGAAAGCCTGATGCAGCCATGCCGCGTGAATGATGAAGGCCTTAGGGTTGTAAAATTCTTTCGCTAGGGATGATAATGA",
+"TGGGGAATATTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGAGTGAAGAAGGCCTTCGGGTTGTAAAGCTCTTTCAGATGCGAAGATGATGA",
+"TGGGGAATATTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGTTGTGAGGAAGGGGA",
+"TGGGGAATATTGCACAATGGGGGAAACCCTGATGCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGTTGTGAGGAAAAGTT")
+my_vector[0]
+my_vector[1]
+length(my_vector)
+length(my_vector[1])
+class(my_vector)
+class(my_vector[1])
+length(my_vector[0])
+for (i in 1:length(my_vector)){
+print(i)
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector)){
+print("i = ")
+print(i)
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector) -1 ){
+print("i = ")
+print(i)
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+f_comp(str1, str2)
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+f_comp(str1, str2)
+}
+i
+str1
+str2
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector) -1 ){
+print("i = ")
+print(i)
+str1 <- my_vector[[i]]
+str2 <- my_vector[][i+1]]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+for (i in 1:length(my_vector) -1 ){
+print("i = ")
+print(i)
+str1 <- my_vector[[i]]
+str2 <- my_vector[[i+1]]
+if (length(str1) > 0 && length(str2) > 0) {
+print("length(str2) = ")
+print(length(str2))
+f_comp_p(str1, str2)
+}
+next
+}
+f_comp_coll <- function(str1, str2) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+append(res_l, res)
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp(str1, str2)
+}
+next
+}
+res_l
+res_l <- list()
+f_comp_coll <- function(str1, str2) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+append(res_l, res)
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2)
+}
+next
+}
+res_l
+res_l <- list()
+f_comp_coll <- function(str1, str2) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+append(res_l, res, length(res_l))
+}
+for (i in 1:length(my_vector) -1 ){
+str1 <- my_vector[i]
+str2 <- my_vector[i+1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2)
+}
+next
+}
+res_l()
+res_l
+source(/Users/ashipunova/BPC/linda/)
+source(/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt)
+source("/Users/ashipunova/BPC/linda/")
+source("/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt")
+my_data <- read.table("/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt", header = FALSE)
+tot_length <- length( my_data)
+tot_length
+tot_length <- length([my_data])
+my_data <- read.table("/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt", header = FALSE)
+View(my_data)
+nrow(my_data)
+tot_length <- nrow(my_data)
+res_list <- vector("list", tot_length)
+f_comp_coll <- function(str1, str2, i) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+res_list[[i]] <- res
+}
+my_data[i]
+my_data[1]
+my_data[0,1]
+my_data[1,1]
+my_data[1,2]
+my_data[2,1]
+input <- "/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt"
+my_seq <-  <- fread(input)
+my_seq <- fread(input)
+my_seq <- read(input)
+class(my_data)
+ncol(my_data)
+f_comp_coll <- function(str1, str2, i) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+res_list[[i]] <- res
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_vector[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2, i)
+}
+next
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2, i)
+}
+next
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2, i)
+}
+next
+}
+str1
+str2
+utf8ToInt(str1)
+typeof(str1)
+class(str1)
+head(my_data)
+my_data[2,1]
+class(my_data[[2,1]])
+my_data[[2,1]]
+typeof(my_data[[2,1]])
+typeof(my_data[[2,"V1"]])
+typeof(my_data[2,"V1"])
+help(my_data)
+head(my_data)
+e1 <-  my_data[2,1]
+e1 <-  my_data[[2,1]]
+typeof(e1)
+class(e1)
+my_data[2, ]
+v1 <- my_data[$V1]
+v1 <- my_data[V1]
+v1 <- my_data["V1"]
+class(v1)
+ncol(v1)
+nrow(v1)
+v1[1,1]
+mydata[c(1,1)]
+my_data[c(1,1)]
+my_data[c(2,)]
+my_data[c(2,1)]
+summary(my_data)
+str(my_data)
+my_data[c(1,1), c(1,1)]
+my_data[c(2,2), c(1,1)]
+e1 <- my_data[c(1,1), c(1,1)]
+length(e1)
+my_data[1, 1]
+my_data$V1[[1]]
+e1 <- my_data$V1[[1]]
+my_data[2]
+my_data[1]
+my_data[1,3]
+my_data[3,1]
+length(my_data[3,1])
+str3 <- my_data[3,1]
+utf8ToInt(str3)
+my_data <- read.table("/Users/ashipunova/BPC/linda/1_100.sorted.no_freq.txt", header = FALSE, stringsAsFactors = FALSE)
+length(my_data[3,1])
+str3 <- my_data[3,1]
+utf8ToInt(str3)
+tot_length <- nrow(my_data)
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2, i)
+}
+next
+}
+head(res_list)
+f_comp_coll <- function(str1, str2, i) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+}
+f_comp_coll <- function(str1, str2) {
+res <- min(which(!(utf8ToInt(str1)-utf8ToInt(str2))==0))
+print(res)
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+f_comp_coll(str1, str2, i)
+f_comp_coll(str1, str2)
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+f_comp_coll(str1, str2)
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+f_comp_coll(str1, str2, i)
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2)
+}
+next
+}
+for (i in 1:tot_length-1){
+str1 <- my_data[i, 1]
+str2 <- my_data[i+1, 1]
+if (length(str1) > 0 && length(str2) > 0) {
+f_comp_coll(str1, str2)
+}
+next
+}
+1 + 1
+example <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8), nrow = 4, ncol = 2)
+View(example)
+iris
+install.packages(c("ade4", "ape", "backports", "BH", "BiocManager", "bit", "bit64", "boot", "broom", "callr", "class", "cli", "clipr", "covr", "crosstalk", "curl", "data.table", "DBI", "dbplyr", "devtools", "digest", "dplyr", "DT", "ellipsis", "fansi", "forcats", "foreach", "fs", "gdtools", "ggplot2", "gh", "git2r", "glue", "haven", "hms", "htmltools", "htmlwidgets", "httpuv", "httr", "igraph", "iterators", "jsonlite", "KernSmooth", "knitr", "labeling", "later", "lattice", "latticeExtra", "lifecycle", "lubridate", "MASS", "Matrix", "matrixStats", "mgcv", "mime", "modelr", "nanotime", "nlme", "nnet", "openssl", "pillar", "pkgbuild", "pkgload", "plyr", "prettyunits", "processx", "promises", "ps", "purrr", "R.methodsS3", "R.oo", "R.utils", "R6", "Rcpp", "RcppCCTZ", "RcppParallel", "RCurl", "readr", "remotes", "reshape2", "rex", "rlang", "rmarkdown", "roxygen2", "rstudioapi", "rversions", "rvest", "scales", "selectr", "shiny", "spatial", "stringi", "survival", "svglite", "sys", "systemfonts", "testthat", "tibble", "tidyr", "tidyselect", "tidyverse", "tinytex", "usethis", "vctrs", "withr", "xfun", "xml2", "xts", "yaml", "zoo"))
+version()
+version
+sessionInfo()
+install.packages("ggplot2")
+install.packages("devtools")
+sessionInfo()
+install.packages("KernSmooth")
+library(KernSmooth)
+detach("package:KernSmooth", unload = TRUE)
+library(magrittr)
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+with(my_dataset,
+plot(date_time, Voltage,
+type = 'n',
+ylab = "Voltage",
+xlab = "datetime")
+)
+with(my_dataset,
+lines(date_time, Voltage, pch = 20)
+)
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+plot(x <- sort(rnorm(47)), type = "s", main = "plot(x, type = \"s\")")
+points(x, cex = .5, col = "dark red")
+plot(table(rpois(100, 5)), type = "h", col = "red", lwd = 10,
+main = "rpois(100, lambda = 5)")
+plot(cars)
+lines(lowess(cars))
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+with(my_dataset,
+plot(date_time, c,
+type = 'n',
+ylab = "Global Active Power",
+xlab = "datetime")
+)
+with(my_dataset,
+lines(date_time, Global_reactive_power, pch = 20)
+)
+dev.off()
+with(my_dataset,
+plot(date_time, Global_reactive_power,
+type = 'n',
+ylab = "Global Active Power",
+xlab = "datetime")
+)
+with(my_dataset,
+lines(date_time, Global_reactive_power, pch = 20)
+)
+with(my_dataset,
+plot(date_time, Global_reactive_power,
+type = 'n',
+#ylab = "Global Active Power",
+xlab = "datetime")
+)
+with(my_dataset,
+lines(date_time, Global_reactive_power, pch = 20)
+)
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+y <- "Global_reactive_power"
+my_dataset[y,]
+my_dataset[y]
+my_dataset[[y]]
+str(my_dataset[y])
+str(my_dataset[[y]])
+my_dataset$Global_reactive_power
+plot(my_dataset$date_time, my_dataset[[y]],
+type = 'n',
+ylab = "Global Active Power (kilowatts)",
+xlab = "")
+lines(my_dataset$date_time, my_dataset[[y]], pch = 20)
+graph_w_lines(my_dataset$Global_active_power,
+ylab = "Global Active Power (kilowatts)")
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+graph_w_lines(my_dataset$Global_active_power,
+ylab = "Global Active Power (kilowatts)")
+graph_w_lines(my_dataset$Global_active_power,
+ylab = "Global Active Power (kilowatts)")
+graph_w_lines
+plot(my_dataset$date_time, my_dataset[[y]],
+type = 'n',
+ylab = "Global Active Power (kilowatts)",
+xlab = "")
+lines(my_dataset$date_time, my_dataset[[y]], pch = 20)
+graph_w_lines = function(y, ylab = "") {
+plot(my_dataset$date_time, my_dataset[[y]],
+type = 'n',
+ylab = "Global Active Power (kilowatts)",
+xlab = "")
+lines(my_dataset$date_time, my_dataset[[y]], pch = 20)
+}
+dev.off()
+browser()
+png(file="plot2.png")
+graph_w_lines(my_dataset$Global_active_power,
+ylab = "Global Active Power (kilowatts)")
+dev.off()
+png(file="plot3.png")
+png3()
+dev.off()
+png(file="plot4.png")
+png4()
+dev.off()
+debugSource('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+force(ylab)
+force(y)
+graph_w_lines(my_dataset$Global_active_power,
+ylab = "Global Active Power (kilowatts)")
+force(y)
+str(y)
+str(my_dataset$date_time)
+str(my_dataset$Global_reactive_power)
+plot(my_dataset$date_time, my_dataset[[y]],
+type = 'n',
+ylab = "Global Active Power (kilowatts)",
+xlab = "")
+debugSource('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+plot(my_dataset$date_time, y,
+type = 'n',
+ylab = "Global Active Power (kilowatts)",
+xlab = "")
+lines(my_dataset$date_time, y, pch = 20)
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+date_time_graph_w_lines(my_dataset$Voltage, xlab = "datetime", ylab = "Voltage")
+source('~/Documents/GitHub/datasciencecoursera/plot_project.R')
+if(!file.exists('figures')) dir.create('figures')
+png(filename = './figures/plot1.png', width = 480, height = 480, units='px')
+# plot figure
+with(my_dataset, hist(Global_active_power, xlab = 'Global Active Power (kilowatt)', main = 'Global Active Power', col = 'red'))
+# close device
+dev.off()
+data$Date <- as.Date(data$Date, format = '%d/%m/%Y')
+data$DateTime <- as.POSIXct(paste(data$Date, data$Time))
+# open device
+if(!file.exists('figures')) dir.create('figures')
+png(filename = './figures/plot2.png', width = 480, height = 480, units='px')
+# plot figure
+Sys.setlocale(category = "LC_ALL", locale = "english")
+plot(data$DateTime, data$Global_active_power, xlab = '', ylab = 'Global Active Power (kilowatt)', type = 'l')
+# close device
+dev.off()
+data <- my_dataset
+data$Date <- as.Date(data$Date, format = '%d/%m/%Y')
+data$DateTime <- as.POSIXct(paste(data$Date, data$Time))
+# open device
+if(!file.exists('figures')) dir.create('figures')
+png(filename = './figures/plot2.png', width = 480, height = 480, units='px')
+# plot figure
+Sys.setlocale(category = "LC_ALL", locale = "english")
+plot(data$DateTime, data$Global_active_power, xlab = '', ylab = 'Global Active Power (kilowatt)', type = 'l')
+# close device
+dev.off()
+str(data$Date)
+data <- my_dataset
+if(!file.exists('figures')) dir.create('figures')
+png(filename = './figures/plot3.png', width = 480, height = 480, units='px')
+# plot figure
+Sys.setlocale(category = "LC_ALL", locale = "english")
+plot(data$DateTime, data$Sub_metering_1, xlab = '', ylab = 'Energy sub metering', type = 'l')
+lines(data$DateTime, data$Sub_metering_2, col = 'red')
+lines(data$DateTime, data$Sub_metering_3, col = 'blue')
+legend('topright', col = c('black', 'red', 'blue'), legend = c('Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'), lwd = 1)
+# close device
+dev.off()
+data <- my_dataset
+if(!file.exists('figures')) dir.create('figures')
+png(filename = './figures/plot4.png', width = 480, height = 480, units='px')
+# plot figure
+Sys.setlocale(category = "LC_ALL", locale = "english")
+par(mfrow = c(2, 2))
+plot(data$DateTime, data$Global_active_power, xlab = '', ylab = 'Global Active Power (kilowatt)', type = 'l')
+plot(data$DateTime, data$Voltage, xlab = 'datetime', ylab = 'Voltage', type = 'l')
+plot(data$DateTime, data$Sub_metering_1, xlab = '', ylab = 'Energy sub metering', type = 'l')
+lines(data$DateTime, data$Sub_metering_2, col = 'red')
+lines(data$DateTime, data$Sub_metering_3, col = 'blue')
+legend('topright', col = c('black', 'red', 'blue'), legend = c('Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'), lwd = 1)
+plot(data$DateTime, data$Global_reactive_power, xlab = 'datetime', ylab = 'Global_reactive_power', type = 'l')
+# close device
+dev.off()
+savehistory("~/work/data_science_coursera/coursera_course/h14.Rhistory")
+
+swirl()
+library(swirl)
+swirl()
+head(airquality)
+xyplot(Ozone~Wind, ddata = airquality)
+xyplot(Ozone~Wind, data = airquality)
+dev.off()
+xyplot(Ozone~Wind, data = airquality)
+library(swirl)
+swirl()
+xyplot(Ozone~Wind, data = airquality, col = "red", pch = 8, main = "Big Apple Data")
+xyplot(Ozone ~ Wind, data = airquality, pch=8, col="red", main="Big Apple Data")
+xyplot(Ozone~Wind | as.factor(Month), data = airquality, layout = c(5,1))
+xyplot(Ozone~Wind | Month, data = airquality, layout = c(5,1))
+p <- xyplot(Ozone~Wind,data=airquality)
+p
+names(p)
+mynames[myfull]
+p[["formula"]]
+p[["x.limits"]]
+table(f)
+xyplot(y~x|f, layout = c(2,1))
+v1
+v2
+myedit("plot1.R")
+source(pathtofile("plot1.R"), local = TRUE)
+myedit("plot2.R")
+source(pathtofile("plot2.R"), local = TRUE)
+str(diamonds)
+table(diamonds$color)
+table(diamonds$color, diamonds$cut)
+myedit("myLabels.R")
+source(pathtofile("myLabels.R"), local = TRUE)
+xyplot(price~carat | color*cut, data = diamonds, strip = FALSE, pch = 20, xlab = myxlab, ylab = myylab, main = mymain)
+xyplot(price~carat | color*cut, data = diamonds, pch = 20, xlab = myxlab, ylab = myylab, main = mymain)
+sample(colors(), 10)
+pal <- colorRamp(c("red","blue"))
+pal(0)
+pal(1)
+pal(seq(0,1,len=6))
+p1 <- colorRampPalette(c("red","blue"))
+p1(2)
+p1(6)
+0xcc
+p2 <- colorRampPalette(c("red", "yellow"))
+p2(2)
+p2(10)
+showMe(p1(20))
+showMe(p2(20))
+showMe(p2(2))
+p1
+?rgb
+p3 <- colorRampPalette(c("blue", "green"), .5)
+p3 <- colorRampPalette(c("blue", "green"), alpha=.5)
+p3(5)
+plot(x, y, pch = 19, col = rgb(0, .5, .5))
+plot(x, y, pch = 19, col = rgb(0, .5, .5, .3))
+cols <- brewer.pal(3, "BuGn")
+showMe(cols)
+pal <- colorRampPalette(cols)
+showMe(pal(3))
+showMe(pal(20))
+image(volcano, col = pal(20))
+image(volcano, col = p1(20))
+str(mpg)
+qplot(displ, hwy, data = mpg)
+qplot(displ, hwy, data = mpg, color = drv)
+qplot(displ, hwy, data = mpg, color = drv, geom = c("point", "smooth"))
+qplot(hwy, data= mpg, color = drv)
+qplot(y=hwy, data = mpg, color = drv)
+myhigh
+qplot(drv, hwy, data = mpg, geom = "boxplot")
+qplot(drv, hwy, data = mpg, geom = "boxplot", color = manufacturer)
+qplot(hwy, data = mpg, fill = drv)
+qplot(displ, hwy, data = mpg, facets = . ~ drv)
+qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)
+qplot(displ, hwy, data=mpg, geom = c("point", "smooth"), facets = .~drv)
+g <- ggplot(mpg, aes(displ, hwy))
+summary(g)
+g+geom_point()
+g+geom_point() + geom_smooth()
+g+geom_point() + geom_smooth(method = "lm")
+g+geom_point() + geom_smooth(method = "lm") + facet_grid(. ~ drv)
+g+geom_point() + geom_smooth(method = "lm") + facet_grid(. ~ drv) + ggtitle("Swirl Rules!")
+g + geom_point(color = "pink", size = 4, alpha = 1/2)
+g + geom_point(size = 4, alpha = 1/2, aes(color = drv))
+g + geom_point(aes(color = drv)) + labs(title = "Swirl Rules!") + labs(x = "Displacement", y = "Hwy Mileage")
+g + geom_point(size = 4, alpha = 1/2, aes(color = drv)) + geom_smooth(size = 4, linetype = 3, method = "lm", se = FALSE)
+g + geom_point(aes(color = drv),size=2,alpha=1/2) +geom_smooth(size=4,linetype=3,method="lm",se=FALSE)
+g + geom_point(aes(color = drv)) + theme_bw(base_family = "Times")
+plot(myx, myy, type="l", ylim=c(-3,3))
+g <- ggplot(data = testdat, aes(x = myx, y = myy))
+g + geom_line()
+g + geom_line() + ylim(-3,3)
+g + geom_line() + coord_cartesian(ylim(-3,3))
+g + geom_line() + coord_cartesian(ylim = -3,3)
+g + geom_line() + coord_cartesian(ylim = c(-3,3))
+g <- ggplot(dataset, aes(x = displ, y = hwy, colo = factor(year)))
+g <- ggplot(mpg, aes(x = displ, y = hwy, colo = factor(year)))
+g <- ggplot(mpg, aes(x = displ, y = hwy, color = factor(year)))
+g + geom_point()
+g + geom_point() + facet_grid(drv~cyl, margins = T)
+g + geom_point() + facet_grid(drv~cyl, margins = TRUE)
+g + geom_point() + facet_grid(drv~cyl, margins = TRUE) + geom_smooth(method = "lm", se = FALSE, size = 2, color = "black")
+g + geom_point() + facet_grid(drv~cyl, margins = TRUE) + geom_smooth(method = "lm", se = FALSE, size = 2, color = "black") + labs(x = "Displacement", y = "Highway Mileage", title = "Swirl Rules!")
+str(diamonds)
+qplot(price, data = diamonds)
+range(diamonds$price)
+qplot(price, data = diamonds, binwidth = 18497/30)
+brk
+counts
+qplot(price, data = diamonds, binwidth = 18497/30, fill = cut)
+qplot(price, data = diamonds, geom = "density")
+qplot(price, data = diamonds, geom = "density", color = cut)
+qplot(carat, price, data = diamonds)
+qplot(carat, price, data = diamonds, shape = cut)
+qplot(carat, price, data = diamonds, color = cut)
+qplot(carat, price, data = diamonds, color = cut, geom_smooth(method = "lm"))
+qplot(carat, price, data = diamonds, color = cut, geom_smooth())
+qplot(carat, price, data = diamonds, color = cut, aes(geom_smooth()))
+qplot(carat, price, data = diamonds, color = cut, aes(geom_smooth(method = "lm")))
+qplot(carat, price, data = diamonds, color = cut)
+qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm")
+qplot(carat,price,data=diamonds, color=cut, facets = .~5) + geom_smooth(method="lm")
+qplot(carat,price,data=diamonds, color=cut, facets = .~cut) + geom_smooth(method="lm")
+g <- ggplot(diamonds, aes(depth, price))
+summary(g)
+g <- ggplot(diamonds, aes(depth, price)) + geom_point(alpha = 1/3)
+g <- ggplot(diamonds, aes(depth, price))
+g  + geom_point(alpha = 1/3)
+cutpoints <- quantile(diamonds$carat, seq(0,1,length = 4), na.rm = TRUE)
+cutpoints
+diamonds$car2 <- cut(diamonds$carat, cutpoints)
+summary(diamonds$car2)
+g <- ggplot(diamonds,aes(depth,price))
+g + geom_point(alpha = 1/3) + facet_grid(cut ~ car2)
+diamonds[myd,]
+g+geom_point(alpha=1/3)+facet_grid(cut~car2) + geom_smooth(method = "lm", size = 3, color = pink)
+g+geom_point(alpha=1/3)+facet_grid(cut~car2) + geom_smooth(method = "lm", size = 3, color = "pink")
+(diamonds, aes(carat, price)) + geom_boxplot() + facet_grid(. ~ cut)
+ggplot2(diamonds, aes(carat, price)) + geom_boxplot() + facet_grid(. ~ cut)
+ggplot(diamonds, aes(carat, price)) + geom_boxplot() + facet_grid(. ~ cut)
+savehistory("~/work/data_science_coursera/coursera_course/h15.Rhistory")
+
+library(nlme)
+library(lattice)
+xyplot(weight ~ Time | Diet, BodyWeight)
+library(nlme)
+library(lattice)
+xyplot(weight ~ Time | Diet, BodyWeight, panel.abline())
+library(nlme)
+library(lattice)
+xyplot(weight ~ Time | Diet, BodyWeight, panel.abline(3))
+library(lattice)
+library(datasets)
+data(airquality)
+p <- xyplot(Ozone ~ Wind | factor(Month), data = airquality)
+summary(p)
+library(datasets)
+data(airquality)
+library(datasets)
+data(airquality)
+library(datasets)
+qplot(Wind, Ozone, data = airquality, facets = . ~ factor(Month))
+library(ggplot2)
+library(ggplot2movies)
+g <- ggplot(movies, aes(votes, rating))
+print(g)
+summary(ggplot2movies)
+summary(movies)
+install.packages("ggplot2movies")
+library(ggplot2)
+library(ggplot2movies)
+g <- ggplot(movies, aes(votes, rating))
+print(g)
+summary(movies)
+summary(g)
+qplot(votes, rating, data = movies)
+qplot(votes, rating, data = movies) + geom_smooth()
+qplot(votes, rating, data = movies)
+qplot(Wind, Ozone, data = airquality, geom = "smooth")
+airquality = transform(airquality, Month = factor(Month))
+qplot(Wind, Ozone, data = airquality, facets = . ~ Month)
+qplot(Wind, Ozone, data = airquality, facets = . ~ factor(Month))
+jpeg("m1")
+qplot(Wind, Ozone, data = airquality, facets = . ~ factor(Month))
+jpeg("m2")
+airquality = transform(airquality, Month = factor(Month))
+qplot(Wind, Ozone, data = airquality, facets = . ~ Month)
+data(airquality)
+jpeg("m1")
+qplot(Wind, Ozone, data = airquality, facets = . ~ factor(Month))
+dev.off
+dev.off()
+jpeg("m2.jpg")
+airquality = transform(airquality, Month = factor(Month))
+qplot(Wind, Ozone, data = airquality, facets = . ~ Month)
+dev.off()
+heatmap(diamonds)
+str(diamonds)
+heatmap(diamonds$price, diamonds$carat)
+heatmap(x as.numeric(diamonds$price), diamonds$carat)
+heatmap(as.numeric(diamonds$price), diamonds$carat)
+heatmap(table(diamonds$price, diamonds$carat))
+gray()
+gray(2)
+gray(0.3)
+swirl()
+dist(dataFrame)
+summary(distxy)
+hc <- hclust(distxy)
+plot(hc)
+hc <- hclust(distxy
+)
+distxy
+plot(as.dendrogram(hc))
+abline(h = 1.5, col = "blue")
+abline(h = .4, col = "red")
+5
+12
+abline(h = .05, col = "green")
+dFsm
+dist(dFsm)
+hc
+heatmap
+heatmap(dataMatrix,col=cm.colors(25))
+str(mt)
+heatmap(mt)
+mt
+plot(denmt)
+distmt
+cx
+cmat
+points(cx, cy, col = c("red", "orange", "purple", pch = 3, cex = 2, lwd = 2))
+points(cx, cy, col = c("red", "orange", "purple"), pch = 3, cex = 2, lwd = 2)
+mdist
+mdist(x,y,cx,cy)
+apply(distTMP, 2, which.min)
+apply(distTmp, 2, which.min)
+points(x, y, pch = 19, cex = 2, col = cols1[newClust])
+tapply(x, newClust, mean)
+newClust
+tapply(y, newClust, mean)
+newCx
+points(newCx,newCy,col=cols1,pch=8,cex=2,lwd=2)
+mdist(x, y, newCx, newCy)
+apply(distTmp2, 2, which.min)
+newClust2
+points(x,y,pch=19,cex=2,col=cols1[newClust2])
+tapply(x, newClust2, mean)
+tapply(y, newClust2, mean)
+finalCx
+points(finalCx,finalCy,col=cols1,pch=9,cex=2,lwd=2)
+kmeans(dataFrame, centers = 3)
+kmObj
+kmObj$iter
+kmObj$cluster
+plot(x,y,col=kmObj$cluster,pch=19,cex=2)
+col=c("black","red","green")
+points(kmObj$centers,col=c("black","red","green"),pch=3,cex=3,lwd=3)
+kmeans(dataFrame,6)$cluster
+plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)
+head(dataMatrix)
+heatmap(dataMatrix)
+myedit("addPatt.R")
+source("addPatt.R", local = TRUE)
+heatmap(dataMatrix)
+mat
+svd(mat)
+matu * diag * t(matv)
+matu %*% diag %*% t(matv)
+scale(mat)
+svd(scale(mat))
+prcomp(scale(mat))
+svd1$v[,1]
+svd1$d
+View(svd1)
+head(constantMatrix)
+svd$d
+svd2$d
+svd2$v[,c(1,2)]
+svd2$d
+dim(faceData)
+(svd1$u[,1] and svd1$d[1])
+(svd1$u[,1], svd1$d[1])
+(svd1$u[,1] * svd1$d[1])
+a1 <- (svd1$u[,1] * svd1$d[1]) %*% t(svd1$v[,1])
+image()
+image(a1)
+myImage
+myImage(a1)
+a2 <- (svd1$u[,1] %*% svd1$d[1:2]) %*% t(svd1$v[,1:2])
+a2 <- (svd1$u[,1] %*% diag(svd1$d[1:2])) %*% t(svd1$v[,1:2])
+a2 <- svd1$u[,1] %*% diag(svd1$d[1:2])
+a2 <- svd1$u[,1] %*% diag(svd1$d[1])
+a2 <- svd1$u[,1] * svd1$d[1]
+a2 <- (svd1$u[,1:2] %*% diag(svd1$d[1:2])) %*% t(svd1$v[,1:2])
+a2 <- svd1$u[,1:2] %*% diag(svd1$d[1:2]) %*% t(svd1$v[,1:2])
+myImage(a2)
+a5 <- svd1$u[,1:5] %*% diag(svd1$d[1:5]) %*% t(svd1$v[,1:5])
+myImage(svd1$u[,1:5] %*% diag(svd1$d[1:5]) %*% t(svd1$v[,1:5]))
+save.image("~/work/data_science_coursera/coursera_course/env_pca.RData")
+View(myImage)
+myImage(svd1$u[,1:10] %*% diag(svd1$d[1:10]) %*% t(svd1$v[,1:10]))
+dim(ssid)
+dim(sid)
+dim(ssd)
+names(ssd[562:563])
+savehistory("~/work/data_science_coursera/coursera_course/h16.Rhistory")
+
+table(ssd$subject)
+sum(table(ssd$subject))
+table(v)
+table(ssd$activity)
+sub1 <- subset(ssd, subset = 1)
+sub1 <- subset(ssd, subset = true)
+sub1 <- subset(ssd, subset = TRUE)
+sub1 <- subset(ssd, subject == 1)
+dim(sub1)
+names(sub1)
+names(sub1[1:12])
+myedit("showXY.R")
+showMe(1:6)
+mdist
+mdist <- dist(sub1[,1:3])
+hclustering <- hclust(mdist)
+myplclust(hclustering, lab.col = unclass(sub1$activity))
+mdist <- dist(x[,10:12])
+mdist <- dist(sub1[,10:12])
+hclustering <- hclust(mdist)
+myplclust(hclustering, lab.col = unclass(sub1$activity))
+svd1 <- svd(scale(sub1[,-c(562,563)]))
+dim(svd1$u)
+maxCon <- which.max(svd1$v[,2])
+mdist <- dist(c(sub1[10:12], maxCon)
+)
+mdist <- dist(sub1[c(10:12, maxCon)])
+mdist <- dist(sub1[,c(10:12, maxCon)])
+hclustering <- hclust(mdist)
+myplclust(hclustering, lab.col = unclass(sub1$activity))
+names(sub1[maxCon])
+kClust <- kmeans(sub1[,-(562:563)], centers = 6)
+kClust1 <- kClust
+kClust <- kmeans(sub1[, -c(562, 563)], centers = 6)
+identical(kClust, kClust1)
+table(kClust$cluster, sub1$activity)
+kClust <- kmeans(sub1[, -c(562, 563)], centers = 6, nstart = 100)
+table(kClust$cluster, sub1$activity)
+dim(kClust$centers)
+laying <- which(kClust$size==29)
+plot(kClust$centers[laying,1:12], pch = 19, ylab = "Laying Cluster")
+names(sub1[,1:3])
+walkdown <- which(kClust$size==49)
+plot(kClust$centers[walkdown,1:12], pch = 19, ylab = "Walkdown Cluster")
+dim(pm0)
+head(pm0)
+cnames
+cnames <- strsplit(cnames, "|", fixed = TRUE)
+cnames
+View(ssd)
+names(pm0) <- make.names(cnames[[1]][wcol])
+head(pm0)
+x0 <- pm0$Sample.Value
+str(x0)
+mean(is.na(x0))
+names(pm1) <- make.names(cnames[[1]][wcol])
+dim(pm1)
+x1 <- pm1$Sample.Value
+mean(is.na(x1))
+summary(x0)
+summary(x1)
+boxplot(x0, x1)
+boxplot(log10(x0), log10(x1))
+negative <- x1<0
+sum(negative, na.rm = TRUE)
+mean(negative, na.rm = TRUE)
+dates <- pm1$Date
+str(dates)
+dates <- as.Date(as.character(dates), "%Y%m%d")
+head(dates)
+hist(dates[negative], "month")
+str(site0)
+intersect(site0, site1)
+both <- intersect(site0, site1)
+both
+head(pm0)
+cnt0 <- subset(pm0, State.Code == 36 & State.Code %in% both)
+cnt0 <- subset(pm0, State.Code == 36 & county.site %in% both)
+cnt1 <- subset(pm1, State.Code == 36 & county.site %in% both)
+sapply(split(cnt0, cnt0$county.site), nrow)
+sapply(split(cnt1, cnt1$county.site), nrow)
+pm0sub <- subset(cnt0, County.Code == 63 & Site.ID == 2008)
+pm0sub1 <- subset(cnt0, county.site == "63.2008")
+identical(pm0sub, pm0sub1)
+pm1sub <- subset(cnt1, County.Code == 63 & Site.ID == 2008)
+x0sub <- pm0sub$Sample.Value
+x1sub <- pm1sub$Sample.Value
+dates0 <- as.Date(as.character(pm0sub$Date), "%Y%m%d")
+dates1 <- as.Date(as.character(pm1sub$Date), "%Y%m%d")
+par(mfrow = c(1,2))
+par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+plot(dates0, x0sub, pch = 20)
+abline(h = median(x0sub, na.rm = TRUE))
+abline(h = median(x0sub, na.rm = TRUE), lwd=2)
+plot(dates1, x1sub, pch = 20)
+abline(h = median(x1sub, na.rm = TRUE), lwd=2)
+rng <- range(x0sub, x1sub, na.rm = TRUE)
+rng
+mn0 <- with(pm0, tapply(Sample.Value, State.Code, mean, na.rm = TRUE))
+str(mn0)
+mn1 <- with(pm1, tapply(Sample.Value, State.Code, mean, na.rm = TRUE))
+str(mn1)
+summary(mn0)
+summary(mn1)
+d0 <- data.frame(state = names(mn0), mean = mn0)
+d1 <- data.frame(state = names(mn1), mean = mn1)
+mrg <- merge(d0, d1, by = "state")
+dim(mrg)
+head(mrg)
+with(mrg, plot(rep(1,52), mrg[,2], xlim = c(.5,2.5)))
+with(mrg, points(rep(2,52), mrg[,3]))
+segments(rep(1,52), rep(2,52))
+segments(rep(1,52), mrg[,2], rep(2,52), mrg[,3])
+mrg[mrg$mean.x < mrg$mean.y, ]
+savehistory("~/work/data_science_coursera/coursera_course/h17.Rhistory")
+
+source('~/work/data_science_coursera/coursera_course/project2_explan.R')
+head(NEI)
+source('~/work/data_science_coursera/coursera_course/project2_explan.R')
+head(NEI)
+source('~/work/data_science_coursera/coursera_course/project2_explan.R')
+head(SCC)
+head(NEI)
+unique(NEI$Pollutant)
+unique(NEI$POINT)
+unique(NEI$type)
+mn1 <- with(pm1, tapply(Sample.Value, State.Code, mean, na.rm = TRUE))
+as.factor(NEI$year)
+NEI$year <- as.factor(NEI$year)
+tapply(NEI$Emissions, NEI$year, sum)
+plot(c)
+plot(tapply(NEI$Emissions, NEI$year, sum))
+res1 <- tapply(NEI$Emissions, NEI$year, sum)
+str(res1)
+hist(res1)
+y <- as.Date(as.character(NEI$year))
+y <- as.Date(as.character(NEI$year), "%Y")
+source('~/work/data_science_coursera/coursera_course/project2_explan.R')
+res1 <- tapply(NEI$Emissions, NEI$year, sum)
+summary(NEI$Emissions)
+table(res1)
+hist(NEI$Emissions)
+hist(NEI$Emissions, NEI$year)
+res2 <- split(NEI$Emissions, NEI$year)
+res3 <- sapply(split(NEI$Emissions, NEI$year), sum)
+str(res3)
+table(res3)
+data.table(res3)
+data.frame(res3)
+hist(data.frame(res3))
+hist(data.frame(res3[,1]))
+hist(data.frame(res3[1]))
+str(data.frame(res3))
+df3 <- data.frame(res3)
+hist(df3$res3)
+plot(df3$res3)
+plot(df3$res3, xlab = rnames(res3) )
+rownames(res3)
+rownames(res1)
+plot(df3$res3, xlab = rownames(res1) )
+plot(df3$res3, rownames(res1) )
+str(res1)
+dim(res1)
+as.data.frame(res1)
+str(as.data.frame(res1))
+rownames(as.data.frame(res1))
+transform(as.data.frame(res1), year <- rownames(as.data.frame(res1)))
+year <- rownames(as.data.frame(res1))
+year
+res4 <- transform(as.data.frame(res1), year = factor(rownames(as.data.frame(res1))))
+View(res4)
+with(res4, plot(year, res1))
+res5 <- transform(as.data.frame(res1), year = rownames(as.data.frame(res1)))
+View(res5)
+res5 <- transform(as.data.frame(res1), year = rownames(res1))
+res5 <- transform(res1, year = rownames(res1))
+str(res5)
+with(res5, plot(year, X_data))
+with(res5, plot(year, X_data, ylab = "Total Emission"))
+subset(NEI, sunset)
+balt <- subset(NEI, fips == "24510")
+source('~/work/data_science_coursera/coursera_course/project2_explan.R')
+with(res2, plot(year, X_data, ylab = "Total Emissions", xlim = c(1990, 2012) ))
+names(res2)
+res1 <- tapply(NEI$Emissions, NEI$year, sum)
+res2 <- transform(res1, year = rownames(res1))
+names(res2)
+names(res2) <- (c("Total.Emission", "Year"))
+names(res2)
+res1 <- tapply(NEI$Emissions, NEI$year, sum)
+res2 <- transform(res1, year = rownames(res1))
+names(res2) <- (c("Total.Emission", "Year"))
+with(res2, plot(year, Total.Emission, ylab = "Total Emissions", xlim = c(1990, 2012) ))
+with(res2, plot(year, Total.Emission, ylab = "Total Emissions", xlim = c(1998, 2010) ))
+source('~/work/data_science_coursera/coursera_course/project2_explan.R')
+balt <- transform(balt$type <- as.factor(balt$type))
+str(balt)
+balt <- subset(NEI, fips == "24510")
+balt <- transform(balt$type <- as.factor(balt$type))
+balt <- subset(NEI, fips == "24510")
+transform(balt, new_type = as.factor(balt$type), new_tear = as.factor(year))
+balt <- subset(NEI, fips == "24510")
+balt1 <- subset(balt, new_type = as.factor(balt$type), new_tear = as.factor(year), Emissions)
+balt1 <- transform(balt, new_type = as.factor(balt$type), new_tear = as.factor(year), Emissions)
+str(balt)
+str(balt1)
+balt <- subset(NEI, fips == "24510")
+balt1 <- transform(balt, new_type = as.factor(balt$type), new_tear = as.factor(year))
+str(balt1)
+library(ggplot2)
+balt2 <- subset(NEI, fips == "24510", new_type = as.factor(balt$type), new_tear = as.factor(year))
+str(balt2)
+type1 <- split(balt1, balt1$new_type)
+str(type1)
+unique(type1$type)
+balt <- subset(NEI, fips == "24510")
+balt1 <- transform(balt, new_type = as.factor(balt$type), new_year = as.factor(balt$year))
+type1 <- split(balt1, balt1$new_type)
+str(type1)
+plot1(type1)
+type1[1]
+plot1(type1[1])
+str(type1[1])
+str(type1[[1]])
+plot1(type1[[1]])
+plot1(type1[[2]])
+plot1(type1[[3]])
+plot1(type1[[4]])
+title(main = unique(type1[[4]]$type))
+for (i in range(1:4)) {}
+for (i in range(1:4)) {print(i)
+plot1(type1[[i]])
+title(main = unique(type1[[i]]$type))
+}
+for (i in 1:4) {print(i)
+plot1(type1[[i]])
+title(main = unique(type1[[i]]$type))
+}
+par(mfrow = c(1, 4), mar = c(4, 4, 2, 1))
+for (i in 1:4) {print(i)
+plot1(type1[[i]])
+title(main = unique(type1[[i]]$type))
+}
+for (i in 1:4) {
+res1 <- tapply(NEI$Emissions, NEI$year, sum)
+res2 <- transform(res1, year = rownames(res1))
+names(res2) <- (c("Total.Emission", "Year"))
+with(res2, plot(year, Total.Emission, ylab = "Total Emissions", xlim = c(1998, 2009) ))
+ggplot(type1[[i]])
+title(main = unique(type1[[i]]$type))
+}
+length(type1)
+seq(length(type1))
+source('~/work/data_science_coursera/coursera_course/project2_explan.R')
+balt <- subset(NEI, fips == "24510")
+balt1 <- transform(balt, new_type = as.factor(balt$type), new_year = as.factor(balt$year))
+type1 <- split(balt1, balt1$new_type)
+debugSource('~/work/data_science_coursera/coursera_course/project2_explan.R')
+ggplot(red2$year, res2$Total.Emission)
+ggplot(res2$year, res2$Total.Emission)
+qplot(res2$year, res2$Total.Emission)
+qplot(year, Total.Emission, data = res2, facets = new_type)
+qplot(year, Total.Emission, data = res2, facets = type)
+qplot(year, Total.Emission, data = res2, facets = . ~ type)
+balt <- subset(NEI, fips == "24510")
+balt1 <- transform(balt, new_type = as.factor(balt$type), new_year = as.factor(balt$year))
+#  res1 <- tapply(balt1$Emissions, balt1$year, sum)
+#  res2 <- transform(res1, year = rownames(res1))
+qplot(year, Total.Emission, data = balt1, facets = . ~ new_type)
+qplot(year, Emission, data = balt1, facets = . ~ new_type)
+str(balt1)
+qplot(year, Emissions, data = balt1, facets = . ~ new_type)
+qplot(carat,price,data=diamonds, color=cut) + geom_smooth(method="lm")
+qplot(year, Emissions, data = balt1, facets = . ~ as.factor(type)) + geom_smooth()
+balt <- subset(NEI, fips == "24510")
+qplot(as.factor(year), Emissions, data = balt, facets = . ~ as.factor(type)) + geom_smooth()
+qplot(as.factor(year), Emissions, data = balt, facets = . ~ as.factor(type)) + geom_smooth(method = "lm")
+qplot(as.factor(year), Emissions, data = balt, facets = . ~ as.factor(type)) + labs(x = "Years")
+qplot(as.factor(year), Emissions, data = balt, facets = . ~ as.factor(type)) + labs(x = "Years", title = "Emissions in the Baltimore City")
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+str(SCC)
+?grep
+grep("coal", SCC, ignore.case = T)
+library(stringi)
+names(SCC)
+grep("coal", SCC$Short.Name, ignore.case = T, value = T )
+View(SCC)
+length(grep("coal", SCC$SCC.Level.Four, ignore.case = T, value = T ))
+length(unique(grep("coal", SCC$SCC.Level.Four, ignore.case = T , value = T))
+)
+length(unique(grep("coal", SCC$SCC.Level.Four, ignore.case = T, value = T ))
+)
+length(unique(grep("combustion", SCC$SCC.Level.Four, ignore.case = T, value = T ))
+)
+length(unique(grep("combustion", SCC$Short.Name, ignore.case = T, value = T ))
+)
+comb <- unique(grep("combustion", SCC$Short.Name, ignore.case = T, value = T ))
+comb_coal <- unique(grep("coal", comb, ignore.case = T, value = T ))
+str(comb_coal)
+comb14 <- unique(grep("combustion", SCC$SCC.Level.Four, ignore.case = T, value = T ))
+comb4_coal <- unique(grep("coal", comb14, ignore.case = T, value = T ))
+comb4_coal
+comb_coal
+grep("combustion", SCC$Short.Name, ignore.case = T) %>%
+grep("coal", ignore.case = T)
+library(dplyr)
+grep("combustion", SCC$Short.Name, ignore.case = T) %>%
+grep("coal", ignore.case = T)
+coal_combustion0 <- grep("combustion", SCC$Short.Name, ignore.case = T)
+coal_combustion1 <- grep("coal", coal_combustion0, ignore.case = T)
+coal_combustion0 <- grep("combustion", SCC$Short.Name, ignore.case = T, value = T)
+coal_combustion1 <- grep("coal", coal_combustion0, ignore.case = T)
+coal_combustion0 <- grep("combustion", SCC$Short.Name, ignore.case = T, value = T)
+coal_combustion1 <- grepl("coal", coal_combustion0, ignore.case = T)
+coal_combustion2 <- subset(SCC$SCC, SCC$Short.Name[coal_combustion1])
+coal_combustion2 <- subset(SCC$SCC, SCC$Short.Name == coal_combustion1)
+coal_combustion2 <- SCC$SCC[SCC$Short.Name = coal_combustion1]
+coal_combustion2 <- SCC$SCC[SCC$Short.Name == coal_combustion1]
+coal_combustion <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
+str(SCC$Short.Name)
+sum(coal_combustion)
+rr1 <- SCC$Short.Name[coal_combustion]
+coal_combustion_logic <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
+a <- matrix(1:9, nrow = 3)
+colnames(a) <- c("A", "B", "C")
+a
+a[c(TRUE, FALSE, TRUE),]
+coal_combustion_logic <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
+filter(SCC, SCC == coal_combustion_logic)
+SCC$SCC[coal_combustion_logic]
+str(SCC$SCC[coal_combustion_logic])
+ccl <- SCC$SCC[coal_combustion_logic]
+filter(SCC, SCC in ccl) %>% head
+filter(SCC, SCC == ccl) %>% head
+coal_combustion_logic <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
+# sum(coal_combustion) 8
+ccl <- SCC$SCC[coal_combustion_logic]
+SCC[,ccl]
+SCC[,SCC[coal_combustion_logic]]
+str(starwars)
+filter(starwars, species == "Human") %>% head()
+# coal_combustion_logic <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
+# sum(coal_combustion) 8
+# ccl <- SCC$SCC[coal_combustion_logic]
+coal_combustion_df <- filter(SCC,
+grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T))
+coal_combustion_df <- filter(SCC,
+grepl("(coal.*combustion)| (combustion.*coal)", Short.Name, ignore.case = T))
+View(coal_combustion_df)
+inner_join(coal_combustion_df, NEI, by = SCC) %>%
+HEAD
+inner_join(coal_combustion_df, NEI, by = SCC) %>%
+head
+head()
+qq <- inner_join(coal_combustion_df, NEI, by = SCC)
+NEI %>% inner_join(coal_combustion_df, by = "SCC") %>% head()
+NEI %>% left_join(coal_combustion_df, by = "SCC") %>% head()
+NEI %>% left_join(coal_combustion_df, by = "SCC") %>% dim()
+NEI %>% left_join(coal_combustion_df, by = "SCC") %>% str()
+NEI %>% left_join(coal_combustion_df, by = "SCC") -> coal_combustion_df_nei
+length(unique(coal_combustion_df_nei$SCC))
+length(unique(NEI$SCC))
+length(unique(coal_combustion_df$SCC))
+good_scc <- coal_combustion_df$SCC
+savehistory("~/work/data_science_coursera/coursera_course/h18.Rhistory")
+
+SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+a1 <- SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+identical(a1, coal_combustion_df)
+a2 <- NEI[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+unique(as$SCC)
+unique(a1$SCC)
+unique(a2$SCC)
+coal_combustion_logic <- grepl("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T)
+NEI[NEI$SCC = coal_combustion_logic,]
+NEI[NEI$SCC == coal_combustion_logic,]
+coal_combustion_val <- grep("(coal.*combustion)| (combustion.*coal)", SCC$Short.Name, ignore.case = T, value = T)
+NEI[NEI$SCC = coal_combustion_val,]
+NEI[NEI$SCC == coal_combustion_val,]
+NEI$SCC == coal_combustion_val
+NEI$SCC = coal_combustion_val
+NEI$SCC in coal_combustion_val
+str(coal_combustion_val)
+coal_combustion_val
+NEI$SCC %in% coal_combustion_val %>% head()
+NEI[NEI$SCC %in% coal_combustion_val, ] %>% head()
+NEI$SCC %in% coal_combustion_val
+sum(NEI$SCC %in% coal_combustion_val)
+NEI <- readRDS("data/summarySCC_PM25.rds")
+SCC <- readRDS("data/Source_Classification_Code.rds")
+clean_year(NEI)
+sum(NEI$SCC %in% coal_combustion_val)
+coal_combustion_val
+a1 <- SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+coal_combustion_val <- SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T), SCC$SCC]
+a1$SCC
+coal_combustion_val <- a1$SCC
+NEI[NEI$SCC %in% coal_combustion_val, ] %>% head()
+NEI %>% left_join(a1, by = "SCC") %>% head()
+coal_combustion_df <- SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+coal_combustion_val <- coal_combustion_df$SCC
+coal_combustion_df_nei <- NEI[NEI$SCC %in% coal_combustion_val, ]
+unique(coal_combustion_df_nei$SCC)
+identical(unique(coal_combustion_df_nei$SCC), coal_combustion_val)
+identical(unique(coal_combustion_df_nei$SCC), unique(coal_combustion_val))
+unique(coal_combustion_val)
+unique(coal_combustion_val) %>% order()
+order(coal_combustion_val)
+unique(coal_combustion_df_nei$SCC) %>% order()
+unique(coal_combustion_df_nei$SCC) %>% ordered()
+unique(coal_combustion_df_nei$SCC) %>% ordered() -> o2
+ordered(coal_combustion_val)
+identical(ordered(coal_combustion_val), 02)
+identical(ordered(coal_combustion_val), o2)
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(type)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+NEI$SCC.Names = coal_combustion_names
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+coal_combustion_df <- SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+coal_combustion_val <- coal_combustion_df$SCC
+coal_combustion_names <- coal_combustion_df$Short.Name
+coal_combustion_names
+coal_combustion_df_nei <- NEI[NEI$SCC %in% coal_combustion_val, ]
+coal_combustion_df_nei %>% left_join(coal_combustion_names)
+coal_combustion_df_nei %>% left_join(coal_combustion_names, copy = T)
+coal_combustion_df_nei %>% left_join(coal_combustion_names, copy = T, by = SCC)
+coal_combustion_df_nei %>% left_join(coal_combustion_names, copy = T, by = "SCC")
+str(coal_combustion_df_nei)
+merge(NEI, coal_combustion_df, by = "SCC")
+merge(NEI, coal_combustion_df, by = "SCC") %>% str
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(Short.Name)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+names(coal_combustion_df_nei)
+coal_combustion_df <- SCC[grepl("(coal.*combustion)|(combustion.*coal)", SCC$Short.Name, ignore.case = T),]
+coal_combustion_df_nei <- merge(NEI, coal_combustion_df, by = "SCC")
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(Short.Name)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+coal_combustion_df_nei %>% unique(Short.Name)
+unique(coal_combustion_df_nei$Short.Name)
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(CSS)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+qplot(as.factor(year), Emissions, data = coal_combustion_df_nei, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+vehicle_df <- SCC[grepl("vehicle", SCC$Short.Name, ignore.case = T),]
+vehicle_df$Short.Name
+vehicle_df <- SCC[grepl("Motor Vehicl", SCC$Short.Name, ignore.case = T),]
+vehicle_df$Short.Name
+merge(NEI, vehicle_df, by = "SCC") %>%
+subset(fips == "24510") -> vehicle_df_nei_balt
+qplot(as.factor(year), Emissions, data = vehicle_df_nei_balt, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+str(vehicle_df_nei_balt)
+vehicle_df_nei_balt$Short.Name
+vehicle_df <- SCC[grepl("Motor Vehicl", SCC$Short.Name, ignore.case = T),]
+vehicle_df_nei <- merge(NEI, vehicle_df, by = "SCC")
+vehicle_df_nei_Balt <- subset(vehicle_df_nei, fips == "24510")
+vehicle_df_nei_LA <- subset(vehicle_df_nei, fips == "06037")
+str(vehicle_df_nei_LA)
+str(vehicle_df_nei)
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+xlim("1999", "2008")
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+xlim(1999, 2008)
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_x_continuous(name="Years", limits=as.factor(year))
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_x_continuous(name="Years", limits=as.factor(year))
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+# labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_x_continuous(name="Years", limits=as.factor(year))
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = as.factor(year), title = "Motor vehicle emissions in Baltimore"))
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = as.factor(year), title = "Motor vehicle emissions in Baltimore")
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = as.factor(year), title = "Motor vehicle emissions in Baltimore")  + geom_point()
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) + geom_point()
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) + scale_x_continuous(name="Years", limits=as.factor(year))
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+scale_x_discrete(labels = as.factor(year))
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+scale_x_discrete(labels = c(1999, 20002, 2005, 2008))
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+all_years <- as.factor(year)
+all_years
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+scale_x_discrete(labels = all_years)
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_y_continuous(name="Years", limits = c(10, 66)) + geom_point()
+qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+scale_x_discrete(labels = all_years)
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_y_continuous(name="Years", limits = c(10, 66)) + geom_point()
+ggplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+scale_x_discrete(labels = all_years)
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_y_continuous(name="Years", limits = c(10, 66)) + geom_point()
+ggplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+scale_x_discrete(labels = all_years)
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_y_continuous(name="Years", limits = c(10, 66)) + geom_point()
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_y_continuous(name = "Years", limits = c(10, 66)) + geom_point()
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) + labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA")
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_y_continuous(name = "Years", limits = c(10, 66))
+#+ geom_point()
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) +
+labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA") +
+scale_y_continuous(name = "Years", limits = c(10, 66))
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_y_continuous(name = "Years", limits = c(10, 66))
+#+ geom_point()
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) +
+labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA") +
+scale_y_continuous(name = "Years", limits = c(10, 66))
+grid.arrange(p1, p2, nrow = 1)
+p1 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_Balt) +
+labs(x = "Years", title = "Motor vehicle emissions in Baltimore") +
+scale_y_continuous(limits = c(10, 66)) +
+scale_x_discrete(name = "Years", limits = all_years)
+p2 = qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA) +
+labs(x = "Years", title = "Motor vehicle emissions in Los Angeles County, CA") +
+scale_y_continuous(name = "Years", limits = c(10, 66))
+grid.arrange(p1, p2, nrow = 1)
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+dev.off()
+png(file = "plot3.png")
+plot3(NEI)
+dev.off()
+png(file = "plot4.png")
+plot4(NEI, SCC)
+dev.off()
+png(file = "plot5.png")
+plot5(NEI, SCC)
+dev.off()
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+savehistory("~/work/data_science_coursera/coursera_course/h19.Rhistory")
+
+source('~/Documents/GitHub/datasciencecoursera/project2_expl.R')
+tot_by <- aggregate(Emisions ~ year, NEI, sum)
+tot_by <- aggregate(Emissions ~ year, NEI, sum)
+table(tot_by)
+tot_by
+tapply(NEI$Emissions, NEI$year, sum)
+tot_by2 <- aggregate(Emissions ~ year + type, NEI, sum)
+View(tot_by2)
+geom_bar
+barplot(height = tot_by$Emissions)
+barplot(height = tot_by$Emissions, xlab = "Year")
+barplot(height = tot_by$Emissions, xlab = tot_by$year)
+barplot(height = tot_by$Emissions, xlab = "Year")
+savehistory("~/work/data_science_coursera/coursera_course/h20.Rhistory")
+
+library(kernlab)
+install.packages(kernlab)
+install.packages("kernlab")
+library(kernlab)
+data(spam)
+set.seed(3435)
+trainIndicator = rbinom(4601, size = 1, prob = 0.5)
+table(trainIndicator)
+trainSpam = spam[trainIndicator == 1, ]
+testSpam = spam[trainIndicator == 0, ]
+names(trainSpam)
+head(trainSpam)
+table(trainSpam$type)
+plot(trainSpam$capitalAve ~ trainSpam$type)
+plot(log10(trainSpam$capitalAve + 1) ~ trainSpam$type)
+plot(log10(trainSpam[, 1:4] + 1))
+hCluster = hclust(dist(t(trainSpam[, 1:57])))
+plot(hCluster)
+hClusterUpdated = hclust(dist(t(log10(trainSpam[, 1:55]))))
+hClusterUpdated = hclust(dist(t(log10(trainSpam[, 1:55] + 1))))
+plot(hClusterUpdated)
+trainSpam$numType = as.numeric(trainSpam$type)-1
+costFunction = function(x,y) sum(x!=(y > 0.5))
+cvError = rep(NA,55)
+library(boot)
+for(i in 1:55){
+lmFormula = reformulate(names(trainSpam)[i], response = "numType")
+glmFit = glm(lmFormula,family="binomial",data=trainSpam)
+cvError[i] = cv.glm(trainSpam,glmFit,costFunction,2)$delta[2]
+}
+names(trainSpam)[which.min(cvError)]
+# ===
+## Use the best model from the group
+predictionModel = glm(numType ~ charDollar,family="binomial",data=trainSpam)
+## Get predictions on the test set
+predictionTest = predict(predictionModel,testSpam)
+predictedSpam = rep("nonspam",dim(testSpam)[1])
+## Classify as `spam' for those with prob > 0.5
+predictedSpam[predictionModel$fitted > 0.5] = "spam"
+table(predictedSpam,testSpam$type)
+unzip("activity.zip", list = TRUE)
+unzip("/Users/ashipunova/work/data_science_coursera/intro_r/RepData_PeerAssessment1/activity.zip", list = TRUE)
+activity_data <- readr::read_csv(unzip("activity.zip", "activity.csv"))
+str(activity_data)
+activity_data <- readr::read_csv(unzip("activity.zip", "activity.csv"))
+str(activity_data)
+library(readr)
+activity_data <- readr::read_csv(unzip("activity.zip", "activity.csv"))
+str(activity_data)
+library(readr)
+setwd("/Users/ashipunova/work/data_science_coursera/intro_r/RepData_PeerAssessment1/")
+# unzip("sales.zip", list = TRUE)
+activity_data <- readr::read_csv(unzip("activity.zip", "activity.csv"))
+str(activity_data)
+View(activity_data)
+transform(activity_data, date = ymd(date))
+library(lubridate)
+transform(activity_data, date = ymd(date))
+activity_data$date[[1]]
+type(activity_data$date[[1]])
+type(activity_data$date[1])
+str(activity_data$date[[1]])
+wday(activity_data$date[[1]])
+wday(activity_data$date[[1]], label = T)
+summarise(activity_data)
+summarise(activity_data, groups(date)
+)
+summarise(activity_data, groups(activity_data$date))
+tot_by2 <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+length(unique(activity_data$date))
+length(unique(tot_by2$date))
+aggregate(steps ~ date, activity_data, mean, na.rm = T)
+activity_data[activity_data$date == "2012-10-03"]
+activity_data[activity_data$date == "2012-10-03",activity_data$steps]
+activity_data[activity_data$date == "2012-10-03",]
+a <- activity_data[activity_data$date == "2012-10-03",]
+str(a)
+sum(a$steps)
+activity_mean %>% group_by(date, steps) %>%
+summarise(across(everything(), list(mean))) -> all_mean
+activity_data %>% group_by(date, steps) %>%
+summarise(across(everything(), list(mean))) -> all_mean
+activity_data %>% group_by(date, steps) %>%
+summarise(across(everything(), list(sum))) -> all_sum
+table(all_sum$date, all_sum$steps)
+mean_std_set %>% group_by(subject, activity) %>%
+summarise(avg_tbodygyrojerkmag_mean_ = mean(tbodygyrojerkmag_mean_, na.rm = T)) %>% table()
+mean_std_set %>% group_by(subject, activity) %>%
+summarise(across(everything(), list(mean)))
+activity_data %>% group_by(date) %T>%
+str
+savehistory("~/work/data_science_coursera/coursera_course/h21.Rhistory")
+
+summarise(across(everything(), list(mean)))
+library(dplyr)
+activity_data %>% group_by(date) %T>%
+str
+activity_data %>% group_by(date) %T>%
+str
+library(magrittr)
+activity_data %>% group_by(date) %T>%
+str
+activity_data %>% group_by(date) %T>%
+str %>%
+sapply(steps, sum, na.rm = T) %>% head()
+activity_data %>% group_by(date) %T>%
+str %T>%
+sapply(steps, sum, na.rm = T) %>% head()
+activity_data %>% group_by(date) %>%
+sapply(steps, sum, na.rm = T) %>% head()
+activity_data %>% group_by(date) -> gr_ac
+with(gr_ac, sapply(steps, sum, na.rm = T)) %>% head
+with(gr_ac, sapply(steps, sum, na.rm = T)) %>% str
+with(gr_ac, sapply(steps, sum, na.rm = T)) %>% table
+res1 <- tapply(activity_data$steps, activity_data$date, sum)
+table(res1)
+res2 <- transform(res1, year = rownames(res1))
+table(res2)
+qplot(as.factor(date), steps, data = activity_data)
+aggregate(x = activity_data$steps,                # Specify data column
+by = list(activity_data$date),              # Specify group indicator
+FUN = sum)                            # Specify function (i.e. sum)
+sum(a$steps)
+aggregate(x = activity_data$steps,                # Specify data column
+by = list(activity_data$date),              # Specify group indicator
+FUN = mean, na.rm = T)                            # Specify function (i.e. sum)
+View(all_mean)
+View(activity_data)
+View(tot_by2)
+step_means <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+qplot(step_means)
+step_means <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+qplot(date, steps, data = step_means)
+step_means <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+qplot(date, steps, data = step_means, geom = "smooth")
+step_sums <- aggregate(steps ~ date, activity_data, sum, na.rm = T)
+View(step_sums)
+# qplot(date, steps, data = step_means, geom = "smooth")
+qplot(step_sums$steps, geom="histogram")
+step_sums <- aggregate(steps ~ date, activity_data, sum, na.rm = T)
+sum_plot <- qplot(step_sums$steps, geom = "histogram")
+print(sum_plot)
+step_means <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+# qplot(date, steps, data = step_means, geom = "smooth")
+activity_data %>%
+group_by(date) %>%
+summarise(across(steps, list(mean = mean, median = median, na.rm = T)))
+activity_data %>%
+group_by(date) %>%
+summarise(across(steps, list(mean = mean, median = median, na.rm = T)))
+activity_data %>%
+group_by(as.factor(as.character(date))) %>%
+summarise(across(steps, list(mean = mean, median = median, na.rm = T)))
+activity_data %>%
+group_by(as.factor(as.character(date))) %>%
+summarise(a(steps, list(mean = mean, median = median, na.rm = T)))
+activity_data %>%
+group_by(date) %>%
+summarise(steps, list(mean = mean, na.rm = T))
+activity_data %>%
+group_by(date) %>%
+summarise(steps, mean = mean, na.rm = T)
+activity_data %>%
+group_by(date) %>%
+summarise(steps, mean, na.rm = T)
+activity_data %>%
+group_by(date) %>%
+summarize(steps, median())
+mtcars %>%
+group_by(cyl) %>%
+summarise(mean = mean(disp), n = n())
+mtcars %>%
+group_by(cyl) %>%
+summarise(mean = mean(disp), median = median(disp))
+activity_data %>%
+group_by(date) %>%
+summarize(mean = mean(steps, na.rm = T), median(steps))
+activity_data %>%
+group_by(date) %>%
+summarize(mean = mean(steps, na.rm = T), median = median(steps))
+activity_data %>%
+group_by(date) %>%
+summarize(mean = mean(steps, na.rm = T), median = median(steps, na.rm = T))
+activity_data %>%
+group_by(date) %>%
+summarize(mean = mean(steps, na.rm = T), median = median(steps, na.rm = T)) -> mean_med
+sum(mean_med$median)
+sum(mean_med$median, na.rm = T)
+activity_data %>%
+group_by(date) %>%
+summarize(sum = sum(steps, na.rm = T), mean = mean(steps, na.rm = T), median = median(steps, na.rm = T)) -> mean_med
+View(mean_med)
+aggregate(value ~ steps, data = activity_data, summary)
+aggregate(steps ~ date, data = activity_data, summary)
+aggr3 <- aggregate(steps ~ date, data = activity_data, summary)
+str(aggr3)
+View(aggr3)
+activity_data %>%
+group_by(date) %>%
+summarize(sum = sum(steps, na.rm = T), mean = mean(steps, na.rm = T), median = median(steps, na.rm = T), mean_tr = mean(steps, na.rm = T, trim = 1)) -> mean_med
+View(a)
+median(a$steps)
+mean(a$steps)
+plot(a$steps)
+hist(a$steps)
+hist(step_sums$steps)
+qplot(step_sums$steps, geom = "histogram")
+qplot(step_sums$steps, geom = "histogram", binwidth = 10)
+hist(step_sums$steps)
+qplot(step_sums$steps, geom = "histogram", binwidth = 5000)
+png("gp")
+qplot(step_sums$steps, geom = "histogram", binwidth = 5000)
+dev.off
+dev.off()
+png("bp")
+hist(step_sums$steps)
+dev.off()
+p_avg_activ <- ggplot(activity_data$steps, aes(x=interval, y=date)) +
+geom_line() +
+xlab("")
+p_avg_activ <- ggplot(activity_data, aes(x=interval, y=date)) +
+geom_line() +
+xlab("")
+p
+p_avg_activ <- ggplot(activity_data, aes(x=interval, y=date)) +
+geom_line() +
+xlab("")
+p_avg_activ
+p_avg_activ <- ggplot(activity_data, aes(x=interval ~ mean(steps, na.rm = T), y=date)) +
+geom_line() +
+xlab("")
+p_avg_activ
+p_avg_activ <- ggplot(activity_data, aes(x=interval ~ mean(steps, na.rm = T), y=date))
+p_avg_activ <- qlot(x=interval ~ mean(steps, na.rm = T), y=date) +
+geom_line()
+p_avg_activ <- qplot(x=interval ~ mean(steps, na.rm = T), y=date) +
+geom_line()
+p_avg_activ
+p_avg_activ <- qplot(x = interval, y =  mean(steps, na.rm = T)) +
+geom_line()
+p_avg_activ
+p_avg_activ <- qplot(x = interval, y =  mean(steps, na.rm = T), data = activity_data) +
+geom_line()
+p_avg_activ
+p_avg_activ <- qplot(x = interval,
+y = function() {
+aggregate(steps ~ date, activity_data, mean, na.rm = T)
+},
+data = activity_data) +
+geom_line()
+p_avg_activ
+aggregate(steps ~ date, activity_data, mean, na.rm = T)
+p_avg_activ <- qplot(x = interval,
+y = function() {
+ag <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+ag$steps
+},
+data = activity_data) +
+geom_line()
+p_avg_activ
+ag <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+transform(activity_data, avg_steps = ag)
+ag
+savehistory("~/work/data_science_coursera/coursera_course/h22.Rhistory")
+
+authors <- data.frame(
+surname = I(c("Tukey", "Venables", "Tierney", "Ripley", "McNeil")),
+nationality = c("US", "Australia", "US", "UK", "Australia"),
+deceased = c("yes", rep("no", 4)))
+books <- data.frame(
+name = I(c("Tukey", "Venables", "Tierney",
+"Ripley", "Ripley", "McNeil", "R Core")),
+title = c("Exploratory Data Analysis",
+"Modern Applied Statistics ...",
+"LISP-STAT",
+"Spatial Statistics", "Stochastic Simulation",
+"Interactive Data Analysis",
+"An Introduction to R"),
+other.author = c(NA, "Ripley", NA, NA, NA, NA,
+"Venables & Smith"))
+(m1 <- merge(authors, books, by.x = "surname", by.y = "name"))
+mm <- merge(activity_data, ag, by = date)
+ag <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+str(ag)
+str(activity_data)
+names(ag)
+names(ag) = c("date", "avg_steps")
+mm <- merge(activity_data, ag, by = "date")
+View(mm)
+mm$steps %>% sum
+qplot(x = interval, y = unique(avg_steps), data = mm)
+qplot(x = interval, y = avg_steps, data = mm)
+plot(mm$interval, mm$avg_steps, type = l)
+plot(mm$interval, mm$avg_steps, type = "l")
+ag <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+names(ag) = c("date", "avg_steps")
+avg_steps_per_day <- merge(activity_data, ag, by = "date")
+plot(avg_steps_per_day$interval, avg_steps_per_day$avg_steps, type = "l")
+p_avg_activ <- qplot(x = interval,
+y = avg_steps,
+data = avg_steps_per_day, type = "l") +
+geom_line()
+p_avg_activ
+ag <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+names(ag) = c("date", "avg_steps")
+avg_steps_per_day <- merge(activity_data, ag, by = "date")
+plot(avg_steps_per_day$interval, avg_steps_per_day$avg_steps, type = "l")
+qqplot(data = avg_steps_per_day, aes(x = interval,
+y = avg_steps)) +
+geom_line()+
+geom_point()
+View(avg_steps_per_day)
+qqplot(data = avg_steps_per_day, aes(x = interval,
+y = avg_steps), group = 1) +
+geom_line()+
+geom_point()
+qqplot(data = avg_steps_per_day, aes(x = interval,
+y = avg_steps), group = date) +
+geom_line()+
+geom_point()
+qqplot(data = avg_steps_per_day, aes(x = interval,
+y = avg_steps, group = date)) +
+geom_line()+
+geom_point()
+names(avg_steps_per_day)
+names(avg_steps_per_day) = c("dates", "steps", "intervals", "avg_steps")
+ggplot(data = avg_steps_per_day, aes(x = interval,
+y = avg_steps, group = date)) +
+geom_line()+
+geom_point()
+ggplot(data = avg_steps_per_day, aes(x = intervals,
+y = avg_steps, group = dates)) +
+geom_line()+
+geom_point()
+ag <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+names(ag) = c("date", "avg_steps")
+avg_steps_per_day <- merge(activity_data, ag, by = "date")
+plot(avg_steps_per_day$interval, avg_steps_per_day$avg_steps, type = "l")
+ag <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+names(ag) = c("date", "avg_steps")
+avg_steps_per_day <- merge(activity_data, ag, by = "date")
+p_avg_activ <- qplot(x = interval,
+y = avg_steps,
+data = avg_steps_per_day, type = "l") +
+geom_line()
+p_avg_activ
+ag <- aggregate(steps ~ date, activity_data, mean, na.rm = T)
+names(ag) = c("date", "avg_steps")
+avg_steps_per_day <- merge(activity_data, ag, by = "date")
+names(avg_steps_per_day) = c("dates", "steps", "intervals", "avg_steps")
+p_avg_activ = ggplot(data = avg_steps_per_day,
+aes(x = intervals,
+y = avg_steps,
+group = dates)) +
+geom_line() +
+geom_point()
+p_avg_activ
+names(avg_steps_per_day) = c("dates", "steps", "intervals", "avg_steps")
+step_interv <- aggregate(steps ~ interval + date , activity_data, mean, na.rm = T)
+str(step_interv)
+head(step_interv)
+plot(step_interv$interval, step_interv$steps, type = "l")
+View(step_interv)
+step_interv <- aggregate(steps ~ interval + date, activity_data, mean, na.rm = T)
+plot(step_interv$interval, step_interv$steps, type = "l")
+p_avg_activ = ggplot(data = step_interv,
+aes(x = interval,
+y = steps, group = date)) +
+geom_line() +
+geom_point()
+p_avg_activ
+step_interv <- aggregate(steps ~ interval + date , activity_data, mean, na.rm = T)
+table(step_interv$interval, step_interv$steps)
+wich.max(step_interv$steps)
+which.max(step_interv$steps)
+step_interv[step_interv$steps == 14476]
+max(step_interv$steps)
+step_interv[step_interv$steps == 806]
+step_interv[step_interv$steps == 806, ]
+step_interv[step_interv$steps == max(step_interv$steps), ]
+step_interv[step_interv$steps == max(step_interv$steps), step_interv$interval]
+step_interv[step_interv$steps == max(step_interv$steps), ]
+step_interv[step_interv$steps == max(step_interv$steps), ] %>% interval
+step_interv[step_interv$steps == max(step_interv$steps), ] %>% steps
+aggregate(steps ~ interval, step_interv)
+View(step_interv)
+browseVignettes(package = "dplyr")
+step_interv %>% group_by(interval
+)
+length(unique(step_interv$interval))
+length(unique(activity_data$interval))
+step_interv %>% group_by(interval) %>% tally()
+step_interv %>% group_by(interval) %>% tally(sort = T)
+step_interv %>% group_by(interval) %>% summarize()
+mtcars %>%
+summarise(mean = mean(disp), n = n())
+mtcars %>%
+group_by(cyl) %>%
+summarise(mean = mean(disp), n = n())
+step_interv %>% group_by(interval) %>% summarize(steps)
+activity_data %>% group_by(interval) %>% summarize(steps, mean, na.rm = T) %>% head
+activity_data %>% group_by(interval) %>% summarize(steps, mean, na.rm = T)
+activity_data %>% group_by(`interval`) %>% summarize(steps, mean, na.rm = T)
+activity_data %>% group_by(`interval`)
+st_int_only <- select(step_interv, interval, steps)
+st_int_only %>% group_by(interval)
+st_int_only %>% group_by(interval) %>% summary()
+sapply(activity_data, function(x) sum(is.na(x)))
+mtcars %>%
+select(everything()) %>%  # replace to your needs
+summarise_all(funs(sum(is.na(.))))
+mtcars %>%
+select(everything()) %>%  # replace to your needs
+summarise_all(sum(is.na(.)))
+mtcars %>%
+select(everything()) %>%  # replace to your needs
+summarise_all(~ sum(is.na(.)))
+activity_data %>% select(everything()) %>% summarise_all(~ sum(is.na(.)))
+savehistory("~/work/data_science_coursera/coursera_course/h23.Rhistory")
+
+summary(activity_data$steps)
+summary(imputed_dataset$step_imp)
+# summary(mean_med_imp)
+imputed_dataset$weekday <- weekdays(imputed_dataset$date, abbreviate = T)
+weekends <- list("Sat", "Sun")
+is_weekend = function(x) {
+x %in% weekends
+}
+imputed_dataset$is_weekend <- sapply(imputed_dataset$weekday, is_weekend)
+imputed_dataset %>% head(3)
+imputed_dataset$weekday <- weekdays(imputed_dataset$date, abbreviate = T)
+weekends <- list("Sat", "Sun")
+is_weekend = function(x) {
+if_else(x %in% weekends, "weekend", "weekday")
+}
+imputed_dataset$is_weekend <- as.factor(sapply(imputed_dataset$weekday, is_weekend))
+imputed_dataset %>% head(3)
+step_interv <- aggregate(step_imp ~ interval + is_weekend, imputed_dataset, mean, na.rm = T)
+plot(step_interv$interval, step_interv$step_imp, type = "l")
+p_avg_activ_imp = ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp, group = is_weekend)) +
+geom_line()
+step_interv_week <- aggregate(step_imp ~ interval + is_weekend, imputed_dataset, mean, na.rm = T)
+plot(step_interv_week$interval, step_interv_week$step_imp, type = "l")
+p_avg_activ_imp = ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp, group = is_weekend)) +
+geom_line()
+p_avg_activ_imp
+View(step_interv)
+View(step_interv_week)
+View(step_interv)
+View(step_interv_week)
+View(step_interv)
+View(step_interv_week)
+step_interv_weekdays <- filter(step_interv_week, is_weekend = "weekday")
+step_interv_weekdays <- filter(step_interv_week, is_weekend == "weekday")
+View(step_interv_weekdays)
+step_interv_week <- aggregate(step_imp ~ interval + is_weekend, imputed_dataset, mean, na.rm = T)
+step_interv_weekdays <- filter(step_interv_week, is_weekend == "weekday")
+step_interv_weekends <- filter(step_interv_week, is_weekend == "weekend")
+par(c(2,1))
+with(step_interv_weekdays, plot(interval, step_imp, type = "l"))
+par(mfrow = c(2,1))
+with(step_interv_weekdays, plot(interval, step_imp, type = "l"))
+par(mfrow = c(2,1))
+with(step_interv_weekdays, plot(interval, step_imp, type = "l"))
+with(step_interv_weekends, plot(interval, step_imp, type = "l"))
+p_avg_activ_imp = ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line() +
+facet_wrap(is_weekend, nrow = 2, ncol = 1)
+p_avg_activ_imp
+knitr::opts_chunk$set(cache = TRUE)
+library(readr)
+library(magrittr)
+library(ggplot2)
+library(dplyr)
+setwd("/Users/ashipunova/work/data_science_coursera/intro_r/RepData_PeerAssessment1/")
+# unzip("sales.zip", list = TRUE)
+activity_data <- readr::read_csv(unzip("activity.zip", "activity.csv"))
+str(activity_data)
+# transform(activity_data, date = ymd(date))
+step_sums <- aggregate(steps ~ date, activity_data, sum, na.rm = T)
+step_sums %>% head()
+sum_plot <- qplot(step_sums$steps, geom = "histogram", binwidth = 25000/5)
+print(sum_plot)
+activity_data %>%
+group_by(date) %>%
+summarise(
+sum = sum(steps, na.rm = T),
+mean = mean(steps, na.rm = T),
+median = median(steps, na.rm = T)) -> mean_med
+mean_med
+# qplot(date, mean, data = mean_med)
+#step_means_medians <-
+# qplot(date, steps, data = step_means, geom = "smooth")
+step_interv <- aggregate(steps ~ interval + date, activity_data, mean, na.rm = T)
+plot(step_interv$interval, step_interv$steps, type = "l")
+p_avg_activ = ggplot(data = step_interv,
+aes(x = interval,
+y = steps, group = date)) +
+geom_line()
+p_avg_activ
+step_interv[step_interv$steps == max(step_interv$steps), ]
+sapply(activity_data, function(x) sum(is.na(x)))
+# NAs by day:
+table(activity_data$date, is.na(activity_data$steps)) %>% head(3)
+activity_data$step_imp <- ave(activity_data$steps, activity_data$interval,
+FUN = function(x) ifelse(is.na(x), mean(x, na.rm = TRUE), x))
+# activity_data$step_imp %>% head
+sapply(activity_data, function(x) sum(is.na(x)))
+activity_data %>% select(-c("steps")) %>%
+{.} -> imputed_dataset
+#imputed_dataset %>% head
+imputed_dataset %>% head(3)
+step_sums_imp <- aggregate(step_imp ~ date, imputed_dataset, sum, na.rm = T)
+step_sums_imp %>% head(3)
+sum_imp_plot <- qplot(step_sums$steps, geom = "histogram", binwidth = 25000/5)
+print(sum_plot)
+imputed_dataset %>%
+group_by(date) %>%
+summarise(
+sum = sum(step_imp, na.rm = T),
+mean = mean(step_imp, na.rm = T),
+median = median(step_imp, na.rm = T)) %>%
+#%T>% head(3) %>%
+{.} -> mean_med_imp
+mean_med_imp
+summary(activity_data$steps)
+summary(imputed_dataset$step_imp)
+# summary(mean_med_imp)
+imputed_dataset$weekday <- weekdays(imputed_dataset$date, abbreviate = T)
+weekends <- list("Sat", "Sun")
+is_weekend = function(x) {
+if_else(x %in% weekends, "weekend", "weekday")
+}
+imputed_dataset$is_weekend <- as.factor(sapply(imputed_dataset$weekday, is_weekend))
+(diamonds, aes(carat, price)) + geom_boxplot() + facet_grid(. ~ cut)
+step_interv_week <- aggregate(step_imp ~ interval + is_weekend, imputed_dataset, mean, na.rm = T)
+# step_interv_weekdays <- filter(step_interv_week, is_weekend == "weekday")
+# step_interv_weekends <- filter(step_interv_week, is_weekend == "weekend")
+# par(mfrow = c(2,1))
+# with(step_interv_weekdays, plot(interval, step_imp, type = "l"))
+# with(step_interv_weekends, plot(interval, step_imp, type = "l"))
+# p_avg_activ_imp = facet_wrap(
+#   facets,
+#   nrow = NULL,
+#   ncol = NULL)
+# qplot(as.factor(year), Emissions, data = vehicle_df_nei_LA, facets = . ~ as.factor(SCC)) + labs(x = "Years", title = "Emissions from coal combustion-related sources")
+#g <- ggplot(diamonds,aes(depth,price))
+#g + geom_point(alpha = 1/3) + facet_grid(cut ~ car2)
+#(diamonds, aes(carat, price)) + geom_boxplot() + facet_grid(. ~ cut)
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line() +
+facet_wrap(is_weekend, nrow = 2, ncol = 1)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line() +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line() +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs("Interval", "Number of steps")
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line() +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps")
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line() +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw()
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line() +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = "blue") +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = "blue") +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+axis.line = element_line(colour = "black"),
+strip.background = element_rect(fill="pink"))
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = "blue") +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+axis.line = element_line(colour = "black"),
+strip.background = element_rect(fill = c(254,	229,	205))
+)
+p_avg_activ_imp
+strip.background = element_rect(fill = c(rgb(254,	229,	205))
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = "blue") +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+axis.line = element_line(colour = "black"),
+strip.background = element_rect(fill = rgb(254,	229, 205))
+)
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = "blue") +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+axis.line = element_line(colour = "black"),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = "blue") +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = "cyan") +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1, scales = "free") +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255)) +
+axis.ticks =
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1, scales = "free") +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1, scales = "free") +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255)),
+strip.placement = "outside"
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(step_interv_week$is_weekend, nrow = 2, ncol = 1, scales = "free") +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(~is_weekend, nrow = 2) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(~is_weekend, nrow = 2, scales = "free") +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(~is_weekend, nrow = 2) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255)),
+axis.ticks.length=unit(-0.25, "cm"),
+axis.text.x = element_text(margin = margin(t = .5, unit = "cm")),
+axis.text.y = element_text(margin = margin(r = .5, unit = "cm"))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(~is_weekend, nrow = 2) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255)),
+axis.ticks.length=unit(0.25, "cm"),
+axis.text.x = element_text(margin = margin(t = .5, unit = "cm")),
+axis.text.y = element_text(margin = margin(r = .5, unit = "cm"))
+)
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(~is_weekend, nrow = 2) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+) +
+annotation_logticks(sides = "blr")
+p_avg_activ_imp
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(~is_weekend, nrow = 2) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+) +
+annotation_ticks(sides = "blr")
+p_avg_activ_imp <- ggplot(data = step_interv_week,
+aes(x = interval,
+y = step_imp)) +
+geom_line(color = rgb(90, 163, 252, maxColorValue = 255)) +
+facet_wrap(~is_weekend, nrow = 2) +
+labs(x = "Interval", y = "Number of steps") +
+theme_bw() +
+theme(panel.grid.major = element_blank(),
+panel.grid.minor = element_blank(),
+strip.background = element_rect(fill = rgb(254,	229, 205, maxColorValue = 255))
+)
+p_avg_activ_imp
+imputed_dataset$weekday <- weekdays(imputed_dataset$date, abbreviate = T)
+weekends <- list("Sat", "Sun")
+is_weekend = function(x) {
+if_else(x %in% weekends, "weekend", "weekday")
+}
+imputed_dataset$is_weekend <- as.factor(sapply(imputed_dataset$weekday, is_weekend))
+p_avg_activ = ggplot(data = activity_data,
+aes(x = interval,
+y = steps, group = date)) +
+geom_line()
+p_avg_activ
+step_interv <- aggregate(steps ~ interval + date, activity_data, mean, na.rm = T)
+plot(step_interv$interval, step_interv$steps, type = "l")
+p_avg_activ = ggplot(data = activity_data,
+aes(x = interval,
+y = steps, group = date)) +
+geom_line()
+p_avg_activ
+knitr::opts_chunk$set(cache = F, echo = TRUE)
+library(readr)
+library(magrittr)
+library(ggplot2)
+library(dplyr)
+if(!file.exists("./data")){ dir.create("./data") }
+setwd("./data")
+activity_data <- readr::read_csv(unzip("activity.zip", "activity.csv"))
+str(activity_data)
+step_sums <- aggregate(steps ~ date, activity_data, sum, na.rm = T)
+step_sums %>% head()
+sum_plot <- qplot(step_sums$steps, geom = "histogram", binwidth = 25000/5)
+print(sum_plot)
+activity_data %>%
+group_by(date) %>%
+summarise(
+sum = sum(steps, na.rm = T),
+mean = mean(steps, na.rm = T),
+median = median(steps, na.rm = T)) -> mean_med
+mean_med
+step_interv <- aggregate(steps ~ interval + date, activity_data, mean, na.rm = T)
+plot(step_interv$interval, step_interv$steps, type = "l")
+step_interv[step_interv$steps == max(step_interv$steps), ]
+sapply(activity_data, function(x) sum(is.na(x)))
+# NAs by day:
+table(activity_data$date, is.na(activity_data$steps)) %>% head(3)
+tt <- table(activity_data$date, is.na(activity_data$steps))
+str(tt)
+names(tt)
+as.data.frame(tt)
+as.data.frame(tt) %>% head()
+table(activity_data$date, is.na(activity_data$steps)) %>% as.data.frame() %>% head(3)
+table(activity_data$date, is.na(activity_data$steps)) %>% as.data.frame() %>% names()
+table(activity_data$date, is.na(activity_data$steps)) %>% as.data.frame() %>% filter(Freq == 288 & Var2 == TRUE)
+table(activity_data$date, is.na(activity_data$steps)) %>% as.data.frame() %>% filter(Freq == 288 & Var2 == TRUE) %>% select(Var1)
+sapply(activity_data, function(x) sum(is.na(x)))
+# NAs by day:
+# Days with NAs:
+table(activity_data$date, is.na(activity_data$steps)) %>% as.data.frame() -> days_w_nas
+names(days_w_nas) <- c("day", "has_nas", "freq")
+days_w_nas %>% filter(freq > 0 & has_nas == TRUE) %>% select(has_nas)
+days_w_nas %>% filter(freq > 0 & has_nas == TRUE) %>% select(day)
+sessionInfo()
+knitr::opts_chunk$set(echo = TRUE)
+file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+if(!file.exists("./storm_data")){ dir.create("./storm_data") }
+setwd("./storm_data")
+storm_data <- readr::read_csv(unzip(file_url, "storm_data.csv"))
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+if(!file.exists("./storm_data")){ dir.create("./storm_data") }
+setwd("./storm_data")
+storm_data_csv <- readr::read_csv(unzip(file_url, "storm_data.csv"))
+file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+if(!file.exists("./storm_data")){ dir.create("./storm_data") }
+setwd("./storm_data")
+storm_data_csv <- readr::read_csv(file_url, "storm_data.csv")
+file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+if(!file.exists("./storm_data")){ dir.create("./storm_data") }
+setwd("./storm_data")
+temp <- tempfile()
+View(temp)
+temp$V1
+tem
+temp
+read.csv(temp) %>% head
+file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+file_destination = "storm_data.csv"
+if(!file.exists("./storm_data")){ dir.create("./storm_data") }
+setwd("./storm_data")
+temp <- tempfile()
+download.file(file_url, temp)
+unzip(temp, exdir = file_destination)
+unlink(temp)
+ls
+ls()
+savehistory("~/work/data_science_coursera/coursera_course/h24.Rhistory")
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ungroup() %>%
+arrange(-as.integer(total_number)) %>%
+ggplot(
+# data = new_data_health,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+# coord_flip() +
+# geom_bar(stat = "identity", position = position_dodge()) +
+geom_area(position="stack") +
+geom_text(aes(label = total_number),
+hjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+guides(fill = guide_legend(title = "Harm type"))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ungroup() %>%
+arrange(-as.integer(total_number)) %>%
+ggplot(
+# data = new_data_health,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+# coord_flip() +
+geom_bar(stat = "identity", position = position_dodge()) +
+geom_text(aes(label = total_number),
+hjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+guides(fill = guide_legend(title = "Harm type"))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(
+# data = new_data_health,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+# coord_flip() +
+geom_bar(stat = "identity", position = position_dodge()) +
+geom_text(aes(label = total_number),
+hjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+guides(fill = guide_legend(title = "Harm type"))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(
+# data = new_data_health,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+coord_flip() +
+geom_bar(stat = "identity", position = position_dodge()) +
+geom_text(aes(label = total_number),
+hjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+guides(fill = guide_legend(title = "Harm type"))
+new_data_econ$total_number <- factor(new_data_econ$total_number, levels = new_data_econ$total_number)
+new_data_econ$total_number <- factor(new_data_econ$total_number, levels = unique(new_data_econ$total_number))
+ggplot(data = new_data_econ,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+geom_bar(stat = "identity", position = position_dodge()) +
+geom_text(aes(label = total_number), vjust = 1.6, color = "white",
+position = position_dodge(0.9), size = 3.5) +
+labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") +
+guides(fill = guide_legend(title = "Harm type"))
+new_data_econ$total_number <- factor(new_data_econ$total_number, levels = unique(new_data_econ$total_number))
+ggplot(data = new_data_econ,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+coord_flip() +
+geom_bar(stat = "identity", position = position_dodge()) +
+geom_text(aes(label = total_number), vjust = 1.6, color = "white",
+position = position_dodge(0.9), size = 3.5) +
+labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") +
+guides(fill = guide_legend(title = "Harm type"))
+new_data_econ$total_number <- factor(new_data_econ$total_number, levels = unique(new_data_econ$total_number))
+ggplot(data = new_data_econ,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+coord_flip() +
+geom_bar(stat = "identity", position = position_dodge()) +
+geom_text(aes(label = total_number), hjust = 1.6,
+position = position_dodge(0.9), size = 3.5) +
+labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") +
+guides(fill = guide_legend(title = "Harm type"))
+new_data_econ$total_number <- factor(new_data_econ$total_number, levels = unique(new_data_econ$total_number))
+ggplot(data = new_data_econ,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+# coord_flip() +
+geom_bar(stat = "identity", position = position_dodge()) +
+geom_text(aes(label = total_number), hjust = 1.6,
+position = position_dodge(0.9), size = 3.5) +
+labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") +
+guides(fill = guide_legend(title = "Harm type"))
+new_data_econ$total_number <- factor(new_data_econ$total_number, levels = unique(new_data_econ$total_number))
+ggplot(data = new_data_econ,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+# coord_flip() +
+geom_bar(stat = "identity", position = position_dodge()) +
+# geom_text(aes(label = total_number), hjust = 1.6,
+#           position = position_dodge(0.9), size = 3.5) +
+labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") +
+guides(fill = guide_legend(title = "Harm type"))
+new_data_econ$total_number <- factor(new_data_econ$total_number, levels = unique(new_data_econ$total_number))
+new_data_econ %>%
+ggplot(aes(x = reorder(EVTYPE, -total_number), y = total_number, fill = dmg_type)) +
+geom_bar(stat = "identity")
+ggplot(data = new_data_econ,
+aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+# coord_flip() +
+geom_bar(stat = "identity", position = position_dodge()) +
+# geom_text(aes(label = total_number), hjust = 1.6,
+#           position = position_dodge(0.9), size = 3.5) +
+labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") +
+guides(fill = guide_legend(title = "Harm type"))
+new_data_econ %>%
+ggplot(aes(x = reorder(EVTYPE, -total_number), y = total_number, fill = dmg_type)) +
+geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(EVTYPE, -total_number), y = total_number, fill = dmg_type)) +
+geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(EVTYPE, total_number), y = total_number, fill = dmg_type)) +
+geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(EVTYPE, total_number),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity")
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+labs(y = "Event type",
+x = "Total number",
+title = "Types of events most harmful with respect to population health") +
+# new_data_health %>%
+# ggplot(
+#   # data = new_data_health,
+#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+#   coord_flip() +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   geom_text(aes(label = total_number),
+#             hjust = 1.6,
+#             position = position_dodge(0.9),
+#             size = 3.5) +
+#   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+#   guides(fill = guide_legend(title = "Harm type"))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+labs(y = "Event type",
+x = "Total number",
+title = "Types of events most harmful with respect to population health")
+# new_data_health %>%
+# ggplot(
+#   # data = new_data_health,
+#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+#   coord_flip() +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   geom_text(aes(label = total_number),
+#             hjust = 1.6,
+#             position = position_dodge(0.9),
+#             size = 3.5) +
+#   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+#   guides(fill = guide_legend(title = "Harm type"))
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+labs(y = "Event type",
+x = "Total number",
+title = "Types of events most harmful with respect to population health")
+writeLines("
+caption {
+color: black;
+text-align: center;
+font-weight: bold;
+font-size: x-large;
+}
+",
+con = "mystyle.css")
+if(!file.exists("./storm_data")){ dir.create("./storm_data") }
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+knitr::opts_knit$set(root.dir = "./storm_data")
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+file_destination = "StormData.csv.bz2"
+download.file(file_url, destfile = file_destination)
+storm_data_csv <- read.csv(file_destination)
+get_max10 = function(input_data, clmn_name) {
+input_data %>%
+slice_max(order_by = !!as.symbol(clmn_name), n = 10)
+}
+prepare_for_join = function(input_data, clmn_name) {
+input_data %>%
+select(EVTYPE, total_number = !!as.symbol(clmn_name)) %>%
+transform(dmg_type = clmn_name) %>%
+group_by(EVTYPE)
+}
+unique_max = function(input_data) {
+input_data %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+left_join(input_data)
+}
+kable_tab = function(input_data, caption = "") {
+input_data %>%
+kable(caption = caption) %>%
+kable_classic(full_width = F) %>%
+kable_material("striped") %>%
+kable_styling(fixed_thead = T) %>%
+scroll_box(height = "20em")
+}
+by_state = function(input_data, clmn_name) {
+input_data %>%
+group_by(STATE) %>%
+filter(!!as.symbol(clmn_name) == max(!!as.symbol(clmn_name))) %>%
+select(STATE, EVTYPE) %>%
+unique()
+}
+one_max_fat = storm_data_csv[storm_data_csv$FATALITIES == max(storm_data_csv$FATALITIES),]
+one_max_inj = storm_data_csv[storm_data_csv$INJURIES == max(storm_data_csv$INJURIES),]
+fat_10_max <- get_max10(storm_data_csv, "FATALITIES")
+inj_10_max <- get_max10(storm_data_csv, "INJURIES")
+new_data_inj0 <- prepare_for_join(inj_10_max, "INJURIES")
+new_data_fat0 <- prepare_for_join(fat_10_max, "FATALITIES")
+new_data_fat <- unique_max(new_data_fat0)
+new_data_inj <- unique_max(new_data_inj0)
+new_data_health <- rbind(new_data_fat, new_data_inj)
+fatal_by_state <- by_state(storm_data_csv, "FATALITIES")
+inj_by_state <- by_state(storm_data_csv, "INJURIES")
+max_PROPDMG <- filter(storm_data_csv, PROPDMG == max(PROPDMG))
+max_CROPDMG <- filter(storm_data_csv, CROPDMG == max(CROPDMG))
+property_10_max <- get_max10(storm_data_csv, "PROPDMG")
+crop_10_max <- get_max10(storm_data_csv, "CROPDMG")
+new_data_crop0 <- prepare_for_join(crop_10_max, "CROPDMG")
+new_data_property0 <- prepare_for_join(property_10_max, "PROPDMG")
+new_data_property <- unique_max(new_data_property0)
+new_data_crop <- unique_max(new_data_crop0)
+new_data_econ <- rbind(new_data_property, new_data_crop)
+PROPDMG_by_state <- by_state(storm_data_csv, "PROPDMG")
+CROPDMG_by_state <- by_state(storm_data_csv, "CROPDMG")
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+geom_text(aes(label = total_number),
+vjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(x = "Event type",
+y = "Total number",
+title = "Types of events most harmful with respect to population health")
+# new_data_health %>%
+# ggplot(
+#   # data = new_data_health,
+#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+#   coord_flip() +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   geom_text(aes(label = total_number),
+#             hjust = 1.6,
+#             position = position_dodge(0.9),
+#             size = 3.5) +
+#   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+#   guides(fill = guide_legend(title = "Harm type"))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+geom_text(aes(label = total_number),
+vjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(x = "Event type",
+y = "Total number",
+title = "Types of events most harmful with respect to population health") +
+scale_x_discrete(labels=EVTYPE)
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+geom_text(aes(label = total_number),
+vjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(x = "Event type",
+y = "Total number",
+title = "Types of events most harmful with respect to population health") +
+scale_x_discrete(labels = new_data_health$EVTYPE)
+# new_data_health %>%
+# ggplot(
+#   # data = new_data_health,
+#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+#   coord_flip() +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   geom_text(aes(label = total_number),
+#             hjust = 1.6,
+#             position = position_dodge(0.9),
+#             size = 3.5) +
+#   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+#   guides(fill = guide_legend(title = "Harm type"))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+coord_flip() +
+geom_text(aes(label = total_number),
+vjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(x = "Event type",
+y = "Total number",
+title = "Types of events most harmful with respect to population health") +
+scale_x_discrete(labels = new_data_health$EVTYPE)
+# new_data_health %>%
+# ggplot(
+#   # data = new_data_health,
+#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+#   coord_flip() +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   geom_text(aes(label = total_number),
+#             hjust = 1.6,
+#             position = position_dodge(0.9),
+#             size = 3.5) +
+#   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+#   guides(fill = guide_legend(title = "Harm type"))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+coord_flip() +
+geom_text(aes(label = total_number),
+hjust = 1.6,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(x = "Event type",
+y = "Total number",
+title = "Types of events most harmful with respect to population health") +
+scale_x_discrete(labels = new_data_health$EVTYPE)
+# new_data_health %>%
+# ggplot(
+#   # data = new_data_health,
+#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+#   coord_flip() +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   geom_text(aes(label = total_number),
+#             hjust = 1.6,
+#             position = position_dodge(0.9),
+#             size = 3.5) +
+#   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+#   guides(fill = guide_legend(title = "Harm type"))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) +
+#   geom_bar(stat = "identity")
+new_data_health %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+coord_flip() +
+geom_text(aes(label = total_number),
+hjust = 1.3,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(x = "Event type",
+y = "Total number",
+title = "Types of events most harmful with respect to population health") +
+scale_x_discrete(labels = new_data_health$EVTYPE)
+# new_data_health %>%
+# ggplot(
+#   # data = new_data_health,
+#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+#   coord_flip() +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   geom_text(aes(label = total_number),
+#             hjust = 1.3,
+#             position = position_dodge(0.9),
+#             size = 3.5) +
+#   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") +
+#   guides(fill = guide_legend(title = "Harm type"))
+new_data_econ %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity") +
+coord_flip() +
+geom_text(aes(label = total_number),
+hjust = 1.3,
+position = position_dodge(0.9),
+size = 3.5) +
+labs(x = "Event type",
+y = "Total number",
+title = "Types of events most harmful with respect to economics") +
+scale_x_discrete(labels = new_data_econ$EVTYPE)
+new_data_econ %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type))
+new_data_econ %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+y = total_number,
+fill = dmg_type)) +
+geom_bar(stat = "identity")
+View(new_data_econ)
+property_10_max <- get_max10(storm_data_csv, "PROPDMG")
+crop_10_max <- get_max10(storm_data_csv, "CROPDMG")
+property_10_max %>% head(2)
+new_data_property0 <- prepare_for_join(property_10_max, "PROPDMG")
+new_data_crop0 <- prepare_for_join(crop_10_max, "CROPDMG")
+new_data_property0 %>% head(2)
+new_data_property0 <- prepare_for_join(property_10_max, "PROPDMG")
+new_data_crop0 <- prepare_for_join(crop_10_max, "CROPDMG")
+View(new_data_property0)
+View(new_data_crop0)
+new_data_property <- unique_max(new_data_property0)
+new_data_crop <- unique_max(new_data_crop0)
+View(new_data_property)
+View(new_data_crop)
+new_data_property %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+left_join(new_data_property) %>% unique()
+new_data_property %>% unique()
+with(unique(new_data_property), plot(EVTYPE, total_number))
+with(unique(new_data_property), plot(as.factor(EVTYPE), total_number))
+with(unique(new_data_property), plot(as.factor(EVTYPE), total_number, type = "l"))
+with(unique(new_data_property), plot(total_number, as.factor(EVTYPE), type = "l"))
+with(unique(new_data_property), plot(total_number, as.factor(EVTYPE)))
+new_data_property %>% unique() %>% arrange(EVTYPE)
+new_data_property %>% unique() %>% arrange(total_number)
+new_data_property %>% unique() %>% arrange(total_number) %>% a
+new_data_property %>% unique() %>% arrange(total_number) -> a
+with(a, plot(total_number, as.factor(EVTYPE)))
+View(new_data_econ)
+new_data_econ %>% unique() %>% str()
+new_data_econ %>% unique() %>% head
+rbind(new_data_property, new_data_crop) %>%
+unique() %>%
+{.} -> new_data_econ
+View(new_data_econ)
+str(new_data_econ)
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ")
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %>%
+left_join(new_data_fat0) %>%
+unique()
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %>% str
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %T>% str %>%
+mutate(total_number = numeric(total_number))  %T>% str
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max)
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ")
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %T>% str %>%
+mutate(total_number = numeric(total_number))
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %T>% str %>%
+transform(total_number = numeric(total_number))  %T>% str
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %T>% str %>%
+transform(total_number = as.numeric(total_number))  %T>% str
+new_data_fat0 %>%
+aggregate(total_number ~ EVTYPE, ., max) %>%
+aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %T>% str %>%
+transform(total_number = as.numeric(total_number))  %T>% str %>%
+left_join(new_data_fat0) %>%
+unique()
+savehistory("~/work/data_science_coursera/coursera_course/h25.Rhistory")
