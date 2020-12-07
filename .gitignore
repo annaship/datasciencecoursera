@@ -1,12 +1,9 @@
 
-cleaning_data_project/README.html
-cleaning_data_project/CodeBook.html
-*.bz2
-*.html
-climate_project/course_pr2_noaa_climate_cache/html/__packages
 *.RData
+*.bz2
+*.css
+*.html
+*.png
 *.rdb
 *.rdx
-*.css
-*.png
-*.png
+climate_project/course_pr2_noaa_climate_cache/html/__packages
