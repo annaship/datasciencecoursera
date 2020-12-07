@@ -64,9 +64,19 @@ prepare_for_join = function(input_data, clmn_name) {
 
 unique_max = function(input_data) {
   input_data %>% 
-    aggregate(total_number ~ EVTYPE, ., max) %>%
+    aggregate(total_number ~ EVTYPE + dmg_type, ., max) %>%
+    aggregate(EVTYPE ~ total_number + dmg_type, ., paste, collapse = ", ") %>% 
+    transform(total_number = as.numeric(total_number), 
+              EVTYPE = as.factor(EVTYPE)) %T>% str %>% 
     left_join(input_data) %>% 
     unique()
+  
+  # new_data_fat0 %>% 
+  #   aggregate(total_number ~ EVTYPE, ., max) %>%
+  #   aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %T>% str %>% 
+  #   transform(total_number = as.numeric(total_number))  %T>% str %>% 
+  #   left_join(new_data_fat0) %>% 
+  #   unique()
 }
 
 kable_tab = function(input_data, caption = "") {
@@ -86,6 +96,24 @@ by_state = function(input_data, clmn_name) {
   unique()
 }
 
+event_plot = function(input_data, my_title, x_labels) {
+  input_data %>%
+ggplot(aes(x = reorder(total_number, as.factor(EVTYPE)), 
+           y = total_number, 
+           fill = dmg_type)) + 
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  geom_text(aes(label = total_number),
+            hjust = 1.3,
+            position = position_dodge(0.9),
+            size = 3.5) +
+  guides(fill = guide_legend(title = "Harm type")) +
+  labs(x = "Event type", 
+       y = "Total number", 
+       title = my_title) +
+  scale_x_discrete(labels = x_labels)
+}
+
 ```
 <!-- 1. Across the United States, which types of events (as indicated in the EVTYPE variable) are most harmful with respect to population health?   -->
 
@@ -99,7 +127,7 @@ inj_10_max <- get_max10(storm_data_csv, "INJURIES")
 
 new_data_inj0 <- prepare_for_join(inj_10_max, "INJURIES")
 new_data_fat0 <- prepare_for_join(fat_10_max, "FATALITIES")
-
+  
 new_data_fat <- unique_max(new_data_fat0)
 new_data_inj <- unique_max(new_data_inj0)
 
@@ -123,8 +151,8 @@ crop_10_max <- get_max10(storm_data_csv, "CROPDMG")
 
 new_data_property0 <- prepare_for_join(property_10_max, "PROPDMG")
 new_data_crop0 <- prepare_for_join(crop_10_max, "CROPDMG")
-View(new_data_property0)
 str(new_data_property0)
+
 new_data_property <- unique_max(new_data_property0)
 new_data_crop <- unique_max(new_data_crop0)
 str(new_data_property)
@@ -157,24 +185,6 @@ CROPDMG_by_state <- by_state(storm_data_csv, "CROPDMG")
 
 ```{r health_plot}
 
-event_plot = function(input_data, my_title, x_labels) {
-  input_data %>%
-ggplot(aes(x = reorder(total_number, as.factor(EVTYPE)), 
-           y = total_number, 
-           fill = dmg_type)) + 
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  geom_text(aes(label = total_number),
-            hjust = 1.3,
-            position = position_dodge(0.9),
-            size = 3.5) +
-  guides(fill = guide_legend(title = "Harm type")) +
-  labs(x = "Event type", 
-       y = "Total number", 
-       title = my_title) +
-  scale_x_discrete(labels = x_labels)
-}
-
 event_plot(new_data_health, "Types of events most harmful with respect to population health", new_data_health$EVTYPE)
 
 ```
@@ -198,11 +208,10 @@ Crop damage: `r max_CROPDMG$EVTYPE %>% unique()`.
 
 event_plot(new_data_econ, "Types of events most harmful with respect to economics", new_data_econ$EVTYPE)
 
-new_data_econ %>%
-ggplot(aes(x = reorder(total_number, EVTYPE),
-           y = total_number,
-           fill = dmg_type)) +
-  geom_bar(stat = "identity")
+# ggplot(aes(x = reorder(total_number, EVTYPE),
+#            y = total_number,
+#            fill = dmg_type)) +
+#   geom_bar(stat = "identity")
 #    +
 #   coord_flip() +
 #   geom_text(aes(label = total_number),
