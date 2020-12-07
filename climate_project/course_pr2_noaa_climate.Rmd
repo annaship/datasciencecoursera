@@ -145,25 +145,28 @@ CROPDMG_by_state <- by_state(storm_data_csv, "CROPDMG")
 
 ```{r health_plot}
 
-total_number_table <- table(new_data_health$total_number)
-total_number_levels <- names(total_number_table)[order(total_number_table)]
-new_data_health$total_number_ord <- factor(new_data_health$total_number, levels = total_number_levels)
-
-new_data_health$total_number_ord2 <- with(new_data_health, reorder(total_number, total_number, function(x) -length(x)))
+# ggplot(corr.m, aes(x = reorder(miRNA, -value), y = value, fill = variable)) + 
+#   geom_bar(stat = "identity")
 
 new_data_health %>%
-  
-ggplot(
-  # data = new_data_health, 
-       aes(y = total_number_ord2, x = EVTYPE, fill = dmg_type)) +
-  coord_flip() +
-  geom_bar(stat = "identity", position = position_dodge()) +
-  geom_text(aes(label = total_number), 
-            hjust = 1.6,
-            position = position_dodge(0.9), 
-            size = 3.5) +
-  labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") + 
-  guides(fill = guide_legend(title = "Harm type"))
+ggplot(aes(x = reorder(total_number, EVTYPE), 
+           y = total_number, 
+           fill = dmg_type)) + 
+  geom_bar(stat = "identity")
+
+
+# new_data_health %>%
+# ggplot(
+#   # data = new_data_health, 
+#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+#   coord_flip() +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   geom_text(aes(label = total_number), 
+#             hjust = 1.6,
+#             position = position_dodge(0.9), 
+#             size = 3.5) +
+#   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") + 
+#   guides(fill = guide_legend(title = "Harm type"))
 ```
 
 And the same by state:
@@ -182,11 +185,14 @@ Property damage: `r max_PROPDMG$EVTYPE %>% unique()`.
 Crop damage: `r max_CROPDMG$EVTYPE %>% unique()`.  
 
 ```{r economic_plot}
+new_data_econ$total_number <- factor(new_data_econ$total_number, levels = unique(new_data_econ$total_number))
+
 ggplot(data = new_data_econ, 
        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
+   # coord_flip() + 
   geom_bar(stat = "identity", position = position_dodge()) +
-  geom_text(aes(label = total_number), vjust = 1.6, color = "white",
-            position = position_dodge(0.9), size = 3.5) +
+  # geom_text(aes(label = total_number), hjust = 1.6,
+  #           position = position_dodge(0.9), size = 3.5) +
   labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") + 
   guides(fill = guide_legend(title = "Harm type"))
 
