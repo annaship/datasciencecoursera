@@ -7,3 +7,4 @@
 *.rdb
 *.rdx
 climate_project/course_pr2_noaa_climate_cache/html/__packages
+*.dcf
