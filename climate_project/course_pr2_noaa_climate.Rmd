@@ -70,13 +70,6 @@ unique_max = function(input_data) {
               EVTYPE = as.factor(EVTYPE)) %T>% str %>% 
     left_join(input_data) %>% 
     unique()
-  
-  # new_data_fat0 %>% 
-  #   aggregate(total_number ~ EVTYPE, ., max) %>%
-  #   aggregate(total_number ~ EVTYPE, ., paste, collapse = ", ") %T>% str %>% 
-  #   transform(total_number = as.numeric(total_number))  %T>% str %>% 
-  #   left_join(new_data_fat0) %>% 
-  #   unique()
 }
 
 kable_tab = function(input_data, caption = "") {
@@ -157,13 +150,6 @@ new_data_property <- unique_max(new_data_property0)
 new_data_crop <- unique_max(new_data_crop0)
 str(new_data_property)
 
-  # new_data_property %>% 
-  #   aggregate(total_number ~ EVTYPE, ., max) %>%
-  #   left_join(new_data_property) %>% unique()
-# new_data_property %>% unique() %>% arrange(total_number) -> a
-# new_data_crop %>% unique() %>% arrange(total_number) -> b
-# with(a, plot(total_number, as.factor(EVTYPE)))
-
 rbind(new_data_property, new_data_crop) %>% 
   unique() %>%
   {.} -> new_data_econ
@@ -206,35 +192,7 @@ Crop damage: `r max_CROPDMG$EVTYPE %>% unique()`.
 
 ```{r economic_plot}
 
-event_plot(new_data_econ, "Types of events most harmful with respect to economics", new_data_econ$EVTYPE)
-
-# ggplot(aes(x = reorder(total_number, EVTYPE),
-#            y = total_number,
-#            fill = dmg_type)) +
-#   geom_bar(stat = "identity")
-#    +
-#   coord_flip() +
-#   geom_text(aes(label = total_number),
-#             hjust = 1.3,
-#             position = position_dodge(0.9),
-#             size = 3.5) +
-#   guides(fill = guide_legend(title = "Harm type")) +
-#   labs(x = "Event type", 
-#        y = "Total number", 
-#        title = "Types of events most harmful with respect to economics") +
-#   scale_x_discrete(labels = new_data_econ$EVTYPE)
-
-# new_data_econ$total_number <- factor(new_data_econ$total_number, levels = unique(new_data_econ$total_number))
-# 
-# ggplot(data = new_data_econ, 
-#        aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
-#    # coord_flip() + 
-#   geom_bar(stat = "identity", position = position_dodge()) +
-#   # geom_text(aes(label = total_number), hjust = 1.6,
-#   #           position = position_dodge(0.9), size = 3.5) +
-#   labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") + 
-#   guides(fill = guide_legend(title = "Harm type"))
-
+event_plot(new_data_econ, "Types of events most harmful\n with respect to economics", new_data_econ$EVTYPE)
 
 ```
 
