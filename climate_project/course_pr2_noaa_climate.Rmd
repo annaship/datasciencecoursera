@@ -58,15 +58,15 @@ get_max10 = function(input_data, clmn_name) {
 prepare_for_join = function(input_data, clmn_name) {
   input_data %>% 
     select(EVTYPE, total_number = !!as.symbol(clmn_name)) %>%
-    transform(dmg_type = clmn_name)
-  # %>%
-  #   group_by(EVTYPE)
+    transform(dmg_type = clmn_name) %>%
+    group_by(EVTYPE)
 }
 
 unique_max = function(input_data) {
   input_data %>% 
     aggregate(total_number ~ EVTYPE, ., max) %>%
-    left_join(input_data) 
+    left_join(input_data) %>% 
+    unique()
 }
 
 kable_tab = function(input_data, caption = "") {
@@ -123,11 +123,22 @@ crop_10_max <- get_max10(storm_data_csv, "CROPDMG")
 
 new_data_property0 <- prepare_for_join(property_10_max, "PROPDMG")
 new_data_crop0 <- prepare_for_join(crop_10_max, "CROPDMG")
-
+View(new_data_property0)
+str(new_data_property0)
 new_data_property <- unique_max(new_data_property0)
 new_data_crop <- unique_max(new_data_crop0)
+str(new_data_property)
 
-new_data_econ <- rbind(new_data_property, new_data_crop)
+  # new_data_property %>% 
+  #   aggregate(total_number ~ EVTYPE, ., max) %>%
+  #   left_join(new_data_property) %>% unique()
+# new_data_property %>% unique() %>% arrange(total_number) -> a
+# new_data_crop %>% unique() %>% arrange(total_number) -> b
+# with(a, plot(total_number, as.factor(EVTYPE)))
+
+rbind(new_data_property, new_data_crop) %>% 
+  unique() %>%
+  {.} -> new_data_econ
 
 ```
 ```{r economics by state}
@@ -148,7 +159,7 @@ CROPDMG_by_state <- by_state(storm_data_csv, "CROPDMG")
 
 event_plot = function(input_data, my_title, x_labels) {
   input_data %>%
-ggplot(aes(x = reorder(total_number, EVTYPE), 
+ggplot(aes(x = reorder(total_number, as.factor(EVTYPE)), 
            y = total_number, 
            fill = dmg_type)) + 
   geom_bar(stat = "identity") +
@@ -166,21 +177,6 @@ ggplot(aes(x = reorder(total_number, EVTYPE),
 
 event_plot(new_data_health, "Types of events most harmful with respect to population health", new_data_health$EVTYPE)
 
-# new_data_health %>%
-# ggplot(aes(x = reorder(total_number, EVTYPE), 
-#            y = total_number, 
-#            fill = dmg_type)) + 
-#   geom_bar(stat = "identity") +
-#   coord_flip() +
-#   geom_text(aes(label = total_number),
-#             hjust = 1.3,
-#             position = position_dodge(0.9),
-#             size = 3.5) +
-#   guides(fill = guide_legend(title = "Harm type")) +
-#   labs(x = "Event type", 
-#        y = "Total number", 
-#        title = "Types of events most harmful with respect to population health") +
-#   scale_x_discrete(labels = new_data_health$EVTYPE)
 ```
 
 And the same by state:
@@ -202,11 +198,12 @@ Crop damage: `r max_CROPDMG$EVTYPE %>% unique()`.
 
 event_plot(new_data_econ, "Types of events most harmful with respect to economics", new_data_econ$EVTYPE)
 
-# new_data_econ %>%
-# ggplot(aes(x = reorder(total_number, EVTYPE), 
-#            y = total_number, 
-#            fill = dmg_type)) + 
-#   geom_bar(stat = "identity") +
+new_data_econ %>%
+ggplot(aes(x = reorder(total_number, EVTYPE),
+           y = total_number,
+           fill = dmg_type)) +
+  geom_bar(stat = "identity")
+#    +
 #   coord_flip() +
 #   geom_text(aes(label = total_number),
 #             hjust = 1.3,
