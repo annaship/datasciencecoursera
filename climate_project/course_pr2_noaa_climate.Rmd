@@ -48,13 +48,7 @@ download.file(file_url, destfile = file_destination)
 storm_data_csv <- read.csv(file_destination)
 
 ```
-<!-- 1. Across the United States, which types of events (as indicated in the EVTYPE variable) are most harmful with respect to population health?   -->
-
-```{r health}
-one_max_fat = storm_data_csv[storm_data_csv$FATALITIES == max(storm_data_csv$FATALITIES),]
-
-one_max_inj = storm_data_csv[storm_data_csv$INJURIES == max(storm_data_csv$INJURIES),]
-
+```{r common_functions}
 get_max10 = function(input_data, clmn_name) {
   input_data %>%
     slice_max(order_by = !!as.symbol(clmn_name), n = 10)
@@ -62,16 +56,24 @@ get_max10 = function(input_data, clmn_name) {
 
 prepare_for_join = function(input_data, clmn_name) {
   input_data %>% 
-    select(EVTYPE, fat_inj = !!as.symbol(clmn_name)) %>%
-    transform(health_type = clmn_name) %>%
+    select(EVTYPE, combined_col = !!as.symbol(clmn_name)) %>%
+    transform(dmg_type = clmn_name) %>%
     group_by(EVTYPE)
 }
 
 unique_max = function(input_data) {
   input_data %>% 
-    aggregate(fat_inj ~ EVTYPE, ., max) %>%
+    aggregate(combined_col ~ EVTYPE, ., max) %>%
     left_join(input_data) 
 }
+
+```
+<!-- 1. Across the United States, which types of events (as indicated in the EVTYPE variable) are most harmful with respect to population health?   -->
+
+```{r health}
+one_max_fat = storm_data_csv[storm_data_csv$FATALITIES == max(storm_data_csv$FATALITIES),]
+
+one_max_inj = storm_data_csv[storm_data_csv$INJURIES == max(storm_data_csv$INJURIES),]
 
 fat_10_max <- get_max10(storm_data_csv, "FATALITIES")
 inj_10_max <- get_max10(storm_data_csv, "INJURIES")
@@ -102,25 +104,24 @@ inj_by_state <- by_state(storm_data_csv, "INJURIES")
 
 ```{r economics}
 max_PROPDMG <- filter(storm_data_csv, PROPDMG == max(PROPDMG)) 
-
 max_CROPDMG <- filter(storm_data_csv, CROPDMG == max(CROPDMG)) 
+
+property_10_max <- get_max10(storm_data_csv, "PROPDMG")
+crop_10_max <- get_max10(storm_data_csv, "CROPDMG")
+
+new_data_crop0 <- prepare_for_join(crop_10_max, "CROPDMG")
+new_data_property0 <- prepare_for_join(property_10_max, "PROPDMG")
+
+new_data_property <- unique_max(new_data_property0)
+new_data_crop <- unique_max(new_data_crop0)
+
+new_data_econ <- rbind(new_data_property, new_data_crop)
 
 ```
 ```{r economics by state}
 
-storm_data_csv %>% 
-  group_by(STATE) %>%
-  filter(PROPDMG == max(PROPDMG)) %>%
-  select(STATE, EVTYPE) %>% 
-  unique() %>%
-  {.} -> PROPDMG_by_state
-
-storm_data_csv %>% 
-  group_by(STATE) %>%
-  filter(CROPDMG == max(CROPDMG)) %>%
-  select(STATE, EVTYPE) %>% 
-  unique() %>%
-  {.} -> CROPDMG_by_state
+PROPDMG_by_state1 <- by_state(storm_data_csv, "PROPDMG")
+CROPDMG_by_state1 <- by_state(storm_data_csv, "CROPDMG")
 
 ```
 
@@ -132,12 +133,12 @@ storm_data_csv %>%
 <!-- Injuries for all the US: `r one_max_inj$EVTYPE %>% unique()`.   -->
 
 ```{r health_plot}
-ggplot(data=new_data_health, aes(x=EVTYPE, y=fat_inj, fill = health_type)) +
-  geom_bar(stat="identity", position=position_dodge()) +
-  geom_text(aes(label=fat_inj), vjust=1.6, color="white",
-            position = position_dodge(0.9), size=3.5) +
-  labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to population health") + 
-  guides(fill=guide_legend(title="Harm type")) +
+ggplot(data=new_data_health, aes(x = combined_col, y = EVTYPE, fill = dmg_type)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = combined_col), vjust = 1.6, color = "white",
+            position = position_dodge(0.9), size = 3.5) +
+  labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") + 
+  guides(fill = guide_legend(title = "Harm type")) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 ```
@@ -165,6 +166,18 @@ kable_tab(inj_by_state[order(inj_by_state$STATE),], caption = "Injuries by state
 
 Property damage: `r max_PROPDMG$EVTYPE %>% unique()`.  
 Crop damage: `r max_CROPDMG$EVTYPE %>% unique()`.  
+
+```{r economic_plot}
+ggplot(data = new_data_econ, 
+       aes(x = combined_col, y = EVTYPE, fill = dmg_type)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = combined_col), vjust = 1.6, color = "white",
+            position = position_dodge(0.9), size = 3.5) +
+  labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") + 
+  guides(fill = guide_legend(title = "Harm type"))
+
+
+```
 
 The same by state:
 
