@@ -48,6 +48,7 @@ download.file(file_url, destfile = file_destination)
 storm_data_csv <- read.csv(file_destination)
 
 ```
+
 ```{r common_functions}
 get_max10 = function(input_data, clmn_name) {
   input_data %>%
@@ -56,15 +57,32 @@ get_max10 = function(input_data, clmn_name) {
 
 prepare_for_join = function(input_data, clmn_name) {
   input_data %>% 
-    select(EVTYPE, combined_col = !!as.symbol(clmn_name)) %>%
+    select(EVTYPE, total_number = !!as.symbol(clmn_name)) %>%
     transform(dmg_type = clmn_name) %>%
     group_by(EVTYPE)
 }
 
 unique_max = function(input_data) {
   input_data %>% 
-    aggregate(combined_col ~ EVTYPE, ., max) %>%
+    aggregate(total_number ~ EVTYPE, ., max) %>%
     left_join(input_data) 
+}
+
+kable_tab = function(input_data, caption = "") {
+  input_data %>%
+  kable(caption = caption) %>%
+  kable_classic(full_width = F) %>%
+  kable_material("striped") %>%
+  kable_styling(fixed_thead = T) %>%
+  scroll_box(height = "20em")
+}
+
+by_state = function(input_data, clmn_name) {
+  input_data %>% 
+  group_by(STATE) %>%
+  filter(!!as.symbol(clmn_name) == max(!!as.symbol(clmn_name))) %>%
+  select(STATE, EVTYPE) %>% 
+  unique()
 }
 
 ```
@@ -89,13 +107,6 @@ new_data_health <- rbind(new_data_fat, new_data_inj)
 ```
 ```{r health by state}
 
-by_state = function(input_data, clmn_name) {
-  input_data %>% 
-  group_by(STATE) %>%
-  filter(!!as.symbol(clmn_name) == max(!!as.symbol(clmn_name))) %>%
-  select(STATE, EVTYPE) %>% 
-  unique()
-}
 fatal_by_state <- by_state(storm_data_csv, "FATALITIES")
 inj_by_state <- by_state(storm_data_csv, "INJURIES")
 ```
@@ -120,8 +131,8 @@ new_data_econ <- rbind(new_data_property, new_data_crop)
 ```
 ```{r economics by state}
 
-PROPDMG_by_state1 <- by_state(storm_data_csv, "PROPDMG")
-CROPDMG_by_state1 <- by_state(storm_data_csv, "CROPDMG")
+PROPDMG_by_state <- by_state(storm_data_csv, "PROPDMG")
+CROPDMG_by_state <- by_state(storm_data_csv, "CROPDMG")
 
 ```
 
@@ -133,32 +144,24 @@ CROPDMG_by_state1 <- by_state(storm_data_csv, "CROPDMG")
 <!-- Injuries for all the US: `r one_max_inj$EVTYPE %>% unique()`.   -->
 
 ```{r health_plot}
-ggplot(data=new_data_health, aes(x = combined_col, y = EVTYPE, fill = dmg_type)) +
+ggplot(data = new_data_health, 
+       aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  geom_text(aes(label = combined_col), vjust = 1.6, color = "white",
-            position = position_dodge(0.9), size = 3.5) +
+  geom_text(aes(label = total_number), 
+            hjust = 1.6,
+            position = position_dodge(0.9), 
+            size = 3.5) +
   labs(y = "Event type", x = "Total number", title = "Types of events most harmful with respect to population health") + 
-  guides(fill = guide_legend(title = "Harm type")) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
+  guides(fill = guide_legend(title = "Harm type"))
 ```
 
 And the same by state:
 
 ```{r comment='', results='asis'}
 
-kable_tab = function(x, caption = "") {
-  x %>%
-  kable(caption = caption) %>%
-  kable_classic(full_width = F) %>%
-  kable_material("striped") %>%
-  kable_styling(fixed_thead = T) %>%
-  scroll_box(height = "20em")
-}
+kable_tab(arrange(fatal_by_state, STATE), caption = "Fatalities by state")
 
-kable_tab(fatal_by_state[order(fatal_by_state$STATE),], caption = "Fatalities by state")
-
-kable_tab(inj_by_state[order(inj_by_state$STATE),], caption = "Injuries by state")
+kable_tab(arrange(inj_by_state, STATE), caption = "Injuries by state")
 
 ```
 
@@ -169,9 +172,9 @@ Crop damage: `r max_CROPDMG$EVTYPE %>% unique()`.
 
 ```{r economic_plot}
 ggplot(data = new_data_econ, 
-       aes(x = combined_col, y = EVTYPE, fill = dmg_type)) +
+       aes(x = total_number, y = EVTYPE, fill = dmg_type)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  geom_text(aes(label = combined_col), vjust = 1.6, color = "white",
+  geom_text(aes(label = total_number), vjust = 1.6, color = "white",
             position = position_dodge(0.9), size = 3.5) +
   labs(x = "Event type", y = "Total number", title = "Types of events most harmful with respect to economics") + 
   guides(fill = guide_legend(title = "Harm type"))
@@ -182,10 +185,10 @@ ggplot(data = new_data_econ,
 The same by state:
 
 ```{r comment = '', results = 'asis'}
-kable_tab(PROPDMG_by_state[order(PROPDMG_by_state$STATE),], 
+kable_tab(arrange(PROPDMG_by_state, STATE), 
             caption = "Property damage by state")
  
-kable_tab(CROPDMG_by_state[order(CROPDMG_by_state$STATE),], 
+kable_tab(arrange(CROPDMG_by_state, STATE), 
             caption = "Crop damage by state")
 ```
 
