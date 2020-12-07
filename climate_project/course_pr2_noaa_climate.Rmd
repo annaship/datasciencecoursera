@@ -39,7 +39,7 @@ The most property damage caused by "THUNDERSTORM WIND", "FLASH FLOOD" and      "
 The most crop damage caused by "DROUGHT".
 
 ## Data Processing  
-```{r downloading_data, cache = F}
+```{r downloading_data, cache = TRUE}
 file_url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
 
 file_destination = "StormData.csv.bz2"
@@ -58,8 +58,9 @@ get_max10 = function(input_data, clmn_name) {
 prepare_for_join = function(input_data, clmn_name) {
   input_data %>% 
     select(EVTYPE, total_number = !!as.symbol(clmn_name)) %>%
-    transform(dmg_type = clmn_name) %>%
-    group_by(EVTYPE)
+    transform(dmg_type = clmn_name)
+  # %>%
+  #   group_by(EVTYPE)
 }
 
 unique_max = function(input_data) {
